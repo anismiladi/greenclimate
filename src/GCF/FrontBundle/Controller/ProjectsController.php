@@ -27,6 +27,7 @@ class ProjectsController extends Controller
 
         $projects = $em->getRepository('GCFMainBundle:Projet')->findAll();
 
+        $org =array();
         foreach ( $organismes as $organisme){
             if ( $organisme->getSecteurActeurParent() == Null )
             {

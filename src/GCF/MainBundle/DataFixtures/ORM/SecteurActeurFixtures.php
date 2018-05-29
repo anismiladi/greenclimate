@@ -13,15 +13,17 @@ class SecteurActeurFixtures implements FixtureInterface
     {
 
         $names = array(
-            'Organisme publique',
-            'Organisme privé',
-            'Société civile',
-            'Parlement',
+            'Publique',
             'M.Environnement',
             'M.Agriculture',
             'M.Energie',
             'M.Transport',
-            'Autres'
+            'Privé',
+            'Société civile',
+            'Parlement',
+            'Parlement',
+            'Comités',
+            'Corps'
         );
 
         foreach ($names as $name) {

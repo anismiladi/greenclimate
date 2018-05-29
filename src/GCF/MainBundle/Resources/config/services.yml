@@ -3,12 +3,17 @@ services:
 #        class: GCF\MainBundle\Example
 #        arguments: ["@service_id", "plain_value", "%parameter%"]
 
-    GCF\MainBundle\DataFixtures\ORM\ActeurFixtures:
-        tags: [doctrine.fixture.orm]
+#    GCF\MainBundle\DataFixtures\ORM\SecteurActeurFixtures:
+#        tags: [doctrine.fixture.orm]
+#
+#    GCF\MainBundle\DataFixtures\ORM\SecteurProjetFixtures:
+#        tags: [doctrine.fixture.orm]
 
-    GCF\MainBundle\DataFixtures\ORM\SecteurActeurFixtures:
-        tags: [doctrine.fixture.orm]
+#    GCF\MainBundle\DataFixtures\ORM\GouvernoratFixtures:
+#        tags: [doctrine.fixture.orm]
 
+#    GCF\MainBundle\DataFixtures\ORM\FocusFixtures:
+#        tags: [doctrine.fixture.orm]
 
 
     admin.Acteur:
