@@ -1,0 +1,322 @@
+{% extends '@GCFFront/base.html.twig' %}
+{% block stylesheets %}
+    {#<link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css">#}
+    <link rel="stylesheet" href="{{ asset('assets/DataTables/datatables.css') }}">
+
+{% endblock %}
+{% block body %}
+
+    <div class="col-md-12">
+
+        <nav class="navbar navbar-default" style="background: white; border-radius:0; color: black ">
+            <div class="container-fluid">
+
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false" style="border-radius: 0;">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand only-mobile" href="#">Filtres</a>
+                </div>
+
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+                    <ul class="nav navbar-nav" style="width: 100%;">
+                        <li class="dropdown col-md-2">
+                            <a role="button" aria-expanded="false" style="color: #777 !important;font-size: 13px; padding-left: 0px;  padding-right: 0;text-align: center;"><strong>Filtres : </strong></a>
+                        </li>
+                        <li class="dropdown col-md-2">
+
+                            <select name="" id="id_select_gouvernorat" style="padding-top: 16px;padding-bottom: 16px">
+                                <option value="" disabled selected>Gouvernorat</option>
+                                {% for gouv in gouvernorates  %}
+                                    <option value="{{ gouv.nom }}">{{ gouv.nom }}</option>
+                                {% endfor %}
+                            </select>
+
+                            {#<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color: #777 !important; font-size: 13px; padding-left: 0px;  padding-right: 0;text-align: center; ">Gouvernorat <span class="caret"></span></a>#}
+                            {#<ul class="dropdown-menu ">#}
+
+                                {#{% for gouv in gouvernorates  %}#}
+                                    {#<li>#}{#href="{{ path('gcf_front_resultprojectspage', {'gouvernorat': gouv.nom , 'organisme': 'none', 'secteur': 'none', 'focus': 'none' } ) }}"#}
+                                        {#<a onclick="selected('gouvernorat','{{ gouv.nom }}')" style="cursor: pointer;">{{ gouv.nom  }}</a>#}
+                                    {#</li>#}
+                                {#{% endfor %}#}
+                                {#<li role="separator" class="divider"></li>#}
+                            {#</ul>#}
+                        </li>
+                        <li class="dropdown col-md-2">
+                            <select name="" id="id_select_organisme" style="padding-top: 16px;padding-bottom: 16px">
+                                <option value="" disabled selected>Organisme</option>
+                                {% for organisme in organismes  %}
+                                    <option value="{{ organisme.nom }}">{{ organisme.nom }}</option>
+                                {% endfor %}
+                            </select>
+                            {#<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color: #777 !important;font-size: 13px; padding-left: 0px;  padding-right: 0;text-align: center;">Organisme <span class="caret"></span></a>#}
+                            {#<ul class="dropdown-menu">#}
+
+                                {#{% for organisme in organismes  %}#}
+                                    {#<li>#}{#href="{{ path('gcf_front_resultprojectspage', {'gouvernorat': 'none', 'organisme': organisme.nom, 'secteur': 'none', 'focus': 'none' } ) }}"#}
+                                        {#<a onclick="selected('organisme','{{ organisme.nom }}')" style="cursor: pointer;">{{ organisme.nom  }}</a>#}
+                                    {#</li>#}
+                                {#{% endfor %}#}
+
+                            {#</ul>#}
+                        </li>
+                        <li class="dropdown col-md-2">
+
+                            <select name="" id="id_select_secteur" style="padding-top: 16px;padding-bottom: 16px; max-width:100%">
+                                <option value="" disabled selected>Secteur</option>
+                                {% for secteur in secteurs  %}
+                                    <option value="{{ secteur.nom }}">{{ secteur.nom }}</option>
+                                {% endfor %}
+                            </select>
+
+                            {#<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color: #777 !important;font-size: 13px; padding-left: 0px;  padding-right: 0;text-align: center;">Secteur <span class="caret"></span></a>#}
+                            {#<ul class="dropdown-menu">#}
+
+                                {#{% for secteur in secteurs  %}#}
+                                    {#<li> #}{#href="{{ path('gcf_front_resultprojectspage', {'gouvernorat': 'none', 'organisme': 'none', 'secteur': secteur.nom, 'focus': 'none' }) }}"#}
+                                        {#<a onclick="selected('secteur','{{ secteur.nom }}')" style="cursor: pointer;">{{ secteur.nom }}</a>#}
+                                    {#</li>#}
+                                {#{% endfor %}#}
+
+                                {#<li role="separator" class="divider"></li>#}
+                            {#</ul>#}
+                        </li>
+                        <li class="dropdown col-md-2">
+                            <select name="" id="id_select_focus" style="padding-top: 16px;padding-bottom: 16px; max-width:100%">
+                                <option value="" disabled selected >Focus</option>
+                                {% for focus in focuss  %}
+                                    <option value="{{ focus.nom }}">{{ focus.nom }}</option>
+                                {% endfor %}
+                            </select>
+
+                            {#<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color: #777 !important;font-size: 13px; padding-left: 0px;  padding-right: 0;text-align: center;">Focus <span class="caret"></span></a>#}
+                            {#<ul class="dropdown-menu" >#}
+                                {#{% for focus in focuss  %}#}
+                                    {#<li>#}{# {{ path('gcf_front_resultprojectspage', {'gouvernorat': 'none', 'organisme': 'none', 'secteur': 'none', 'focus': focus.nom } ) }}#}
+                                        {#<a onclick="selected('focus','{{ focus.nom }}')" style="cursor: pointer;">{{ focus.nom }}</a>#}
+                                    {#</li>#}
+                                {#{% endfor %}#}
+                                {#<li role="separator" class="divider"></li>#}
+                            {#</ul>#}
+                        </li>
+                        <li class="dropdown col-md-2">
+                            <a class="btn btn-default" onclick="inInput()" role="button" aria-expanded="false" style="color: #777 !important;font-size: 13px;text-align: center; border-radius:0; padding: 10px 0;margin: 5px 0; font-weight: 600;">Rechercher</a>
+                        </li>
+                    </ul>
+
+                </div><!-- /.navbar-collapse -->
+
+            </div>
+        </nav>
+
+    </div>
+
+
+    <div class="col-md-12">
+        <table id="myTable" class="table table-bordered table-striped">
+            <thead>
+            <tr>
+                <th>Nom</th>
+
+                <th>Gouvernorat</th>
+
+                <th>Organisme</th>
+
+                <th>Secteur</th>
+
+                <th>Focus</th>
+
+            </tr>
+            </thead>
+            <tbody class="result-search">
+            {% for project in projects %}
+                <tr>
+                    <td>{{ project.nom }}</td>
+
+                    <td>
+                        {% for gouvernorat in project.gouvernorat %}
+                            {{ gouvernorat.nom }}
+                        {% endfor %}
+                    </td>
+
+                    {#organisme---->#}
+                    <td>
+                        {% if (project.acteur.secteurActeur.secteurActeurParent == null) %}
+                            {{ project.acteur.secteurActeur.nom }}
+                        {% else %}
+                            {{ project.acteur.secteurActeur.secteurActeurParent.nom }}
+                        {% endif %}
+                    </td>
+
+                    <td>{{ project.secteurProjet.nom }}</td>
+
+
+                    <td>
+                        {% for focus in project.focus %}
+                            {{ focus.nom }},
+                        {% endfor %}
+                    </td>
+
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+
+
+
+
+{% endblock %}
+
+{% block javascripts %}
+
+
+    <script src="{{ asset('assets/DataTables/datatables.min.js') }}"></script>
+
+    <script src="{{ asset('assets/DataTables/Buttons-1.5.1/js/dataTables.buttons.min.js') }}"></script>
+
+    <script>
+
+    $(document).ready(function() {
+
+        $('#myTable').DataTable( {
+
+            "paging":   true,
+
+            "lengthChange": false,
+
+            "lengthMenu": [ 5, 10, 20 ],
+
+            "ordering": true,
+
+            "info":     false,
+
+            "searching": true,
+
+            // dom: 'Bfrtip',
+
+            // buttons: [
+            //     'pdf'
+            // ]
+
+        } );
+
+    } );
+
+
+    </script>
+
+    <script>
+
+        $(document).ready(function() {
+
+            $('#myTable1').DataTable( {
+
+                "paging":   false,
+
+                "lengthChange": true,
+
+                "lengthMenu": [ 5, 10, 20 ],
+
+                "ordering": true,
+
+                "info":     false,
+
+                "searching": true,
+
+                // dom: 'Bfrtip',
+
+                // buttons: [
+                //     'pdf'
+                // ]
+
+            } );
+
+        } );
+
+
+    </script>
+    <script>
+
+        function selected(cat , selectedVal) {
+
+
+            contToAppend = '<button class="btn btn-default '+selectedVal+'" style="margin:5px">'+selectedVal+' <i class="fa fa-times" aria-hidden="true" onclick="$(\'.'+selectedVal+'\').remove()"></i></button>';
+
+            jQuery('.filter_selected').append(contToAppend)
+
+        }
+
+
+
+        function inInput() {
+
+            var focus = '';
+            var secteur = '';
+            var organisme = '';
+            var gouvernorat = '';
+
+            focus = jQuery('#id_select_focus').val();
+            secteur = jQuery('#id_select_secteur').val();
+            organisme = jQuery('#id_select_organisme').val();
+            gouvernorat = jQuery('#id_select_gouvernorat').val();
+
+            console.log( 'focus'+focus+'secteur'+secteur+'organisme'+organisme+'gouvernorat'+gouvernorat );
+
+            var url = 'http://localhost/greenclimate/web/app_dev.php/fr/projects/result/gouvernorat='+gouvernorat+'-organisme='+organisme+'-secteur='+secteur+'-focus='+focus;
+
+
+            jQuery.ajax({
+                url: url,
+                type: 'POST',
+                dataType: 'json',
+                success:function(result , status){
+
+                    console.log(result, status);
+                    //console.log(result.nom);
+                    toappend ='';
+
+                    if (result.length > 0){
+                        $('.result-search').empty();
+                        for(i = 0; i < result.length; i++) {
+                            project = result[i];
+                            //console.log(project)
+
+                            toappend = '<tr><td>';
+                            toappend += '<a href="http://localhost/greenclimate/web/app_dev.php/fr/projects/'+project.id+' ">'+project.nom+'</td><td>'+project.gouvernorat+'</td><td>'+project.organisme+'</td><td>'+project.secteur+'</td><td>';
+
+                            if ( (project.focus).length  < 2)
+                            {
+                                for (f = 0; f < (project.focus).length; f++) {
+                                    toappend += project.focus[f] + ', ';
+                                }
+                            }else{
+                                toappend += project.focus;
+                            }
+                            toappend +='</td></tr>';
+                            //string = string.replace(/\s\s+/g, ' ');
+
+
+                            $('.result-search').append(toappend);
+                        }
+                    }
+                },
+                error:function(error){
+                    console.log(error);
+                    jQuery('.result-search').append(error.responseText);
+                }
+            });
+        }
+
+
+
+        //$('.result-search').empty();
+    </script>
+
+{% endblock %}

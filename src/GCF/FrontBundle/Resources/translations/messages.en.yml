@@ -1,0 +1,11 @@
+menu:
+  Home: Home
+  Actors: Actors
+  Projects: Projects
+  Publications: Publications
+  E-learning: E-learning
+  Search: Search
+
+core:
+  Hello: Hello !
+

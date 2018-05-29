@@ -1,0 +1,175 @@
+{% extends '@GCFFront/base.html.twig' %}
+
+{% block title %} E-learning {% endblock %}
+{% block body %}
+    <style>
+        .nav_our_and_green_blogger{
+            margin-bottom: 40px;
+        }
+        .nav_our_and_green_blogger li{
+            font-weight: 600;cursor: pointer;
+        }
+        .nav_our_and_green_blogger a{
+            color: #22AA86;
+        }
+        #green_blogger_pub_tab_container{
+            display: none;
+        }
+        .listing{
+            box-shadow: 0 0 10px #ccc inset;
+            padding: 10px;
+            margin-bottom: 30px;
+            min-height: 240px;
+        }
+        .listing h4{
+            background: #22AA86;
+            color: #fff;
+            font-weight: 400;
+            padding: 8px 15px;
+            margin-top: 0;
+        }
+        .listing a{
+            margin-bottom: 10px;
+        }
+        .type img{
+            float: right;
+            width: 60px;
+            padding: 10px;
+            cursor: pointer;
+        }
+        .listing p {
+            margin-bottom: 5px;
+        }
+        .listing > p{
+            background: #262626;
+            width: 75% ;
+            padding: 5px 20px;
+            color: #fff;
+            font-size: 12px;
+        }
+        #our_pub_tab, #green_blogger_pub_tab{
+            padding:0;
+        }
+        #model_video{
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0,0,0,0.4);
+            display: none;
+            z-index: 9999;
+        }
+        #close_panel{
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+
+
+    <h1>Page E-learning</h1>
+
+    <div>
+        <div class="col-md-12">
+            <ul class="nav nav-tabs nav_our_and_green_blogger">
+                <li class="active col-md-6" id="our_pub_tab"><a >Technique</a></li>
+                <li class="col-md-6" id="green_blogger_pub_tab"><a >Législatives</a></li>
+            </ul>
+        </div>
+
+        <div id="our_pub_tab_container">
+
+            {% for i in 0..4 %}
+
+
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="listing">
+                        <h4>Vidéo titre</h4>
+                        <div class="type">
+                            <a>
+                                <img id="open_modal_read_video" src="{{ asset('assets/images/YouTube-icon.png') }}" title="Lire la vidéo">
+                            </a>
+                        </div>
+                        <p>Date de publication : 2018</p>
+                        <div class="details">
+                            <p><strong>Location :</strong> Lorem ipsum</p>
+                            <p><strong>Type :</strong> Lorem ipsum dolor </p>
+                            <p><strong>Focus :</strong>Lorem</p>
+                            <p><strong>Thematic Sector :</strong>ipsum</p>
+                            <p><strong>Key Words :</strong>Lorem ipsum, Lorem ipsum dolor sit amet, Lorem dolor, ipsum, Lorem, amet</p>
+                        </div>
+                    </div>
+                </div>
+
+            {% endfor %}
+
+        </div>
+
+        <div id="green_blogger_pub_tab_container">
+
+            {% for i in 0..4 %}
+
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="listing">
+                        <h4>Document titre</h4>
+                        <div class="type">
+                            <a target="_blank" href="">
+                                <img src="{{ asset('assets/images/PDF_file.png') }}" title="Lire le document">
+                            </a>
+                        </div>
+                        <p>Date de publication : 2018</p>
+                        <div class="details">
+                            <p><strong>Location :</strong> Lorem ipsum</p>
+                            <p><strong>Type :</strong> Lorem ipsum dolor </p>
+                            <p><strong>Focus :</strong>Lorem</p>
+                            <p><strong>Thematic Sector :</strong>ipsum</p>
+                            <p><strong>Key Words :</strong>Lorem ipsum, Lorem ipsum dolor sit amet, Lorem dolor, ipsum, Lorem, amet</p>
+                        </div>
+                    </div>
+                </div>
+
+            {% endfor %}
+
+        </div>
+    </div>
+
+
+    <div id="model_video">
+        <i id="close_panel" class="fa fa-times fa-2x" aria-hidden="true" ></i>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        jQuery('#our_pub_tab').click(function () {
+
+            jQuery('#our_pub_tab_container').css('display', 'block');
+            jQuery('#green_blogger_pub_tab_container').css('display', 'none');
+            jQuery('#our_pub_tab').addClass('active');
+            jQuery('#green_blogger_pub_tab').removeClass('active');
+
+        });
+
+        jQuery('#green_blogger_pub_tab').click(function () {
+
+            jQuery('#green_blogger_pub_tab_container').css('display', 'block');
+            jQuery('#our_pub_tab_container').css('display', 'none');
+            jQuery('#green_blogger_pub_tab').addClass('active');
+            jQuery('#our_pub_tab').removeClass('active');
+
+        });
+    </script>
+
+    <script>
+        jQuery('#open_modal_read_video').click(function () {
+           jQuery('#model_video').css('display', 'block');
+        });
+        jQuery('#close_panel').click(function () {
+            jQuery('#model_video').css('display', 'none');
+        });
+    </script>
+{% endblock %}

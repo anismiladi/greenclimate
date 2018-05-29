@@ -1,0 +1,10 @@
+menu:
+  Home: Accueil
+  Actors: Acteurs
+  Projects: Projets
+  Publications: Publications
+  E-learning: E-learning
+  Search: Rechercher
+
+core:
+  Hello: Bonjour !

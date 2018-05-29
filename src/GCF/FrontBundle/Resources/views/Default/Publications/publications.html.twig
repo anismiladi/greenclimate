@@ -1,0 +1,149 @@
+{% extends '@GCFFront/base.html.twig' %}
+
+{% block title %} Publications {% endblock %}
+{% block body %}
+    <style>
+        .nav_our_and_green_blogger {
+            margin-bottom: 40px;
+        }
+
+        .nav_our_and_green_blogger li {
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .nav_our_and_green_blogger a {
+            color: #22AA86;
+        }
+
+        #green_blogger_pub_tab_container {
+            display: none;
+        }
+
+
+    </style>
+
+
+    <h1>Page publications</h1>
+
+    <div>
+        <div class="col-md-12">
+            <ul class="nav nav-tabs nav_our_and_green_blogger">
+                <li class="active" id="our_pub_tab"><a>Nos Publications</a></li>
+                <li id="green_blogger_pub_tab"><a>Green bloggeur Publications</a></li>
+                <div class="navbar-right"><a class="btn btn-default " data-toggle="modal" data-target="#myModal">+ Green
+                        Blogger</a></div>
+            </ul>
+        </div>
+
+        <div id="our_pub_tab_container">
+
+            {% for i in 0..10 %}
+
+
+                <div class="col-md-6 col-sm-6 col-xs-12"
+                     style="background: whitesmoke;border: solid white; padding-top: 10px; padding-bottom:10px ">
+                    <div class="row">
+                        <div class="col-md-5"><a href="#"><img src="http://placehold.it/200x200"
+                                                               class="img-responsive" style="width: 100%;" /></a></div>
+                        <div class="col-md-7">
+                            <h4 class="name">Publication Titre</h4>
+                            <h6 class="name"><strong>Date :</strong> 2009</h6>
+                            <p class="description" style="font-size: 13px;">Aenean tortor est, vulputate quis leo in,
+                                vehicula rhoncus lacus.</p>
+                            <p style="width: 100%; text-align: right"><a href="#"
+                                                                         style="padding: 5px; background: #22AA86; color: white; text-decoration: none">
+                                    Lire la suite. </a></p>
+                        </div>
+                    </div>
+                </div>
+
+            {% endfor %}
+
+        </div>
+
+        <div id="green_blogger_pub_tab_container">
+            {% for i in 0..10 %}
+
+
+                <div class="col-md-6 col-sm-6 col-xs-12"
+                     style="background: #f2fffc;border: solid white; padding-top: 10px; padding-bottom:10px ">
+                    <div class="row">
+                        <div class="col-md-5"><a href="#"><img src="http://placehold.it/200x200" class="img-responsive"/></a></div>
+                        <div class="col-md-7">
+                            <h4 class="name">Publication Titre</h4>
+                            <h6 class="name"><strong>Date :</strong> 2009</h6>
+                            <p class="description" style="font-size: 13px;">Aenean tortor est, vulputate quis leo in,
+                                vehicula rhoncus lacus.</p>
+                            <p style="width: 100%; text-align: right">
+                                <a href="#" style="padding: 5px; background: #22AA86; color: white; text-decoration: none">
+                                    Lire la suite. </a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            {% endfor %}
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Green blogger editor</h4>
+                </div>
+                <div class="modal-body" style="min-height: 400px;">
+                    <textarea name="" id="" rows="20" style="width: 100%;">
+
+
+                    </textarea>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+
+
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        jQuery('#our_pub_tab').click(function () {
+
+            jQuery('#our_pub_tab_container').css('display', 'block');
+            jQuery('#green_blogger_pub_tab_container').css('display', 'none');
+            jQuery('#our_pub_tab').addClass('active');
+            jQuery('#green_blogger_pub_tab').removeClass('active');
+
+        });
+
+        jQuery('#green_blogger_pub_tab').click(function () {
+
+            jQuery('#green_blogger_pub_tab_container').css('display', 'block');
+            jQuery('#our_pub_tab_container').css('display', 'none');
+            jQuery('#green_blogger_pub_tab').addClass('active');
+            jQuery('#our_pub_tab').removeClass('active');
+
+        });
+    </script>
+{% endblock %}
+

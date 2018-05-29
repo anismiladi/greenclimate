@@ -1,0 +1,59 @@
+gcf_front_homepage:
+    path:     /
+    defaults: { _controller: GCFFrontBundle:Default:index}
+
+
+
+
+gcf_front_actorspage:
+    path:     /actors
+    defaults: { _controller: GCFFrontBundle:Actors:index}
+
+gcf_front_opublicpage:
+    path:     /actors/organisme-public
+    defaults: { _controller: GCFFrontBundle:Actors:oPublic }
+
+gcf_front_oprivatepage:
+    path:     /actors/organisme-private
+    defaults: { _controller: GCFFrontBundle:Actors:oPrivate }
+
+gcf_front_scivilepage:
+    path:     /actors/societe-civile
+    defaults: { _controller: GCFFrontBundle:Actors:sCivile }
+
+gcf_front_parlementpage:
+    path:     /actors/parlement
+    defaults: { _controller: GCFFrontBundle:Actors:parlement }
+
+gcf_front_getActorspage:
+    path:     /actors/get-actors/{clicked}
+    defaults: { _controller: GCFFrontBundle:Actors:gethierarchie }
+
+
+
+gcf_front_projectspage:
+    path:     /projects
+    defaults: { _controller: GCFFrontBundle:Projects:index }
+
+gcf_front_resultprojectspage:
+    path:     /projects/result/gouvernorat={gouvernorat}-organisme={organisme}-secteur={secteur}-focus={focus}
+    defaults: { _controller: GCFFrontBundle:Projects:resut  }
+
+gcf_front_projectsinglepage:
+    path: /projects/{projectName}
+    defaults: { _controller: GCFFrontBundle:Projects:singleProject}
+
+
+
+gcf_front_publicationspage:
+    path:     /publications
+    defaults: { _controller: GCFFrontBundle:Publications:index }
+
+gcf_front_elearningpage:
+    path:     /e-learning
+    defaults: { _controller: GCFFrontBundle:Elearning:index }
+
+gcf_front_searchpage:
+    path:     /result
+    defaults: { _controller: GCFFrontBundle:Search:search}
+
