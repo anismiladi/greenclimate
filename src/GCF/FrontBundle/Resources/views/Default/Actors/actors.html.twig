@@ -2,56 +2,56 @@
 
 {% block body %}
 
-    <div class="col-md-12">
-        <div class="row">
-            <div class="col-md-4" style="padding-left:0">
-                <div class="panel-group" id="accordion">
-                    {% for key, sector in sectors %}
-                        {% if sector.secteurActeurParent == null  %}
-                            <div class="panel panel-default">
+<div class="col-md-12">
+    <div class="row">
+        <div class="col-md-4" style="padding-left:0">
+            <div class="panel-group" id="accordion">
+                {% for key, sector in sectors %}
+                    {% if sector.secteurActeurParent == null  %}
+                        <div class="panel panel-default">
 
-                                <div class="panel-heading" >
-                                    <h4 class="panel-title">
-                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse{{ key }}" style="text-decoration: none;">{{ sector.nom }}</a>
-                                    </h4>
-                                </div>
-                                {%  if key == 0 %}
-                                    {% set classActive = 'in' %}
-                                {% else %}
-                                    {% set classActive = ' ' %}
-                                {% endif %}
-                                <div id="collapse{{ key }}" class="panel-collapse collapse {{ classActive }}">
+                            <div class="panel-heading" >
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse{{ key }}" style="text-decoration: none;">{{ sector.nom }}</a>
+                                </h4>
+                            </div>
+                            {%  if key == 0 %}
+                                {% set classActive = 'in' %}
+                            {% else %}
+                                {% set classActive = ' ' %}
+                            {% endif %}
+                            <div id="collapse{{ key }}" class="panel-collapse collapse {{ classActive }}">
 
-                                    <ul class="list-group">
-                                        {% for key, sectorFils in sectorsFils %}
+                                <ul class="list-group">
+                                    {% for key, sectorFils in sectorsFils %}
 
-                                            {% if sectorFils.secteurActeurParent == sector.nom %}
+                                        {% if sectorFils.secteurActeurParent == sector.nom %}
 
-                                                <li class="list-group-item" onclick="getFils('{{ sectorFils.nom }}')" style="cursor: pointer;"><a style="text-decoration: none;">{{ sectorFils.nom }}</a></li>
+                                            <li class="list-group-item" onclick="getFils('{{ sectorFils.nom }}')" style="cursor: pointer;"><a style="text-decoration: none;">{{ sectorFils.nom }}</a></li>
 
-                                            {% endif %}
+                                        {% endif %}
 
-                                        {% endfor %}
-                                    </ul>
-
-                                </div>
+                                    {% endfor %}
+                                </ul>
 
                             </div>
-                        {% endif %}
-                    {% endfor %}
 
+                        </div>
+                    {% endif %}
+                {% endfor %}
 
-                </div>
             </div>
-                <div class="col-md-8">
-                    <div class="hierarchie_result_niv_1">
-
-                    </div>
-                </div>
-
-
         </div>
+
+        <div class="col-md-8">
+            <div class="hierarchie_result_niv_1">
+
+            </div>
+        </div>
+
+
     </div>
+</div>
 
 
     {% block organismePub %}{% endblock %}

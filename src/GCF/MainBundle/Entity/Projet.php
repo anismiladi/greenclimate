@@ -65,7 +65,7 @@ class Projet extends AbstractPersonalTranslatable implements TranslatableInterfa
 
     /**
      * @ORM\ManyToOne(targetEntity="GCF\MainBundle\Entity\Acteur", inversedBy="projet")
-     * @ORM\JoinColumn(name="acteur", referencedColumnName="id")
+     * @ORM\JoinColumn(name="acteur", referencedColumnName="id", nullable=true)
      */
     private $acteur;
 

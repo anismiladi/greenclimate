@@ -47,7 +47,7 @@ class ProjetAdmin extends AbstractAdmin
                        
             ->add('acteur','sonata_type_model_autocomplete',
                 array(
-                    'required' => true,
+                    'required' => false,
                     'multiple' => false,
                     'property' => 'nom',
                     'to_string_callback' => function($enitity, $property) {
@@ -58,7 +58,7 @@ class ProjetAdmin extends AbstractAdmin
 
             ->add('gouvernorat','sonata_type_model_autocomplete',
                 array(
-                    'required' => true,
+                    'required' => false,
                     'multiple' => true,
                     'property' => 'nom',
                     'to_string_callback' => function($enitity, $property) {
