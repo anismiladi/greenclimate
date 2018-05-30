@@ -56,6 +56,7 @@ class ProjetAdmin extends AbstractAdmin
                 )
             )
 
+
             ->add('gouvernorat','sonata_type_model_autocomplete',
                 array(
                     'required' => false,

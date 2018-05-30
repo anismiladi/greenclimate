@@ -9,12 +9,6 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-use GCF\MainBundle\Entity\Acteur;
-use GCF\MainBundle\Entity\Gouvernorat;
-use GCF\MainBundle\Entity\Focus;
-use GCF\MainBundle\Entity\SecteurActeur;
-use GCF\MainBundle\Entity\SecteurProjet;
-
 class ProjectsController extends Controller
 {
     public function indexAction()
@@ -27,12 +21,11 @@ class ProjectsController extends Controller
 
         $projects = $em->getRepository('GCFMainBundle:Projet')->findAll();
 
-        $org =array();
         foreach ( $organismes as $organisme){
+
             if ( $organisme->getSecteurActeurParent() == Null )
-            {
+
                 $org[] = $organisme;
-            }
         }
 
         $secteurs = $em->getRepository('GCFMainBundle:SecteurProjet')->findAll();
@@ -55,47 +48,197 @@ class ProjectsController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $gouv = $em->getRepository('GCFMainBundle:Gouvernorat')->findOneByNom($gouvernorat);
-        $org = $em->getRepository('GCFMainBundle:SecteurActeur')->findOneByNom($organisme);
-        $sectProj = $em->getRepository('GCFMainBundle:SecteurProjet')->findOneByNom($secteur);
-        $foc = $em->getRepository('GCFMainBundle:Focus')->findOneByNom($focus);
-        
-        //echo "$gouv"."<br>";
-        //echo "$org"."<br>";
-        //echo "$sectProj"."<br>";
-        //echo "$foc"."<br>";
-        
+        $projects = $em->getRepository('GCFMainBundle:Projet')->findAll();
+
         $result = array();
-        $projects = $em->getRepository('GCFMainBundle:Projet')->findResultatBy($gouv, $org, $sectProj, $foc);
 
         foreach ($projects as $project) {
 
-            $gouver = '';
-            foreach ($project->getGouvernorat() as $gov) {
-                $gouver = $gov->getNom().', ';
-            }
-            $gouver = substr($gouver, 0, -2);
 
+            /*gouvernorat**/
+            foreach ($project->getGouvernorat() as $gouv) {
+                $gouver = $gouv->getNom();
+            }
             /*organisme**/
-            $organi = $project->getActeur()->getSecteurActeur()->getNom();
-            
+            $actors = $em->getRepository('GCFMainBundle:Acteur')->findBy(array(
+                    'id' => $project->getActeur()
+                )
+            );
+
+
+            $organi = array();
+            foreach ($actors as $actor) {
+                if ($actor->getSecteurActeur()->getSecteurActeurParent() != null) {
+                    $organi = $actor->getSecteurActeur()->getSecteurActeurParent()->getNom();
+                } else {
+                    $organi = $actor->getSecteurActeur()->getNom();
+                }
+            }
+
+
+            $sect = array();
+            /*secteur**/
             $sect = $project->getSecteurProjet()->getNom();
 
-            /*focus**/
-            $foc = '';
-            foreach ($project->getFocus() as $fo) {
-                $foc = $fo->getNom().', ';
-            }
-            $foc = substr($foc, 0, -2);
 
-            $result[] = array(
-                'id' => $project->getId(),
-                'nom' => $project->getNom(),
-                'gouvernorat' => $gouver,
-                'organisme' => $organi,
-                'secteur' => $sect,
-                'focus' => $foc
-            );
+
+            /*focus**/
+            $foc = array();
+            foreach ($project->getFocus() as $fo) {
+                $foc[] = $fo->getNom();
+            }
+
+
+
+            if ( in_array($focus, $foc) && $secteur === $sect && $organisme === $organi && $gouvernorat === $gouver) {
+
+                $result[] = array(
+                    'id' => $project->getId(),
+                    'nom' => $project->getNom(),
+                    'gouvernorat' => $gouver,
+                    'organisme' => $organi,
+                    'secteur' => $sect,
+                    'focus' => $foc
+                );
+
+
+
+
+
+            }elseif (in_array($focus, $foc) && $secteur !== $sect && $organisme !== $organi && $gouvernorat !== $gouver) {
+                $result[] = array(
+                    'id' => $project->getId(),
+                    'nom' => $project->getNom(),
+                    'gouvernorat' => $gouver,
+                    'organisme' => $organi,
+                    'secteur' => $sect,
+                    'focus' => $foc
+                );
+            }elseif (!in_array($focus, $foc) && $secteur === $sect && $organisme !== $organi && $gouvernorat !== $gouver) {
+                $result[] = array(
+                    'id' => $project->getId(),
+                    'nom' => $project->getNom(),
+                    'gouvernorat' => $gouver,
+                    'organisme' => $organi,
+                    'secteur' => $sect,
+                    'focus' => $foc
+                );
+            }elseif (!in_array($focus, $foc) && $secteur !== $sect && $organisme === $organi && $gouvernorat !== $gouver) {
+                $result[] = array(
+                    'id' => $project->getId(),
+                    'nom' => $project->getNom(),
+                    'gouvernorat' => $gouver,
+                    'organisme' => $organi,
+                    'secteur' => $sect,
+                    'focus' => $foc
+                );
+            }elseif (!in_array($focus, $foc) && $secteur !== $sect && $organisme !== $organi && $gouvernorat === $gouver){
+                $result[] = array(
+                    'id' => $project->getId(),
+                    'nom' => $project->getNom(),
+                    'gouvernorat' => $gouver,
+                    'organisme' => $organi,
+                    'secteur' => $sect,
+                    'focus' => $foc
+                );
+
+
+
+
+
+            }elseif (in_array($focus, $foc) && $secteur === $sect && $organisme === $organi && $gouvernorat !== $gouver ) {
+                $result[] = array(
+                    'id' => $project->getId(),
+                    'nom' => $project->getNom(),
+                    'gouvernorat' => $gouver,
+                    'organisme' => $organi,
+                    'secteur' => $sect,
+                    'focus' => $foc
+                );
+            }elseif (in_array($focus, $foc) && $secteur === $sect && $organisme !== $organi && $gouvernorat === $gouver ){
+                $result[] = array(
+                    'id' => $project->getId(),
+                    'nom' => $project->getNom(),
+                    'gouvernorat' => $gouver,
+                    'organisme' => $organi,
+                    'secteur' => $sect,
+                    'focus' => $foc
+                );
+            }elseif (in_array($focus, $foc) && $secteur !== $sect && $organisme === $organi && $gouvernorat === $gouver ) {
+                $result[] = array(
+                    'id' => $project->getId(),
+                    'nom' => $project->getNom(),
+                    'gouvernorat' => $gouver,
+                    'organisme' => $organi,
+                    'secteur' => $sect,
+                    'focus' => $foc
+                );
+            }elseif (!in_array($focus, $foc) && $secteur === $sect && $organisme === $organi && $gouvernorat === $gouver ) {
+                $result[] = array(
+                    'id' => $project->getId(),
+                    'nom' => $project->getNom(),
+                    'gouvernorat' => $gouver,
+                    'organisme' => $organi,
+                    'secteur' => $sect,
+                    'focus' => $foc
+                );
+            }elseif (in_array($focus, $foc) && $secteur === $sect && $organisme !== $organi && $gouvernorat !== $gouver){
+                $result[] = array(
+                    'id' => $project->getId(),
+                    'nom' => $project->getNom(),
+                    'gouvernorat' => $gouver,
+                    'organisme' => $organi,
+                    'secteur' => $sect,
+                    'focus' => $foc
+                );
+            }elseif (in_array($focus, $foc) && $secteur !== $sect && $organisme === $organi && $gouvernorat !== $gouver) {
+                $result[] = array(
+                    'id' => $project->getId(),
+                    'nom' => $project->getNom(),
+                    'gouvernorat' => $gouver,
+                    'organisme' => $organi,
+                    'secteur' => $sect,
+                    'focus' => $foc
+                );
+            }elseif (!in_array($focus, $foc) && $secteur === $sect && $organisme === $organi && $gouvernorat !== $gouver) {
+                $result[] = array(
+                    'id' => $project->getId(),
+                    'nom' => $project->getNom(),
+                    'gouvernorat' => $gouver,
+                    'organisme' => $organi,
+                    'secteur' => $sect,
+                    'focus' => $foc
+                );
+            }elseif (in_array($focus, $foc) && $secteur !== $sect && $organisme !== $organi && $gouvernorat === $gouver) {
+                $result[] = array(
+                    'id' => $project->getId(),
+                    'nom' => $project->getNom(),
+                    'gouvernorat' => $gouver,
+                    'organisme' => $organi,
+                    'secteur' => $sect,
+                    'focus' => $foc
+                );
+            }elseif (!in_array($focus, $foc) && $secteur === $sect && $organisme !== $organi && $gouvernorat === $gouver) {
+                $result[] = array(
+                    'id' => $project->getId(),
+                    'nom' => $project->getNom(),
+                    'gouvernorat' => $gouver,
+                    'organisme' => $organi,
+                    'secteur' => $sect,
+                    'focus' => $foc
+                );
+            }elseif(!in_array($focus, $foc) && $secteur !== $sect && $organisme === $organi && $gouvernorat === $gouver) {
+                $result[] = array(
+                    'id' => $project->getId(),
+                    'nom' => $project->getNom(),
+                    'gouvernorat' => $gouver,
+                    'organisme' => $organi,
+                    'secteur' => $sect,
+                    'focus' => $foc
+                );
+
+            }
+
         }
         // dump($result);
         return new JsonResponse($result);
@@ -105,15 +248,15 @@ class ProjectsController extends Controller
     }
 
 
-    public function singleProjectAction($projectName){
+    public function singleProjectAction($id){
 
         $em = $this->getDoctrine()->getManager();
 
         $project = $em->getRepository('GCFMainBundle:Projet')->findOneBy(  array(
-            'nom' => $projectName
+            'id' => $id
         ));
 
-        return $this->render('@GCFFront/Default/Projects/resutl-projects.html.twig',array(
+        return $this->render('@GCFFront/Default/Projects/single-projects.html.twig',array(
             'project' => $project
         ));
     }

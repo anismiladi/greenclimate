@@ -144,9 +144,11 @@
                     <td><a href="{{ path('gcf_front_projectsinglepage', {'id': project.id} ) }}"> {{ project.nom }}</a></td>
 
                     <td>
-                        {% for gouvernorat in project.gouvernorat %}
-                            {{ gouvernorat.nom }}
-                        {% endfor %}
+                        {#{% if project.gouvernorat !== null %}#}
+                            {#{% for gouvernorat in project.gouvernorat %}#}
+                                {#{{ gouvernorat.nom }}#}
+                            {#{% endfor %}#}
+                        {#{% endif %}#}
                     </td>
 
                     {#organisme---->#}

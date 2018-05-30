@@ -40,7 +40,7 @@ gcf_front_resultprojectspage:
     defaults: { _controller: GCFFrontBundle:Projects:resut  }
 
 gcf_front_projectsinglepage:
-    path: /projects/{projectName}
+    path: /projects/{id}
     defaults: { _controller: GCFFrontBundle:Projects:singleProject}
 
 

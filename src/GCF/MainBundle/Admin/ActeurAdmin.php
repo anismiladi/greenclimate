@@ -29,6 +29,16 @@ class ActeurAdmin extends AbstractAdmin
             ->add('responsable')
             ->add('contact')
             ->add('critique')
+            ->add('acteurParent','sonata_type_model_autocomplete',
+                array(
+                    'required' => false,
+                    'multiple' => false,
+                    'property' => 'nom',
+                    'to_string_callback' => function($enitity, $property) {
+                        return $enitity->getNom();
+                    },
+                )
+            )
             ->add('secteurActeur', ModelType::class, [
                 'attr' => [
                     'data-sonata-select2' => 'true'
