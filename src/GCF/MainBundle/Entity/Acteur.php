@@ -35,7 +35,7 @@ class Acteur extends AbstractPersonalTranslatable implements TranslatableInterfa
      * @var string
      *
      * @Gedmo\Translatable
-     * @ORM\Column(name="nom", type="string", length=255)
+     * @ORM\Column(name="nom", type="string", length=255, nullable=true)
      */
     private $nom;
 
@@ -66,7 +66,7 @@ class Acteur extends AbstractPersonalTranslatable implements TranslatableInterfa
      * @var string
      *
      * @Gedmo\Translatable
-     * @ORM\Column(name="mission", type="text")
+     * @ORM\Column(name="mission", type="text", nullable=true)
      */
     private $mission;
 
