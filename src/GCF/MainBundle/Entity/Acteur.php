@@ -506,4 +506,13 @@ class Acteur extends AbstractPersonalTranslatable implements TranslatableInterfa
     {
         return $this->translations->removeElement($translation);
     }
+    
+    public function __toString() {
+        if ($this->getNom())
+        {
+            return $this->getNom();
+        }
+        else
+            return "";
+    }
 }
