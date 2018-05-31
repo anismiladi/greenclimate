@@ -75,7 +75,7 @@ class ActorsController extends Controller
         $actors = $em->getRepository('GCFMainBundle:Acteur')->findBy(
             array( 'secteurActeur' => $id,
                 'acteurParent' => Null,
-<<<<<<< HEAD
+
             )
         );
 
@@ -97,45 +97,6 @@ class ActorsController extends Controller
         ));
     }
 
-    public function oPublicAction()
-    {
-        $em = $this->getDoctrine()->getManager();
-=======
-                )
-        );
-        
->>>>>>> master
-        $sectors = $em->getRepository('GCFMainBundle:SecteurActeur')->findBy(
-            array( 'secteurActeurParent' => Null)
-        );
-        return $this->render('@GCFFront/Default/Actors/actorsSector.html.twig',array(
-            'sector' => $sector,
-            'actors' => $actors,
-            'sectors' => $sectors,
-        ));
-    }
-<<<<<<< HEAD
 
-    public function oPrivateAction()
-    {
-        return $this->render('@GCFFront/Default/Actors/oPrivate.html.twig');
-    }
-    public function sCivileAction()
-    {
-        return $this->render('@GCFFront/Default/Actors/sCivile.html.twig');
-    }
-    public function parlementAction()
-    {
-
-=======
-    public function sousActorsAction($id){
->>>>>>> master
-        $em = $this->getDoctrine()->getManager();
-        $actor = $em->getRepository('GCFMainBundle:Acteur')->findOneById($id);
-
-        return $this->render('@GCFFront/Default/Actors/blocks/sousactors.html.twig',array(
-            'actor' => $actor,
-        ));
-    }
 
 }

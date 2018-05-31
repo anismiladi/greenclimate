@@ -38,47 +38,6 @@
 </style>
 {% endblock %}
 
-<<<<<<< HEAD
-{% block stylesheets %}
-    <style type="text/css">
-        /* fonctionnel */
-        .hierarchie_result_lvls label, .hierarchie_result_lvls ul, .hierarchie_result_lvls li { cursor: pointer; }
-
-        .hierarchie_result_lvls input {
-            display: none;
-        }
-        .hierarchie_result_lvls input ~ ul {
-            display: none;
-        }
-        .hierarchie_result_lvlsinput:checked ~ ul {
-            display: block;
-        }
-        .hierarchie_result_lvls input ~ .fa-angle-double-down {
-            display: none;
-        }
-        .hierarchie_result_lvls input:checked ~ .fa-angle-double-right {
-            display: none;
-        }
-        .hierarchie_result_lvls input:checked ~ .fa-angle-double-down {
-            display: inline;
-        }
-
-        /* habillage */
-        .hierarchie_result_lvls li {
-            display: block;
-            font-family: 'Arial';
-            font-size: 15px;
-            padding: 0.2em;
-            border: 1px solid transparent;
-        }
-        .hierarchie_result_lvls li:hover {
-            border: 1px solid grey;
-            border-radius: 3px;
-            background-color: lightgrey;
-        }
-    </style>
-{% endblock %}
-
 {% block body %}
 
     <div class="col-md-12">
@@ -98,51 +57,18 @@
                     {% endfor %}
 
                 </div>
-=======
-{% block body %}
 
-<div class="col-md-12">
-    <div class="row">
-        <div class="col-md-4" style="padding-left:0">
-            <div class="panel-group" id="accordion">
-                {% for key, sector in sectors %}
-                    {% if sector.secteurActeurParent == null  %}
-                        <div class="panel panel-default">
-                            <div class="panel-heading" >
-                                <h4 class="panel-title">
-                                    <a href="{{ path('gcf_front_actorssectorpage', { 'id': sector.id}) }}" style="text-decoration: none;">{{ sector.nom }}</a>
-                                </h4>
-                            </div>
-                        </div>
-                    {% endif %}
-                {% endfor %}
 
->>>>>>> master
-            </div>
 
-<<<<<<< HEAD
-            <div class="col-md-8">
-                <div class="hierarchie_result_lvls">
-                    {% block actorsSector %}
-                    {% endblock %}
-                </div>
-=======
         <div class="col-md-8">
             <div class="hierarchie_result_lvl">
             {% block actorsSector %}
             {% endblock %}
->>>>>>> master
             </div>
-
-
         </div>
     </div>
 
 
-    {% block organismePub %}{% endblock %}
-    {% block organismePrive %}{% endblock %}
-    {% block societeCivile %}{% endblock %}
-    {% block parlement %}{% endblock %}
 
 {% endblock %}
 
