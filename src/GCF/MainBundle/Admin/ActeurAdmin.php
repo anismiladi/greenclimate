@@ -50,12 +50,21 @@ class ActeurAdmin extends AbstractAdmin
                     },
                 )
             );
+<<<<<<< HEAD
         /*
         ->add('secteurActeur', ModelType::class, [
             'attr' => [
                 'data-sonata-select2' => 'true'
             ]
         ])*/
+=======
+            /*
+            ->add('secteurActeur', ModelType::class, [
+                'attr' => [
+                    'data-sonata-select2' => 'true'
+                ]
+            ])*/
+>>>>>>> master
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)

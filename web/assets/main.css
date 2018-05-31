@@ -48,17 +48,9 @@
 header and top bar
 ==================
 */
-.navbar li a {
-    font-weight: 600;
-    color: white !important;
-}
+.navbar li a { font-size: 18px; font-weight: 600; color: white !important; }
 .navbar li a:hover { color: #f1f1f1 !important; }
-.bar_fixed_top{
-    padding: 10px 0;
-
-    background:#22AA86;
-    color: white;
-}
+.bar_fixed_top{ padding: 10px 0;  background:#22AA86; color: white; }
 @media screen and (max-width: 1023px){
     .slogan_banner_img{display:none}
     .home_banner_search input, .home_banner_search select, .home_banner_search button{margin: 5px 0}

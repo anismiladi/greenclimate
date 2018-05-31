@@ -7,80 +7,17 @@
             display: none;
         }
         #myfilter{ padding: 10px 0; border: solid 1px;  margin: 10px 0;}
+<<<<<<< HEAD
         .paginate_button.next,.paginate_button.previous{
             display: none;
         }
+=======
+        .paginate_button.previous, .paginate_button.next{ display: none; }
+>>>>>>> master
     </style>
 {% endblock %}
 {% block body %}
 
-    {#<div class="col-md-12">#}
-
-    {#<nav class="navbar navbar-default" style="background: white; border-radius:0; color: black ">#}
-    {#<div class="container-fluid">#}
-
-    {#<div class="navbar-header">#}
-    {#<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false" style="border-radius: 0;">#}
-    {#<span class="sr-only">Toggle navigation</span>#}
-    {#<span class="icon-bar"></span>#}
-    {#<span class="icon-bar"></span>#}
-    {#<span class="icon-bar"></span>#}
-    {#</button>#}
-    {#<a class="navbar-brand only-mobile" href="#">Filtres</a>#}
-    {#</div>#}
-
-    {#<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">#}
-
-    {#<ul class="nav navbar-nav" style="width: 100%;">#}
-    {#<li class="dropdown col-md-2">#}
-    {#<a role="button" aria-expanded="false" style="color: #777 !important;font-size: 13px; padding-left: 0px;  padding-right: 0;text-align: center;"><strong>Filtres : </strong></a>#}
-    {#</li>#}
-    {#<li class="dropdown col-md-2">#}
-
-    {#<select name="" id="id_select_gouvernorat" style="padding-top: 16px;padding-bottom: 16px">#}
-    {#<option value="" disabled selected>Gouvernorat</option>#}
-    {#{% for gouv in gouvernorates  %}#}
-    {#<option value="{{ gouv.nom }}">{{ gouv.nom }}</option>#}
-    {#{% endfor %}#}
-    {#</select>#}
-
-    {#</li>#}
-    {#<li class="dropdown col-md-2">#}
-    {#<select name="" id="id_select_organisme" style="padding-top: 16px;padding-bottom: 16px">#}
-    {#<option value="" disabled selected>Organisme</option>#}
-    {#{% for organisme in organismes  %}#}
-    {#<option value="{{ organisme.nom }}">{{ organisme.nom }}</option>#}
-    {#{% endfor %}#}
-    {#</select>#}
-    {#</li>#}
-    {#<li class="dropdown col-md-2">#}
-
-    {#<select name="" id="id_select_secteur" style="padding-top: 16px;padding-bottom: 16px; max-width:100%">#}
-    {#<option value="" disabled selected>Secteur</option>#}
-    {#{% for secteur in secteurs  %}#}
-    {#<option value="{{ secteur.nom }}">{{ secteur.nom }}</option>#}
-    {#{% endfor %}#}
-    {#</select>#}
-    {#</li>#}
-    {#<li class="dropdown col-md-2">#}
-    {#<select name="" id="id_select_focus" style="padding-top: 16px;padding-bottom: 16px; max-width:100%">#}
-    {#<option value="" disabled selected >Focus</option>#}
-    {#{% for focus in focuss  %}#}
-    {#<option value="{{ focus.nom }}">{{ focus.nom }}</option>#}
-    {#{% endfor %}#}
-    {#</select>#}
-    {#</li>#}
-    {#<li class="dropdown col-md-2">#}
-    {#<a class="btn btn-default" onclick="inInput()" role="button" aria-expanded="false" style="color: #777 !important;font-size: 13px;text-align: center; border-radius:0; padding: 10px 0;margin: 5px 0; font-weight: 600;">Rechercher</a>#}
-    {#</li>#}
-    {#</ul>#}
-
-    {#</div><!-- /.navbar-collapse -->#}
-
-    {#</div>#}
-    {#</nav>#}
-
-    {#</div>#}
 
 
     <div class="col-md-12" style="margin: 10px 0; padding: 0; border-left: solid #22AA86;">
@@ -89,7 +26,7 @@
         </div>
         <div class="col-md-3">
             <select class="filter_select_projects col-md-12" name="" id="byGouvernorate" style="padding-top: 16px;padding-bottom: 16px; width: 100%; max-width:100%; margin: 5px 0;">
-                <option value="">Tous les Gouvernorats</option>
+                <option value="" style="color:gray">Tous les Gouvernorats</option>
                 {% for gouv in gouvernorates  %}
                     <option value="{{ gouv.nom }}">{{ gouv.nom }}</option>
                 {% endfor %}
@@ -97,15 +34,15 @@
         </div>
         <div class="col-md-3">
             <select class="filter_select_projects col-md-12" name="" id="byOrganisme" style="padding-top: 16px;padding-bottom: 16px; width: 100%; max-width: 100%; margin: 5px 0;">
-                <option value=""> Tous les Organismes</option>
+                <option value="" style="color:gray"> Tous les Organismes</option>
                 {% for organisme in organismes  %}
-                    <option value="{{ organisme.nom }}">{{ organisme.nom }}</option>
+                    <option value="{{ organisme.nom }}">{{ organisme.nom}}</option>
                 {% endfor %}
             </select>
         </div>
         <div class="col-md-3">
             <select class="filter_select_projects col-md-12" name="" id="bySecteur" style="padding-top: 16px;padding-bottom: 16px; width: 100%; max-width:100%; margin: 5px 0;">
-                <option value="">Tous les Secteurs</option>
+                <option value="" style="color:gray">Tous les Secteurs</option>
                 {% for secteur in secteurs  %}
                     <option value="{{ secteur.nom }}">{{ secteur.nom }}</option>
                 {% endfor %}
@@ -113,14 +50,13 @@
         </div>
         <div class="col-md-3">
             <select class="filter_select_projects col-md-12" name="" id="byFocus" style="padding-top: 16px;padding-bottom: 16px; width: 100%; max-width:100%; margin: 5px 0; ">
-                <option value="">Tous les Focus</option>
+                <option value="" style="color:gray">Tous les Focus</option>
                 {% for focus in focuss  %}
                     <option value="{{ focus.nom }}">{{ focus.nom }}</option>
                 {% endfor %}
             </select>
         </div>
     </div>
-
 
 
     <div class="col-md-12">
@@ -184,28 +120,12 @@
         </table>
     </div>
 
-    {#<div class="col-md-12">#}
-    {#<div id="myfilter" class="col-md-12">#}
-    {#<div>#}
-    {#<div class="" style="display: none;">Nom</div>#}
-
-    {#<div class="col-md-3">Gouvernorat</div>#}
-
-    {#<div class="col-md-3">Organisme</div>#}
-
-    {#<div class="col-md-3">Secteur</div>#}
-
-    {#<div class="col-md-3">Focus</div>#}
-    {#</div>#}
-    {#</div>#}
-    {#</div>#}
 
 
 
 {% endblock %}
 
 {% block javascripts %}
-
     <script src="{{ asset('assets/DataTables/datatables.min.js') }}"></script>
 
     <script src="{{ asset('assets/DataTables/Buttons-1.5.1/js/dataTables.buttons.min.js') }}"></script>
@@ -236,156 +156,36 @@
 
             } );
 
+        //=============================================
             select =  $("#byGouvernorate")
                 .on('change', function () {
                     table.column(1)
-                        .search(($(this).val()).replace(/<[^>]+>/g, ''))
+                        .search( $(this).val() )
                         .draw();
-                    //console.log( ($(this).val()).replace(/<[^>]+>/g, ''))
-
                 });
-
-            table.column(1).data().unique().sort().each(function (d, j) {
-                select.append('<option value="' + d + '">' + d + '</option>');
-            });
-//=============================================
+        //=============================================
             select = $('#byOrganisme')
                 .on('change', function () {
                     table.column(2)
-                        .search(($(this).val()).replace(/<[^>]+>/g, ''))
+                        .search( $(this).val() )
                         .draw();
-                    //console.log( ($(this).val()).replace(/<[^>]+>/g, ''))
-
                 });
-
-            table.column(2).data().unique().sort().each(function (d, j) {
-                select.append('<option value="' + d + '">' + d + '</option>');
-            });
-//=============================================
+        //=============================================
             select = $('#bySecteur')
                 .on('change', function () {
                     table.column(3)
-                        .search(($(this).val()).replace(/<[^>]+>/g, ''))
+                        .search( $(this).val() )
                         .draw();
-
-
                 });
-
-            table.column(3).data().unique().sort().each(function (d, j) {
-                select.append('<option value="' + d + '">' + d + '</option>');
-            });
-//=============================================
+        //=============================================
             select = $('#byFocus')
                 .on('change', function () {
                     table.column(4)
-                        .search(($(this).val()).replace(/<[^>]+>/g, ''))
+                        .search( ($(this).val()).replace(/<[^>]+>/g, '') )
                         .draw();
-                    //console.log( ($(this).val()).replace(/<[^>]+>/g, ''))
-
                 });
 
-            table.column(4).data().unique().sort().each(function (d, j) {
-                select.append('<option value="' + d + '">' + d + '</option>');
-            });
-
-
-            //
-            // $("#myfilter div div").each( function ( i ) {
-            //
-            //     var select = $('<select style="width: 100%;height: 35px;"><option value="">Tous</option></select>')
-            //         .appendTo( $(this).empty() )
-            //         .on( 'change', function () {
-            //             table.column( i )
-            //                 .search( ( $(this).val()).replace(/<[^>]+>/g, '') )
-            //                 .draw();
-            //             //console.log( ($(this).val()).replace(/<[^>]+>/g, ''))
-            //
-            //         } );
-            //
-            //     table.column( i ).data().unique().sort().each( function ( d, j ) {
-            //         select.append( '<option value="'+d+'">'+d+'</option>' );
-            //     } );
-            //
-            // } );
 
         } );
     </script>
-
-    {#<script>#}
-
-    {#function selected(cat , selectedVal) {#}
-
-
-    {#contToAppend = '<button class="btn btn-default '+selectedVal+'" style="margin:5px">'+selectedVal+' <i class="fa fa-times" aria-hidden="true" onclick="$(\'.'+selectedVal+'\').remove()"></i></button>';#}
-
-    {#jQuery('.filter_selected').append(contToAppend)#}
-
-    {#}#}
-
-
-
-    {#function inInput() {#}
-
-    {#var focus = '';#}
-    {#var secteur = '';#}
-    {#var organisme = '';#}
-    {#var gouvernorat = '';#}
-
-    {#focus = jQuery('#id_select_focus').val();#}
-    {#secteur = jQuery('#id_select_secteur').val();#}
-    {#organisme = jQuery('#id_select_organisme').val();#}
-    {#gouvernorat = jQuery('#id_select_gouvernorat').val();#}
-
-    {#console.log( 'focus'+focus+'secteur'+secteur+'organisme'+organisme+'gouvernorat'+gouvernorat );#}
-
-    {#var url = 'http://localhost/symfony/greenclimate/web/app_dev.php/fr/projects/result/gouvernorat='+gouvernorat+'-organisme='+organisme+'-secteur='+secteur+'-focus='+focus;#}
-
-
-    {#jQuery.ajax({#}
-    {#url: url,#}
-    {#type: 'POST',#}
-    {#dataType: 'json',#}
-    {#success:function(result , status){#}
-
-    {#console.log(result, status);#}
-    {#//console.log(result.nom);#}
-    {#toappend ='';#}
-
-    {#if (result.length > 0){#}
-    {#$('.result-search').empty();#}
-    {#for(i = 0; i < result.length; i++) {#}
-    {#project = result[i];#}
-    {#//console.log(project)#}
-
-    {#toappend = '<tr><td>';#}
-    {#toappend += '<a href="http://localhost/symfony/greenclimate/web/app_dev.php/fr/projects/'+project.nom+' ">'+project.nom+'</td><td>'+project.gouvernorat+'</td><td>'+project.organisme+'</td><td>'+project.secteur+'</td><td>';#}
-
-    {#if ( (project.focus).length  < 2)#}
-    {#{#}
-    {#for (f = 0; f < (project.focus).length; f++) {#}
-    {#toappend += project.focus[f] + ', ';#}
-    {#}#}
-    {#}else{#}
-    {#toappend += project.focus;#}
-    {#}#}
-    {#toappend +='</td></tr>';#}
-    {#//string = string.replace(/\s\s+/g, ' ');#}
-
-
-    {#$('.result-search').append(toappend);#}
-    {#}#}
-    {#}#}
-    {#},#}
-    {#error:function(error){#}
-    {#console.log(error);#}
-    {#jQuery('.result-search').append(error.responseText);#}
-    {#}#}
-    {#});#}
-    {#}#}
-
-
-
-    {#//$('.result-search').empty();#}
-    {#</script>#}
-
 {% endblock %}

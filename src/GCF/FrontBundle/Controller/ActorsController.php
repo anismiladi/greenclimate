@@ -60,13 +60,6 @@ class ActorsController extends Controller
                             $response[] = array('nom'=>$act->getNom(), 'parent' => $act->getActeurParent()->getNom(), 'fils' => $filsarray );
 
                         }
-
-//                        foreach ( $act->getActeurParent() as $acttt) {
-//                            dump($acttt);
-//
-//                        }
-
-
                     }
                 }
             }
@@ -82,6 +75,7 @@ class ActorsController extends Controller
         $actors = $em->getRepository('GCFMainBundle:Acteur')->findBy(
             array( 'secteurActeur' => $id,
                 'acteurParent' => Null,
+<<<<<<< HEAD
             )
         );
 
@@ -106,16 +100,21 @@ class ActorsController extends Controller
     public function oPublicAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $sectors = $em->getRepository('GCFMainBundle:SecteurActeur')->findBy(
-            array( 'secteurActeurParent' => 1)
+=======
+                )
         );
-
-
-
-        return $this->render('@GCFFront/Default/Actors/oPublic.html.twig',array(
-            'sectors' => $sectors
+        
+>>>>>>> master
+        $sectors = $em->getRepository('GCFMainBundle:SecteurActeur')->findBy(
+            array( 'secteurActeurParent' => Null)
+        );
+        return $this->render('@GCFFront/Default/Actors/actorsSector.html.twig',array(
+            'sector' => $sector,
+            'actors' => $actors,
+            'sectors' => $sectors,
         ));
     }
+<<<<<<< HEAD
 
     public function oPrivateAction()
     {
@@ -128,12 +127,14 @@ class ActorsController extends Controller
     public function parlementAction()
     {
 
+=======
+    public function sousActorsAction($id){
+>>>>>>> master
         $em = $this->getDoctrine()->getManager();
-        $palement = $em->getRepository('GCFMainBundle:SecteurActeur')->findBy(
-            array( 'secteurActeurParent' => 4)
-        );
-        return $this->render('@GCFFront/Default/Actors/parlement.html.twig', array(
-            'parlements' => $palement
+        $actor = $em->getRepository('GCFMainBundle:Acteur')->findOneById($id);
+
+        return $this->render('@GCFFront/Default/Actors/blocks/sousactors.html.twig',array(
+            'actor' => $actor,
         ));
     }
 

@@ -14,6 +14,7 @@ gcf_front_actorspage:
 gcf_front_actorssectorpage:
     path:     /actors/secteur/{id}
     defaults: { _controller: GCFFrontBundle:Actors:ActorsSector }
+<<<<<<< HEAD
     
 gcf_front_opublicpage:
     path:     /actors/organisme-public
@@ -30,6 +31,8 @@ gcf_front_scivilepage:
 gcf_front_parlementpage:
     path:     /actors/parlement
     defaults: { _controller: GCFFrontBundle:Actors:parlement }
+=======
+>>>>>>> master
 
 gcf_front_getActorspage:
     path:     /actors/get-actors/{clicked}

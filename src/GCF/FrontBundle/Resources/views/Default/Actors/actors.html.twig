@@ -1,6 +1,44 @@
 {# actors.html.twig #}
 {% extends '@GCFFront/base.html.twig' %}
+{% block styleBloc %}
+<style>
+    /* fonctionnel */
+    .hierarchie_result_niv_1 input {
+        display: none;
+    }
+    .hierarchie_result_niv_1 input ~ ul {
+        display: none;
+    }
+    .hierarchie_result_niv_1 input:checked ~ ul {
+        display: block;
+    }
+    .hierarchie_result_niv_1 input ~ .fa-angle-double-down {
+        display: none;
+    }
+    .hierarchie_result_niv_1 input:checked ~ .fa-angle-double-right {
+        display: none;
+    }
+    .hierarchie_result_niv_1 input:checked ~ .fa-angle-double-down {
+        display: inline;
+    }
 
+    /* habillage */
+    .hierarchie_result_niv_1 li {
+        display: block;
+        font-family: 'Arial';
+        font-size: 15px;
+        padding: 0.2em;
+        border: 1px solid transparent;
+    }
+    .hierarchie_result_niv_1 li:hover {
+        border: 1px solid grey;
+        border-radius: 3px;
+        background-color: lightgrey;
+    }
+</style>
+{% endblock %}
+
+<<<<<<< HEAD
 {% block stylesheets %}
     <style type="text/css">
         /* fonctionnel */
@@ -60,13 +98,40 @@
                     {% endfor %}
 
                 </div>
+=======
+{% block body %}
+
+<div class="col-md-12">
+    <div class="row">
+        <div class="col-md-4" style="padding-left:0">
+            <div class="panel-group" id="accordion">
+                {% for key, sector in sectors %}
+                    {% if sector.secteurActeurParent == null  %}
+                        <div class="panel panel-default">
+                            <div class="panel-heading" >
+                                <h4 class="panel-title">
+                                    <a href="{{ path('gcf_front_actorssectorpage', { 'id': sector.id}) }}" style="text-decoration: none;">{{ sector.nom }}</a>
+                                </h4>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+
+>>>>>>> master
             </div>
 
+<<<<<<< HEAD
             <div class="col-md-8">
                 <div class="hierarchie_result_lvls">
                     {% block actorsSector %}
                     {% endblock %}
                 </div>
+=======
+        <div class="col-md-8">
+            <div class="hierarchie_result_lvl">
+            {% block actorsSector %}
+            {% endblock %}
+>>>>>>> master
             </div>
 
 
