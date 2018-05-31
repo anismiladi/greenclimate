@@ -65,7 +65,7 @@ class Projet extends AbstractPersonalTranslatable implements TranslatableInterfa
 
     /**
      * @ORM\ManyToOne(targetEntity="GCF\MainBundle\Entity\Acteur", inversedBy="projet")
-     * @ORM\JoinColumn(name="acteur", referencedColumnName="id")
+     * @ORM\JoinColumn(name="acteur", referencedColumnName="id", nullable=true)
      */
     private $acteur;
 
@@ -263,6 +263,7 @@ class Projet extends AbstractPersonalTranslatable implements TranslatableInterfa
      */
     public function addGouvernorat(\GCF\MainBundle\Entity\Gouvernorat $gouvernorat)
     {
+        $gouvernorat->addProjet($this);
         $this->gouvernorat[] = $gouvernorat;
 
         return $this;
@@ -275,6 +276,7 @@ class Projet extends AbstractPersonalTranslatable implements TranslatableInterfa
      */
     public function removeGouvernorat(\GCF\MainBundle\Entity\Gouvernorat $gouvernorat)
     {
+        $gouvernorat->removeProjet($this);
         $this->gouvernorat->removeElement($gouvernorat);
     }
 
@@ -287,6 +289,7 @@ class Projet extends AbstractPersonalTranslatable implements TranslatableInterfa
      */
     public function addFocus(\GCF\MainBundle\Entity\Focus $focus)
     {
+        $focus->addProjet($this);
         $this->focus[] = $focus;
 
         return $this;
@@ -299,6 +302,7 @@ class Projet extends AbstractPersonalTranslatable implements TranslatableInterfa
      */
     public function removeFocus(\GCF\MainBundle\Entity\Focus $focus)
     {
+        $focus->removeProjet($this);
         $this->focus->removeElement($focus);
     }
 

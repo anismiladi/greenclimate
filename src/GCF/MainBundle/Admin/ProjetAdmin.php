@@ -20,10 +20,12 @@ class ProjetAdmin extends AbstractAdmin
         $formMapper
             ->add('nom')
             ->add('description')
-            /**/->add('focus','sonata_type_model_autocomplete',
+            /**/
+            ->add('focus','sonata_type_model_autocomplete',
                 array(
                     'required' => false,
                     'multiple' => true,
+                    'minimum_input_length' => 1,
                     'property' => 'nom',
                     'to_string_callback' => function($enitity, $property) {
                         return $enitity->getNom();
@@ -32,12 +34,13 @@ class ProjetAdmin extends AbstractAdmin
             )
             ->add('fichier', 'sonata_media_type', array(
                 'provider' => 'sonata.media.provider.file',
-                'context'  => 'default'
+                'context'  => 'default',
             ))
             ->add('secteurProjet','sonata_type_model_autocomplete',
                 array(
                     'required' => true,
                     'multiple' => false,
+                    'minimum_input_length' => 1,
                     'property' => 'nom',
                     'to_string_callback' => function($enitity, $property) {
                         return $enitity->getNom();
@@ -47,8 +50,9 @@ class ProjetAdmin extends AbstractAdmin
                        
             ->add('acteur','sonata_type_model_autocomplete',
                 array(
-                    'required' => true,
+                    'required' => false,
                     'multiple' => false,
+                    'minimum_input_length' => 1,
                     'property' => 'nom',
                     'to_string_callback' => function($enitity, $property) {
                         return $enitity->getNom();
@@ -56,14 +60,21 @@ class ProjetAdmin extends AbstractAdmin
                 )
             )
 
+            /*
+            ->add('gouvernorat', 'sonata_type_model', array(
+                'multiple' => true, 
+                'expanded' => true
+                ))
+            */
             ->add('gouvernorat','sonata_type_model_autocomplete',
                 array(
-                    'required' => true,
+                    'required' => false,
                     'multiple' => true,
+                    'minimum_input_length' => 1,
                     'property' => 'nom',
                     'to_string_callback' => function($enitity, $property) {
                         return $enitity->getNom();
-                    }
+                    },
                 )
             )
             ;

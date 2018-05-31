@@ -45,7 +45,7 @@ class CatLearning extends AbstractPersonalTranslatable implements TranslatableIn
 
     /**
      * @ORM\ManyToOne(targetEntity="GCF\MainBundle\Entity\CatLearning", inversedBy="catLearningFils")
-     * @ORM\JoinColumn(name="CatParent", referencedColumnName="id")
+     * @ORM\JoinColumn(name="CatParent", referencedColumnName="id", nullable=true)
      */
     private $catLearningParent;
     
@@ -196,5 +196,14 @@ class CatLearning extends AbstractPersonalTranslatable implements TranslatableIn
     public function removeCatLearningFil(\GCF\MainBundle\Entity\CatLearning $catLearningFil)
     {
         $this->catLearningFils->removeElement($catLearningFil);
+    }
+    
+    public function __toString() {
+        if ($this->getNom())
+        {
+          return $this->getNom();
+        }
+        else
+            return "";
     }
 }

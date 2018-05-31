@@ -151,6 +151,7 @@ header and top bar
     background: #22AA86;
 }
 .language_switch_btn a{
+    text-decoration: none !important;
     color: #22AA86;
     font-weight: 700;
 }
@@ -298,10 +299,10 @@ footer .footer_social_media:before {
     background-color: #e7e7e7;
 }
 
-.footer-basic h3{ width:100% ; font-size: 26px; line-height: 40px; color: white; text-align: center;  }
+.footer-basic h3{ width:100% ; font-size: 26px; line-height: 40px; color: white;}
 .footer-basic h4{ width:100% ; color: white; text-align: center;  }
 
-footer .footer_website_nav{ padding: 0 }
+footer .footer_website_nav{}
 
 footer .footer_website_nav nav ul{  padding: 0 0 0 20px;}
 

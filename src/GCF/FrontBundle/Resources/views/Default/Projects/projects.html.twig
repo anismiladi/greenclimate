@@ -151,10 +151,12 @@
 
                     {#organisme---->#}
                     <td>
+                        {% if project.acteur != null %}
                         {% if (project.acteur.secteurActeur.secteurActeurParent == null) %}
                             {{ project.acteur.secteurActeur.nom }}
                         {% else %}
                             {{ project.acteur.secteurActeur.secteurActeurParent.nom }}
+                        {% endif %}
                         {% endif %}
                     </td>
 
@@ -162,9 +164,10 @@
 
                     {% spaceless %}
                         <td>
+
                             <ul>
                                 {% for focus in project.focus %}
-                                    <li>{{ focus.nom}}&nbsp;</li>
+                                    <li>{{ focus.nom}}</li>
                                 {% endfor %}
                             </ul>
                         </td>
@@ -196,7 +199,6 @@
 
 
 
-
 {% endblock %}
 
 {% block javascripts %}
@@ -212,7 +214,7 @@
                 "paging":   true,
 
                 "lengthChange": false,
-
+                //"lengthMenu": [ 5, 10, 20 ],
                 "lengthMenu": [ 5, 10, 20 ],
 
                 "ordering": true,
@@ -262,7 +264,7 @@
                     table.column(3)
                         .search(($(this).val()).replace(/<[^>]+>/g, ''))
                         .draw();
-                    //console.log( ($(this).val()).replace(/<[^>]+>/g, ''))
+
 
                 });
 

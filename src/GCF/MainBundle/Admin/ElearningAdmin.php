@@ -28,6 +28,12 @@ class ElearningAdmin extends AbstractAdmin
                 'provider' => 'sonata.media.provider.file',
                 'context'  => 'default'
             ))
+            ->add('catLearning', 'sonata_type_model', array(
+                'required' => false,
+                'multiple' => false, 
+                //'expanded' => true
+            ))
+            /*
             ->add('catLearning','sonata_type_model_autocomplete',
                 array(
                     'required' => true,
@@ -38,6 +44,8 @@ class ElearningAdmin extends AbstractAdmin
                     }
                 )
             )
+             * 
+             */
         ;
     }
 

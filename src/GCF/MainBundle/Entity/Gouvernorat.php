@@ -120,6 +120,7 @@ class Gouvernorat extends AbstractPersonalTranslatable implements TranslatableIn
      */
     public function addProjet(\GCF\MainBundle\Entity\Projet $projet)
     {
+        //$projet->setGouvernorat($this);
         $this->projet[] = $projet;
 
         return $this;
