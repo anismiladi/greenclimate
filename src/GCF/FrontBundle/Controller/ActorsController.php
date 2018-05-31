@@ -76,17 +76,33 @@ class ActorsController extends Controller
         return new JsonResponse($response);
     }
 
-    public function SecteurAction($id){
+    public function ActorsSectorAction($id){
         $em = $this->getDoctrine()->getManager();
-        $sectors = $em->getRepository('GCFMainBundle:Acteur')->findBy(
-            array( 'secteurActeurParent' => $id)
+        $sector = $em->getRepository('GCFMainBundle:SecteurActeur')->findOneById($id);
+        $actors = $em->getRepository('GCFMainBundle:Acteur')->findBy(
+            array( 'secteurActeur' => $id,
+                'acteurParent' => Null,
+                )
         );
-
-        return $this->render('@GCFFront/Default/Actors/oPublic.html.twig',array(
-            'sectors' => $sectors
+        
+        $sectors = $em->getRepository('GCFMainBundle:SecteurActeur')->findBy(
+            array( 'secteurActeurParent' => Null)
+        );
+        return $this->render('@GCFFront/Default/Actors/actorsSector.html.twig',array(
+            'sector' => $sector,
+            'actors' => $actors,
+            'sectors' => $sectors,
         ));
     }
+    public function sousActorsAction($id){
+        $em = $this->getDoctrine()->getManager();
+        $actor = $em->getRepository('GCFMainBundle:Acteur')->findOneById($id);
 
+        return $this->render('@GCFFront/Default/Actors/blocks/sousactors.html.twig',array(
+            'actor' => $actor,
+        ));
+    }
+    
     public function oPublicAction()
     {
         $em = $this->getDoctrine()->getManager();
@@ -100,6 +116,7 @@ class ActorsController extends Controller
             'sectors' => $sectors
         ));
     }
+    
     public function oPrivateAction()
     {
         return $this->render('@GCFFront/Default/Actors/oPrivate.html.twig');

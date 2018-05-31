@@ -33,17 +33,13 @@ class ActeurAdmin extends AbstractAdmin
                 array(
                     'required' => false,
                     'multiple' => false,
-<<<<<<< HEAD
-=======
                     'minimum_input_length' => 1,
->>>>>>> Marwen
                     'property' => 'nom',
                     'to_string_callback' => function($enitity, $property) {
                         return $enitity->getNom();
                     },
                 )
             )
-<<<<<<< HEAD
             ->add('secteurActeur','sonata_type_model_autocomplete',
                 array(
                     'required' => false,
@@ -54,10 +50,8 @@ class ActeurAdmin extends AbstractAdmin
                     },
                 )
             );
-            /*->add('secteurActeur', ModelType::class, [
-=======
+            /*
             ->add('secteurActeur', ModelType::class, [
->>>>>>> Marwen
                 'attr' => [
                     'data-sonata-select2' => 'true'
                 ]
