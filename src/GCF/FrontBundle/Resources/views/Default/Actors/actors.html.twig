@@ -1,41 +1,40 @@
-{# actors.html.twig #}
 {% extends '@GCFFront/base.html.twig' %}
 {% block styleBloc %}
-<style>
-    /* fonctionnel */
-    .hierarchie_result_niv_1 input {
-        display: none;
-    }
-    .hierarchie_result_niv_1 input ~ ul {
-        display: none;
-    }
-    .hierarchie_result_niv_1 input:checked ~ ul {
-        display: block;
-    }
-    .hierarchie_result_niv_1 input ~ .fa-angle-double-down {
-        display: none;
-    }
-    .hierarchie_result_niv_1 input:checked ~ .fa-angle-double-right {
-        display: none;
-    }
-    .hierarchie_result_niv_1 input:checked ~ .fa-angle-double-down {
-        display: inline;
-    }
+    <style>
+        /* fonctionnel */
+        .hierarchie_result_niv_1 input {
+            display: none;
+        }
+        .hierarchie_result_niv_1 input ~ ul {
+            display: none;
+        }
+        .hierarchie_result_niv_1 input:checked ~ ul {
+            display: block;
+        }
+        .hierarchie_result_niv_1 input ~ .fa-angle-double-down {
+            display: none;
+        }
+        .hierarchie_result_niv_1 input:checked ~ .fa-angle-double-right {
+            display: none;
+        }
+        .hierarchie_result_niv_1 input:checked ~ .fa-angle-double-down {
+            display: inline;
+        }
 
-    /* habillage */
-    .hierarchie_result_niv_1 li {
-        display: block;
-        font-family: 'Arial';
-        font-size: 15px;
-        padding: 0.2em;
-        border: 1px solid transparent;
-    }
-    .hierarchie_result_niv_1 li:hover {
-        border: 1px solid grey;
-        border-radius: 3px;
-        background-color: lightgrey;
-    }
-</style>
+        /* habillage */
+        .hierarchie_result_niv_1 li {
+            display: block;
+            font-family: 'Arial';
+            font-size: 15px;
+            padding: 0.2em;
+            border: 1px solid transparent;
+        }
+        .hierarchie_result_niv_1 li:hover {
+            border: 1px solid grey;
+            border-radius: 3px;
+            background-color: lightgrey;
+        }
+    </style>
 {% endblock %}
 
 {% block body %}
@@ -57,18 +56,24 @@
                     {% endfor %}
 
                 </div>
-
-
-
-        <div class="col-md-8">
-            <div class="hierarchie_result_lvl">
-            {% block actorsSector %}
-            {% endblock %}
             </div>
+
+            <div class="col-md-8">
+                <div class="hierarchie_result_lvl">
+                    {% block actorsSector %}
+                    {% endblock %}
+                </div>
+            </div>
+
+
         </div>
     </div>
 
 
+    {% block organismePub %}{% endblock %}
+    {% block organismePrive %}{% endblock %}
+    {% block societeCivile %}{% endblock %}
+    {% block parlement %}{% endblock %}
 
 {% endblock %}
 
