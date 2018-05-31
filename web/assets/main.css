@@ -227,6 +227,7 @@ header and top bar
 Block footer copyright
 ======================
 */
+.footer-basic{margin-top: 50px}
 .footer-basic footer {
     background: #22AA86;
     padding-top: 10px;
