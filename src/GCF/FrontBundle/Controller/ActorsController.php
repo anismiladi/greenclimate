@@ -60,13 +60,6 @@ class ActorsController extends Controller
                             $response[] = array('nom'=>$act->getNom(), 'parent' => $act->getActeurParent()->getNom(), 'fils' => $filsarray );
 
                         }
-
-//                        foreach ( $act->getActeurParent() as $acttt) {
-//                            dump($acttt);
-//
-//                        }
-
-
                     }
                 }
             }
@@ -100,40 +93,6 @@ class ActorsController extends Controller
 
         return $this->render('@GCFFront/Default/Actors/blocks/sousactors.html.twig',array(
             'actor' => $actor,
-        ));
-    }
-    
-    public function oPublicAction()
-    {
-        $em = $this->getDoctrine()->getManager();
-        $sectors = $em->getRepository('GCFMainBundle:SecteurActeur')->findBy(
-            array( 'secteurActeurParent' => 1)
-        );
-
-
-
-        return $this->render('@GCFFront/Default/Actors/oPublic.html.twig',array(
-            'sectors' => $sectors
-        ));
-    }
-    
-    public function oPrivateAction()
-    {
-        return $this->render('@GCFFront/Default/Actors/oPrivate.html.twig');
-    }
-    public function sCivileAction()
-    {
-        return $this->render('@GCFFront/Default/Actors/sCivile.html.twig');
-    }
-    public function parlementAction()
-    {
-
-        $em = $this->getDoctrine()->getManager();
-        $palement = $em->getRepository('GCFMainBundle:SecteurActeur')->findBy(
-            array( 'secteurActeurParent' => 4)
-        );
-        return $this->render('@GCFFront/Default/Actors/parlement.html.twig', array(
-            'parlements' => $palement
         ));
     }
 

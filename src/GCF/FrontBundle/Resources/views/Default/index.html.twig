@@ -1,260 +1,340 @@
 {% extends "@GCFFront/base.html.twig" %}
+
 {% block body %}
 
+    <style>
+        .section_title {
+            margin: 0 0 10px;
+            padding-left: 10px;
+            background: #22AA86;
+            color: white;
+        }
+
+        .projects_news .theme { font-size: 13px; margin: 0 }
+
+        .projects_news .description { font-size: 13px; margin: 0 }
+
+        .button_see_more {
+            border-radius: 0 !important;
+            background: #7ac943!important;
+            color: white !important;
+            font-size: 13px !important;
+        }
+
+        .read_more_container { text-align: right;  margin-top: 10px; }
+
+        .read_more_container button{ padding: 6px 50px; }
 
 
-    <div class="col-md-12" style="margin-bottom: 50px">
+        .projects_news .single_element {  margin-bottom: 10px; background: #fefefe; }
 
-            <div class="projects_news">
-                {#Block Actualités#}
-                <div class="col-md-6 col-sm-6 single_item " style="background: #f7f7f7;border: solid 2px white; padding: 10px">
-                    <div class="intro">
-                        <h2 style="margin-top: 0;">Actualités</h2>
-                    </div>
-                    <div class="col-sm-12 item">
-                        <div class="row">
-                            <div class="col-md-3 col-sm-3 col-xs-3" style="padding: 0;">
-                                <a href="#">
-                                    <img class="img-fluid" src="http://placehold.it/75x75" style="max-width: 100%;max-height: 100%; width: 100%;" />
-                                </a>
-                            </div>
-                            <div class="col-md-9 col-sm-9 col-xs-9">
-                                <h4 class="name">Project Name</h4>
-                                <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravi...</p>
-                            </div>
+        .single_element_image_container{ height: 100px; max-height: 100px; padding: 0; display: flex;}
+
+        .single_element_image_container a{margin: auto;width: 100%; height: 100%;}
+
+        .single_element_image_container a img{ margin: auto; max-width: 100%; max-height: 100%; height:100%; width: 100%;object-fit: cover;}
+
+        .single_element_desc_container{ height: 100px; max-height: 100%; }
+
+        @media screen and (max-width: 440px){
+            .single_element_desc_container h4{ font-size: 17px; font-weight: 600; margin: 5px 0;}
+            .projects_news .theme{font-size: 12px;}
+            .projects_news .description{font-size: 12px;}
+
+        }
+
+        @media screen and ( min-width: 989px ) and ( max-width: 1200px ){
+            .single_element_desc_container h4{ margin: 5px 0 }
+        }
+    </style>
+
+    <div class="col-md-12 col-sm-12" style="margin-bottom: 50px;    padding: 0;">
+
+        <div class="projects_news">
+            {#Block Actualités#}
+            <div class="col-md-6 col-sm-6 single_item "
+                 style="background: #f7f7f7;border: solid 2px white; padding: 10px">
+                <div class="intro">
+                    <h2 class="section_title">Actualités</h2>
+                </div>
+                <div class="col-sm-12 item single_element">
+                    <div class="row">
+                        <div class="col-md-3 col-sm-3 col-xs-3 single_element_image_container">
+                            <a href="#">
+                                <img class="img-fluid" src="http://placehold.it/100x100" />
+                            </a>
                         </div>
-                    </div>
-                    <div class="col-sm-12 item">
-                        <div class="row">
-                            <div class="col-md-3 col-sm-3 col-xs-3" style="padding: 0;">
-                                <a href="#">
-                                    <img class="img-fluid" src="http://placehold.it/75x75" style="max-width: 100%;max-height: 100%; width: 100%;" />
-                                </a>
-                            </div>
-                            <div class="col-md-9 col-sm-9 col-xs-9">
-                                <h4 class="name">Project Name</h4>
-                                <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravi...</p>
-                            </div>
+                        <div class="col-md-9 col-sm-9 col-xs-9 single_element_desc_container">
+                            <h4 class="name">Project Name</h4>
+                            <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus.
+                                Praesent aliquam in tellus eu gravi...</p>
                         </div>
-                    </div>
-                    <div class="col-sm-12 item">
-                        <div class="row">
-                            <div class="col-md-3 col-sm-3 col-xs-3" style="padding: 0;">
-                                <a href="#">
-                                    <img class="img-fluid" src="http://placehold.it/75x75" style="max-width: 100%;max-height: 100%; width: 100%;" />
-                                </a>
-                            </div>
-                            <div class="col-md-9 col-sm-9 col-xs-9">
-                                <h4 class="name">Project Name</h4>
-                                <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravi...</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-12 item" style=" direction: rtl;">
-                        <button class="btn btn-default button_see_more">Voir Plus</button>
                     </div>
                 </div>
-
-                {#block Events#}
-                <div class="col-md-6 col-sm-6 single_item " style="background: #f7f7f7;border: solid 2px white; padding: 10px">
-                    <div class="intro">
-                        <h2 style="margin-top: 0;">Events</h2>
-                    </div>
-                    <div class="col-sm-12 item">
-                        <div class="row">
-                            <div class="col-md-3 col-sm-3 col-xs-3" style="padding: 0;">
-                                <a href="#">
-                                    <img class="img-fluid" src="http://placehold.it/75x75" style="max-width: 100%;max-height: 100%; width: 100%;" />
-                                </a>
-                            </div>
-                            <div class="col-md-9 col-sm-9 col-xs-9">
-                                <h4 class="name">Project Name</h4>
-                                <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravi...</p>
-                            </div>
+                <div class="col-sm-12 item single_element">
+                    <div class="row">
+                        <div class="col-md-3 col-sm-3 col-xs-3 single_element_image_container" >
+                            <a href="#">
+                                <img class="img-fluid" src="http://placehold.it/100x100" />
+                            </a>
                         </div>
-                    </div>
-                    <div class="col-sm-12 item">
-                        <div class="row">
-                            <div class="col-md-3 col-sm-3 col-xs-3" style="padding: 0;">
-                                <a href="#">
-                                    <img class="img-fluid" src="http://placehold.it/75x75" style="max-width: 100%;max-height: 100%; width: 100%;" />
-                                </a>
-                            </div>
-                            <div class="col-md-9 col-sm-9 col-xs-9">
-                                <h4 class="name">Project Name</h4>
-                                <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravi...</p>
-                            </div>
+                        <div class="col-md-9 col-sm-9 col-xs-9 single_element_desc_container">
+                            <h4 class="name">Project Name</h4>
+                            <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus.
+                                Praesent aliquam in tellus eu gravi...</p>
                         </div>
-                    </div>
-                    <div class="col-sm-12 item">
-                        <div class="row">
-                            <div class="col-md-3 col-sm-3 col-xs-3" style="padding: 0;">
-                                <a href="#">
-                                    <img class="img-fluid" src="http://placehold.it/75x75" style="max-width: 100%;max-height: 100%; width: 100%;" />
-                                </a>
-                            </div>
-                            <div class="col-md-9 col-sm-9 col-xs-9">
-                                <h4 class="name">Project Name</h4>
-                                <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravi...</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-12 item" style=" direction: rtl;">
-                        <button class="btn btn-default button_see_more">Voir Plus</button>
                     </div>
                 </div>
-
-                {#Block Documents#}
-                <div class="col-md-6 col-sm-6 single_item " style="background: #f7f7f7;border: solid 2px white; padding: 10px">
-                    <div class="intro">
-                        <h2 style="margin-top: 0;">Actualités</h2>
-                    </div>
-                    <div class="col-sm-12 item">
-                        <div class="row">
-                            <div class="col-md-3 col-sm-3 col-xs-3" style="padding: 0;">
-                                <a href="#">
-                                    <img class="img-fluid" src="http://placehold.it/75x75" style="max-width: 100%;max-height: 100%; width: 100%;" />
-                                </a>
-                            </div>
-                            <div class="col-md-9 col-sm-9 col-xs-9">
-                                <h4 class="name">Project Name</h4>
-                                <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravi...</p>
-                            </div>
+                <div class="col-sm-12 item single_element">
+                    <div class="row">
+                        <div class="col-md-3 col-sm-3 col-xs-3 single_element_image_container" >
+                            <a href="#">
+                                <img class="img-fluid" src="http://placehold.it/100x100" />
+                            </a>
                         </div>
-                    </div>
-                    <div class="col-sm-12 item">
-                        <div class="row">
-                            <div class="col-md-3 col-sm-3 col-xs-3" style="padding: 0;">
-                                <a href="#">
-                                    <img class="img-fluid" src="http://placehold.it/75x75" style="max-width: 100%;max-height: 100%; width: 100%;" />
-                                </a>
-                            </div>
-                            <div class="col-md-9 col-sm-9 col-xs-9">
-                                <h4 class="name">Project Name</h4>
-                                <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravi...</p>
-                            </div>
+                        <div class="col-md-9 col-sm-9 col-xs-9 single_element_desc_container">
+                            <h4 class="name">Project Name</h4>
+                            <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus.
+                                Praesent aliquam in tellus eu gravi...</p>
                         </div>
-                    </div>
-                    <div class="col-sm-12 item">
-                        <div class="row">
-                            <div class="col-md-3 col-sm-3 col-xs-3" style="padding: 0;">
-                                <a href="#">
-                                    <img class="img-fluid" src="http://placehold.it/75x75" style="max-width: 100%;max-height: 100%; width: 100%;" />
-                                </a>
-                            </div>
-                            <div class="col-md-9 col-sm-9 col-xs-9">
-                                <h4 class="name">Project Name</h4>
-                                <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravi...</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-12 item" style=" direction: rtl;">
-                        <button class="btn btn-default button_see_more">Voir Plus</button>
                     </div>
                 </div>
-
-                {#Block Videos#}
-                <div class="col-md-6 col-sm-6 single_item " style="background: #f7f7f7;border: solid 2px white; padding: 10px">
-                    <div class="intro">
-                        <h2 style="margin-top: 0;">Actualités</h2>
-                    </div>
-                    <div class="col-sm-12 item">
-                        <div class="row">
-                            <div class="col-md-3 col-sm-3 col-xs-3" style="padding: 0;">
-                                <a href="#">
-                                    <img class="img-fluid" src="http://placehold.it/75x75" style="max-width: 100%;max-height: 100%; width: 100%;" />
-                                </a>
-                            </div>
-                            <div class="col-md-9 col-sm-9 col-xs-9">
-                                <h4 class="name">Project Name</h4>
-                                <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravi...</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-12 item">
-                        <div class="row">
-                            <div class="col-md-3 col-sm-3 col-xs-3" style="padding: 0;">
-                                <a href="#">
-                                    <img class="img-fluid" src="http://placehold.it/75x75" style="max-width: 100%;max-height: 100%; width: 100%;" />
-                                </a>
-                            </div>
-                            <div class="col-md-9 col-sm-9 col-xs-9">
-                                <h4 class="name">Project Name</h4>
-                                <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravi...</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-12 item">
-                        <div class="row">
-                            <div class="col-md-3 col-sm-3 col-xs-3" style="padding: 0;">
-                                <a href="#">
-                                    <img class="img-fluid" src="http://placehold.it/75x75" style="max-width: 100%;max-height: 100%; width: 100%;" />
-                                </a>
-                            </div>
-                            <div class="col-md-9 col-sm-9 col-xs-9">
-                                <h4 class="name">Project Name</h4>
-                                <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravi...</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-12 item" style=" direction: rtl;">
-                        <button class="btn btn-default button_see_more">Voir Plus</button>
-                    </div>
+                <div class="col-md-12 item" style=" text-align: right;">
+                    <button class="btn btn-default button_see_more">Voir Plus</button>
                 </div>
-
             </div>
-    </div>
 
-
-    <div>
-        <div class="col-md-12" style="margin-bottom: 50px">
-            <div class="projects-horizontal">
-                    <div class="intro">
-                        <h2 style="margin-top: 0;">Articles & Publications</h2>
-                    </div>
-                    <div class="row projects">
-                        <div class="col-sm-6 item" style="background: #f7f7f7;border: solid 2px white;">
-                            <div class="row">
-                                <div class="col-md-12 col-lg-5">
-                                    <a href="#">
-                                        <img class="img-fluid" src="http://placehold.it/200x170" style="max-width: 100%;max-height: 100%" />
-                                    </a>
-                                </div>
-                                <div class="col">
-                                    <h3 class="name">Project Name</h3>
-                                    <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravida.</p>
-                                </div>
-                            </div>
+            {#block Events#}
+            <div class="col-md-6 col-sm-6 single_item "
+                 style="background: #f7f7f7;border: solid 2px white; padding: 10px">
+                <div class="intro">
+                    <h2 class="section_title">Events</h2>
+                </div>
+                <div class="col-sm-12 item single_element">
+                    <div class="row">
+                        <div class="col-md-3 col-sm-3 col-xs-3 single_element_image_container" >
+                            <a href="#">
+                                <img class="img-fluid" src="http://placehold.it/100x100" />
+                            </a>
                         </div>
-                        <div class="col-sm-6 item" style="background: #f7f7f7;border: solid 2px white;">
-                            <div class="row">
-                                <div class="col-md-12 col-lg-5"><a href="#"><img class="img-fluid" src="http://placehold.it/200x170" style="max-width: 100%;max-height: 100%" /></a></div>
-                                <div class="col">
-                                    <h3 class="name">Project Name</h3>
-                                    <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravida.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 item" style="background: #f7f7f7;border: solid 2px white;">
-                            <div class="row">
-                                <div class="col-md-12 col-lg-5"><a href="#"><img class="img-fluid" src="http://placehold.it/200x170" style="max-width: 100%;max-height: 100%" /></a></div>
-                                <div class="col">
-                                    <h3 class="name">Project Name</h3>
-                                    <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravida.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 item" style="background: #f7f7f7;border: solid 2px white;">
-                            <div class="row">
-                                <div class="col-md-12 col-lg-5"><a href="#"><img class="img-fluid" src="http://placehold.it/200x170" style="max-width: 100%;max-height: 100%" /></a></div>
-                                <div class="col">
-                                    <h3 class="name">Project Name</h3>
-                                    <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravida.</p>
-                                </div>
-                            </div>
+                        <div class="col-md-9 col-sm-9 col-xs-9 single_element_desc_container">
+                            <h4 class="name">Project Name</h4>
+                            <p class="theme"><strong>Date:</strong> 11-12-2000</p>
+                            <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus.
+                                Pr...</p>
                         </div>
                     </div>
+                </div>
+                <div class="col-sm-12 item single_element">
+                    <div class="row">
+                        <div class="col-md-3 col-sm-3 col-xs-3 single_element_image_container" >
+                            <a href="#">
+                                <img class="img-fluid" src="http://placehold.it/100x100" />
+                            </a>
+                        </div>
+                        <div class="col-md-9 col-sm-9 col-xs-9 single_element_desc_container">
+                            <h4 class="name">Project Name</h4>
+                            <p class="theme"><strong>Date:</strong> 11-12-2000</p>
+                            <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus.
+                                Pra...</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 item single_element">
+                    <div class="row">
+                        <div class="col-md-3 col-sm-3 col-xs-3 single_element_image_container" >
+                            <a href="#">
+                                <img class="img-fluid" src="http://placehold.it/100x100" />
+                            </a>
+                        </div>
+                        <div class="col-md-9 col-sm-9 col-xs-9 single_element_desc_container">
+                            <h4 class="name">Project Name</h4>
+                            <p class="theme"><strong>Date:</strong> 11-12-2000</p>
+                            <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus.
+                                Pra...</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 item" style="text-align: right;">
+                    <button class="btn btn-default button_see_more">Voir Plus</button>
+                </div>
+            </div>
+
+            {#Block Documents#}
+            <div class="col-md-6 col-sm-6 single_item "
+                 style="background: #f7f7f7;border: solid 2px white; padding: 10px">
+                <div class="intro">
+                    <h2 class="section_title">Documents</h2>
+                </div>
+                <div class="col-sm-12 item single_element">
+                    <div class="row">
+                        <div class="col-md-3 col-sm-3 col-xs-3 single_element_image_container" >
+                            <a href="#">
+                                <img class="img-fluid" src="http://placehold.it/100x100" />
+                            </a>
+                        </div>
+                        <div class="col-md-9 col-sm-9 col-xs-9 single_element_desc_container">
+                            <h4 class="name">Project Name</h4>
+                            <p class="theme"><strong>Sector:</strong> Energie</p>
+                            <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus.
+                                Prae...</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 item single_element">
+                    <div class="row">
+                        <div class="col-md-3 col-sm-3 col-xs-3 single_element_image_container"  >
+                            <a href="#">
+                                <img class="img-fluid" src="http://placehold.it/100x100" />
+                            </a>
+                        </div>
+                        <div class="col-md-9 col-sm-9 col-xs-9 single_element_desc_container">
+                            <h4 class="name">Project Name</h4>
+                            <p class="theme"><strong>Sector:</strong> Energie</p>
+                            <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus.
+                                Prae...</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 item single_element">
+                    <div class="row">
+                        <div class="col-md-3 col-sm-3 col-xs-3 single_element_image_container" >
+                            <a href="#">
+                                <img class="img-fluid" src="http://placehold.it/100x100" />
+                            </a>
+                        </div>
+                        <div class="col-md-9 col-sm-9 col-xs-9 single_element_desc_container">
+                            <h4 class="name">Project Name</h4>
+                            <p class="theme"><strong>Sector:</strong> Energie</p>
+                            <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus.
+                                Praes...</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 item " style="text-align: right;">
+                    <button class="btn btn-default button_see_more">Voir Plus</button>
+                </div>
+            </div>
+
+            {#Block Videos#}
+            <div class="col-md-6 col-sm-6 single_item "
+                 style="background: #f7f7f7;border: solid 2px white; padding: 10px">
+                <div class="intro">
+                    <h2 class="section_title">Vidéos</h2>
+                </div>
+                <div class="col-sm-12 item single_element">
+                    <div class="row">
+                        <div class="col-md-3 col-sm-3 col-xs-3 single_element_image_container" >
+                            <a href="#">
+                                <img class="img-fluid" src="http://placehold.it/100x100" />
+                            </a>
+                        </div>
+                        <div class="col-md-9 col-sm-9 col-xs-9 single_element_desc_container">
+                            <h4 class="name">Project Name</h4>
+                            <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus.
+                                Praesent aliquam in tellus eu gravi...</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 item single_element">
+                    <div class="row">
+                        <div class="col-md-3 col-sm-3 col-xs-3 single_element_image_container" >
+                            <a href="#">
+                                <img class="img-fluid" src="http://placehold.it/100x100" />
+                            </a>
+                        </div>
+                        <div class="col-md-9 col-sm-9 col-xs-9 single_element_desc_container">
+                            <h4 class="name">Project Name</h4>
+                            <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus.
+                                Praesent aliquam in tellus eu gravi...</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 item single_element">
+                    <div class="row">
+                        <div class="col-md-3 col-sm-3 col-xs-3 single_element_image_container" >
+                            <a href="#">
+                                <img class="img-fluid" src="http://placehold.it/100x100"/>
+                            </a>
+                        </div>
+                        <div class="col-md-9 col-sm-9 col-xs-9 single_element_desc_container">
+                            <h4 class="name">Project Name</h4>
+                            <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus.
+                                Praesent aliquam in tellus eu gravi...</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 item" style="text-align: right;">
+                    <button class="btn btn-default button_see_more">Voir Plus</button>
+                </div>
+            </div>
+
+        </div>
+    </div><br>
+
+
+    <div class="col-md-12 col-sm-12" style="margin-bottom: 50px; padding: 0;">
+        <div class="projects-horizontal">
+            <div class="intro">
+                <h2 style="background: #22aa86 !important; color: white; padding: 0 0 0 20px;">Articles & Publications</h2>
+            </div>
+            <div class=" projects">
+                <div class="col-sm-6 item" style="background: #f7f7f7;border: solid 2px white;">
+                    <div class="row">
+                        <div class="col-md-12 col-lg-5 col-xs-5">
+                            <a href="#">
+                                <img class="img-fluid" src="http://placehold.it/200x200" style="max-width: 100%;max-height: 100%"/>
+                            </a>
+                        </div>
+                        <div class="col">
+                            <h4 class="name">Project Name</h4>
+                            <p class="description">Aenean tortor est, vulputate quis leo
+                                in, vehicula rhoncus lacus. Praesent aliquam in tellus eu.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 item" style="background: #f7f7f7;border: solid 2px white;">
+                    <div class="row">
+                        <div class="col-md-12 col-lg-5 col-xs-5"><a href="#">
+                                <img class="img-fluid" src="http://placehold.it/200x200" style="max-width: 100%;max-height: 100%"/></a>
+                        </div>
+                        <div class="col">
+                            <h4 class="name">Project Name</h4>
+                            <p class="description"> Aenean tortor est, vulputate quis leo
+                                in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravida.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 item" style="background: #f7f7f7;border: solid 2px white;">
+                    <div class="row">
+                        <div class="col-md-12 col-lg-5 col-xs-5"><a href="#">
+                                <img class="img-fluid" src="http://placehold.it/200x200" style="max-width: 100%;max-height: 100%"/></a>
+                        </div>
+                        <div class="col">
+                            <h4 class="name">Project Name</h4>
+                            <p class="description"> Aenean tortor est, vulputate quis leo
+                                in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravida.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 item" style="background: #f7f7f7;border: solid 2px white;">
+                    <div class="row">
+                        <div class="col-md-12 col-lg-5 col-xs-5"><a href="#">
+                                <img class="img-fluid" src="http://placehold.it/200x200" style="max-width: 100%;max-height: 100%"/></a>
+                        </div>
+                        <div class="col">
+                            <h4 class="name">Project Name</h4>
+                            <p class="description"> Aenean tortor est, vulputate quis leo
+                                in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravida.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row read_more_container col-sm-12">
+                <button class="btn btn-default btn-group-lg button_see_more">Voir Plus
+                </button>
             </div>
         </div>
     </div>
 {% endblock %}
+

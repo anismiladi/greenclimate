@@ -2,34 +2,34 @@
 {% block styleBloc %}
     <style type="text/css">
     /* fonctionnel */
-    input {
+    .hierarchie_result_lvl input {
       display: none;
     }
-    input ~ ul {
+    .hierarchie_result_lvl input ~ ul {
      display: none;
     }
-    input:checked ~ ul {
+    .hierarchie_result_lvl input:checked ~ ul {
      display: block;
     }
-    input ~ .fa-angle-double-down {
+    .hierarchie_result_lvl input ~ .fa-angle-double-down {
       display: none;
     }
-    input:checked ~ .fa-angle-double-right {
+    .hierarchie_result_lvl input:checked ~ .fa-angle-double-right {
       display: none;
     }
-    input:checked ~ .fa-angle-double-down {
+    .hierarchie_result_lvl input:checked ~ .fa-angle-double-down {
       display: inline;
     }
 
     /* habillage */
-    li {
+    .hierarchie_result_lvl li {
       display: block;
       font-family: 'Arial';
       font-size: 15px;
       padding: 0.2em;
       border: 1px solid transparent;
     }
-    li:hover {
+    .hierarchie_result_lvl li:hover {
       border: 1px solid grey;
       border-radius: 3px;
       background-color: lightgrey;
@@ -38,6 +38,7 @@
 {% endblock %}
 
 {% block actorsSector %}
+
 <h1>{{ sector.nom }}</h1>
 <ul>
   {% for actor in actors %}
