@@ -1,9 +1,11 @@
 {# actors.html.twig #}
 {% extends '@GCFFront/base.html.twig' %}
 
-{% block body %}
-        <style type="text/css">
+{% block stylesheets %}
+    <style type="text/css">
         /* fonctionnel */
+        .hierarchie_result_lvls label, .hierarchie_result_lvls ul, .hierarchie_result_lvls li { cursor: pointer; }
+
         .hierarchie_result_lvls input {
             display: none;
         }
@@ -37,6 +39,10 @@
             background-color: lightgrey;
         }
     </style>
+{% endblock %}
+
+{% block body %}
+
     <div class="col-md-12">
         <div class="row">
             <div class="col-md-4" style="padding-left:0">

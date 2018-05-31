@@ -1,5 +1,4 @@
 <?php
-//ActorsController.php
 
 namespace GCF\FrontBundle\Controller;
 

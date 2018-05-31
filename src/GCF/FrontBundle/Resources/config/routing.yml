@@ -62,4 +62,3 @@ gcf_front_elearningpage:
 gcf_front_searchpage:
     path:     /result
     defaults: { _controller: GCFFrontBundle:Search:search}
-
