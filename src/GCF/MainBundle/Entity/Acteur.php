@@ -514,5 +514,5 @@ class Acteur extends AbstractPersonalTranslatable implements TranslatableInterfa
         }
         else
             return "";
-        }
+    }
 }

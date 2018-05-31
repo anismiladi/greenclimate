@@ -17,16 +17,30 @@ class CatLearningAdmin extends AbstractAdmin
     {
         $formMapper
             ->add('nom')
+            ->add('catLearningParent', ModelType::class, [
+                'attr' => [
+                    'data-sonata-select2' => 'true'
+                ]
+            ])
+            ->add('catLearningParent', 'sonata_type_model', array(
+                'required' => false,
+                'multiple' => false, 
+                //'expanded' => true
+            ))
+            /*
             ->add('catLearningParent','sonata_type_model_autocomplete',
                 array(
                     'required' => false,
                     'multiple' => false,
+                    'minimum_input_length' => 2,
                     'property' => 'nom',
                     'to_string_callback' => function($enitity, $property) {
                         return $enitity->getNom();
                     },
                 )
-            );
+            )
+             */
+            ;
         //->add('translations', TranslationsType::class)
         //        ->add('nom');
     }

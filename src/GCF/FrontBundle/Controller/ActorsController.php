@@ -24,8 +24,6 @@ class ActorsController extends Controller
         ));
     }
 
-
-
     public function gethierarchieAction( $clicked )
     {
         $em = $this->getDoctrine()->getManager();
@@ -78,12 +76,16 @@ class ActorsController extends Controller
         return new JsonResponse($response);
     }
 
+    public function SecteurAction($id){
+        $em = $this->getDoctrine()->getManager();
+        $sectors = $em->getRepository('GCFMainBundle:Acteur')->findBy(
+            array( 'secteurActeurParent' => $id)
+        );
 
-
-
-
-
-
+        return $this->render('@GCFFront/Default/Actors/oPublic.html.twig',array(
+            'sectors' => $sectors
+        ));
+    }
 
     public function oPublicAction()
     {

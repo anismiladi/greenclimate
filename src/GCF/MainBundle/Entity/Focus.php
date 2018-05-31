@@ -111,6 +111,7 @@ class Focus extends AbstractPersonalTranslatable implements TranslatableInterfac
      */
     public function addProjet(\GCF\MainBundle\Entity\Projet $projet)
     {
+        //$projet->addFocus($this);
         $this->projet[] = $projet;
 
         return $this;

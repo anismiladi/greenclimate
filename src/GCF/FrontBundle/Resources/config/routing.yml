@@ -10,6 +10,10 @@ gcf_front_actorspage:
     defaults: { _controller: GCFFrontBundle:Actors:index}
 
 gcf_front_opublicpage:
+    path:     /actors/secteur/{id}
+    defaults: { _controller: GCFFrontBundle:Actors:Secteur }
+    
+gcf_front_opublicpage:
     path:     /actors/organisme-public
     defaults: { _controller: GCFFrontBundle:Actors:oPublic }
 

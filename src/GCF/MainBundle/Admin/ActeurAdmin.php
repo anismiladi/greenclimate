@@ -33,6 +33,7 @@ class ActeurAdmin extends AbstractAdmin
                 array(
                     'required' => false,
                     'multiple' => false,
+                    'minimum_input_length' => 1,
                     'property' => 'nom',
                     'to_string_callback' => function($enitity, $property) {
                         return $enitity->getNom();
