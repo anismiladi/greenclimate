@@ -151,6 +151,7 @@ header and top bar
     background: #22AA86;
 }
 .language_switch_btn a{
+    text-decoration: none !important;
     color: #22AA86;
     font-weight: 700;
 }

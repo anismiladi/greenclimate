@@ -18,7 +18,7 @@ class ProjectsController extends Controller
         $gouvernorates = $em->getRepository('GCFMainBundle:Gouvernorat')->findAll();
 
         $organismes = $em->getRepository('GCFMainBundle:SecteurActeur')->findAll();
-
+        $org = array();
         $projects = $em->getRepository('GCFMainBundle:Projet')->findAll();
 
         foreach ( $organismes as $organisme){
