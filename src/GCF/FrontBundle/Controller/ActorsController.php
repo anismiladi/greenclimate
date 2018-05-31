@@ -12,14 +12,22 @@ class ActorsController extends Controller
         $em = $this->getDoctrine()->getManager();
 
 
-        $sectors = $em->getRepository('GCFMainBundle:SecteurActeur')->findAll();
+        $sectors = $em->getRepository('GCFMainBundle:SecteurActeur')->findBy(
+            array(
+                'secteurActeurParent' => null
+            )
+        );
 
-        $sectorsFils = $em->getRepository('GCFMainBundle:SecteurActeur')->findAll();
+        $actors = $em->getRepository('GCFMainBundle:Acteur')->findBy(
+            array(
+                'acteurParent' => null
+            )
+        );
 
 
         return $this->render('@GCFFront/Default/Actors/actors.html.twig',array(
             'sectors' => $sectors,
-            'sectorsFils'=> $sectorsFils
+            'actors' => $actors
 
         ));
     }

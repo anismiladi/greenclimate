@@ -7,13 +7,9 @@
             display: none;
         }
         #myfilter{ padding: 10px 0; border: solid 1px;  margin: 10px 0;}
-<<<<<<< HEAD
-        .paginate_button.next,.paginate_button.previous{
-            display: none;
-        }
-=======
+
         .paginate_button.previous, .paginate_button.next{ display: none; }
->>>>>>> master
+
     </style>
 {% endblock %}
 {% block body %}
@@ -75,8 +71,6 @@
 
             </tr>
             </thead>
-
-
             <tbody class="result-search">
             {% for project in projects %}
                 <tr>
@@ -91,11 +85,13 @@
                     {#organisme---->#}
                     <td>
                         {% if project.acteur != null %}
-                        {% if (project.acteur.secteurActeur.secteurActeurParent == null) %}
-                            {{ project.acteur.secteurActeur.nom }}
-                        {% else %}
-                            {{ project.acteur.secteurActeur.secteurActeurParent.nom }}
-                        {% endif %}
+                            {% if project.acteur.secteurActeur != null %}
+                                {% if (project.acteur.secteurActeur.secteurActeurParent == null) %}
+                                    {{ project.acteur.secteurActeur.nom }}
+                                {% else %}
+                                    {{ project.acteur.secteurActeur.secteurActeurParent.nom }}
+                                {% endif %}
+                            {% endif %}
                         {% endif %}
                     </td>
 
@@ -103,7 +99,6 @@
 
                     {% spaceless %}
                         <td>
-
                             <ul>
                                 {% for focus in project.focus %}
                                     <li>{{ focus.nom}}</li>
@@ -119,9 +114,6 @@
 
         </table>
     </div>
-
-
-
 
 {% endblock %}
 
@@ -184,8 +176,6 @@
                         .search( ($(this).val()).replace(/<[^>]+>/g, '') )
                         .draw();
                 });
-
-
         } );
     </script>
 {% endblock %}

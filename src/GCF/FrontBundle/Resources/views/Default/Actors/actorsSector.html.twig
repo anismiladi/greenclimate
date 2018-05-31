@@ -1,18 +1,3 @@
-<<<<<<< HEAD
-{# actorsSector.html.twig #}
-{% extends '@GCFFront/Default/Actors/actors.html.twig' %}
-{% block styleBloc %}
-
-{% endblock %}
-
-{% block actorsSector %}
-    <h1>{{ sector.nom }}</h1>
-    <ul>
-        {% for actor in actors %}
-            {{ render( controller('GCFFrontBundle:Actors:sousActors', { 'id': actor.id } )) }}
-        {% endfor %}
-    </ul>
-=======
 {% extends '@GCFFront/Default/Actors/actors.html.twig' %}
 {% block styleBloc %}
     <style type="text/css">
@@ -60,7 +45,6 @@
     {{ render( controller('GCFFrontBundle:Actors:sousActors', { 'id': actor.id } )) }}
   {% endfor %}
 </ul>
->>>>>>> master
 {% endblock %}
 
 

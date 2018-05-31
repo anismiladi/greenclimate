@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-
-
-=======
->>>>>>> master
 <li>
     {% if actor.acteurFils|length > 0 %}
     <input type="checkbox" id="c{{ actor.id }}" />
@@ -15,15 +10,6 @@
         {% endfor %}
         </ul>
     {% else %}
-<<<<<<< HEAD
-        <input type="checkbox" id="c{{ actor.id }}" />
-        <i class="fa fa-angle-double-right"></i>
-        <i class="fa fa-angle-double-down"></i>
-        <label for="c{{ actor.id }}">{{ actor.nom }}</label>
-
-=======
-
         {{ actor.nom }}
->>>>>>> master
     {% endif %}
 </li>
