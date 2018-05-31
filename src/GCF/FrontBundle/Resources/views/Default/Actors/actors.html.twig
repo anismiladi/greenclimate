@@ -1,57 +1,71 @@
+{# actors.html.twig #}
 {% extends '@GCFFront/base.html.twig' %}
 
 {% block body %}
+        <style type="text/css">
+        /* fonctionnel */
+        .hierarchie_result_lvls input {
+            display: none;
+        }
+        .hierarchie_result_lvls input ~ ul {
+            display: none;
+        }
+        .hierarchie_result_lvlsinput:checked ~ ul {
+            display: block;
+        }
+        .hierarchie_result_lvls input ~ .fa-angle-double-down {
+            display: none;
+        }
+        .hierarchie_result_lvls input:checked ~ .fa-angle-double-right {
+            display: none;
+        }
+        .hierarchie_result_lvls input:checked ~ .fa-angle-double-down {
+            display: inline;
+        }
 
-<div class="col-md-12">
-    <div class="row">
-        <div class="col-md-4" style="padding-left:0">
-            <div class="panel-group" id="accordion">
-                {% for key, sector in sectors %}
-                    {% if sector.secteurActeurParent == null  %}
-                        <div class="panel panel-default">
-
-                            <div class="panel-heading" >
-                                <h4 class="panel-title">
-                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse{{ key }}" style="text-decoration: none;">{{ sector.nom }}</a>
-                                </h4>
+        /* habillage */
+        .hierarchie_result_lvls li {
+            display: block;
+            font-family: 'Arial';
+            font-size: 15px;
+            padding: 0.2em;
+            border: 1px solid transparent;
+        }
+        .hierarchie_result_lvls li:hover {
+            border: 1px solid grey;
+            border-radius: 3px;
+            background-color: lightgrey;
+        }
+    </style>
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-4" style="padding-left:0">
+                <div class="panel-group" id="accordion">
+                    {% for key, sector in sectors %}
+                        {% if sector.secteurActeurParent == null  %}
+                            <div class="panel panel-default">
+                                <div class="panel-heading" >
+                                    <h4 class="panel-title">
+                                        <a href="{{ path('gcf_front_actorssectorpage', { 'id': sector.id}) }}" style="text-decoration: none;">{{ sector.nom }}</a>
+                                    </h4>
+                                </div>
                             </div>
-                            {%  if key == 0 %}
-                                {% set classActive = 'in' %}
-                            {% else %}
-                                {% set classActive = ' ' %}
-                            {% endif %}
-                            <div id="collapse{{ key }}" class="panel-collapse collapse {{ classActive }}">
+                        {% endif %}
+                    {% endfor %}
 
-                                <ul class="list-group">
-                                    {% for key, sectorFils in sectorsFils %}
-
-                                        {% if sectorFils.secteurActeurParent == sector.nom %}
-
-                                            <li class="list-group-item" onclick="getFils('{{ sectorFils.nom }}')" style="cursor: pointer;"><a style="text-decoration: none;">{{ sectorFils.nom }}</a></li>
-
-                                        {% endif %}
-
-                                    {% endfor %}
-                                </ul>
-
-                            </div>
-
-                        </div>
-                    {% endif %}
-                {% endfor %}
-
+                </div>
             </div>
-        </div>
 
-        <div class="col-md-8">
-            <div class="hierarchie_result_niv_1">
-                ici
+            <div class="col-md-8">
+                <div class="hierarchie_result_lvls">
+                    {% block actorsSector %}
+                    {% endblock %}
+                </div>
             </div>
+
+
         </div>
-
-
     </div>
-</div>
 
 
     {% block organismePub %}{% endblock %}
@@ -65,32 +79,32 @@
 {% block javascripts %}
 
     <script>
-     function getFils( value ){
-         url = 'http://localhost/symfony/greenclimate/web/app_dev.php/fr/actors/get-actors/'+value;
-         alert  ('oK');
-         jQuery.ajax({
-             url: url,
-             type: 'POST',
-             dataType: 'json',
-             success:function(result , status) {
+        function getFils( value ){
+            url = 'http://localhost/symfony/greenclimate/web/app_dev.php/fr/actors/get-actors/'+value;
+            alert  ('oK');
+            jQuery.ajax({
+                url: url,
+                type: 'POST',
+                dataType: 'json',
+                success:function(result , status) {
 
-                 console.log(result, status);
-                 toappend = '<ul>';
-                 //console.log(result.length);
-                 resultlength = result.length;
+                    console.log(result, status);
+                    toappend = '<ul>';
+                    //console.log(result.length);
+                    resultlength = result.length;
 
-                 if (resultlength > 0) {
+                    if (resultlength > 0) {
 
-                     for (i = 0; i < resultlength; i++) {
+                        for (i = 0; i < resultlength; i++) {
 
-                         projectName = result[i].nom;
-                         projectParent = result[i].parent;
-                         projectFils = result[i].fils;
+                            projectName = result[i].nom;
+                            projectParent = result[i].parent;
+                            projectFils = result[i].fils;
 
-                         if (projectParent === 'null') {
+                            if (projectParent === 'null') {
 
-                             toappend += '<li>' + projectName + '</li>';
-                             toappend += '<ul>';
+                                toappend += '<li>' + projectName + '</li>';
+                                toappend += '<ul>';
 
                                 for ( let fils of projectFils ){
                                     for (j = 0; j < resultlength; j++){
@@ -133,72 +147,72 @@
                                     }
                                 }
 
-                             toappend += '</ul>';
-                         }
-                         break;
-                     }
+                                toappend += '</ul>';
+                            }
+                            break;
+                        }
 
-                     // for (i = 0; i < resultlength; i++) {
-                     //
-                     //     projectName = result[i].nom;
-                     //     projectParent = result[i].parent;
-                     //     projectFils = result[i].fils;
-                     //
-                     //     if ( projectParent !== 'null' ) {
-                     //
-                     //         toappend += '<ul>';
-                     //            // toappend += '<li>' + projectName + '</li>';
-                     //            // toappend += '<ul>';
-                     //
-                     //             for( k=0; k < projectFils.length; k++  ){
-                     //
-                     //                 toappend += '<li>' + projectFils[k] + '</li>';
-                     //                 toappend += '<ul>';
-                     //                 for (s = 0; s < resultlength; s++) {
-                     //                     if (result[s] === projectFils[k] ){
-                     //
-                     //                     }
-                     //                 }
-                     //                 // toappend += '</ul>';
-                     //             }
-                     //
-                     //            toappend += '</ul>';
-                     //         toappend += '</ul>';
-
-
-
-                             // toappend += '<ul>';
-                             //
-                             // for (j = 0; j < resultlength; j++) {
-                             //
-                             //     //console.log(i - 1);
-                             //     a = i - 1;
-                             //     if (a < 0) {
-                             //         a = 0;
-                             //     }
-                             //
-                             //     if (jQuery.inArray(projectName, result[a].fils)) {
-                             //
-                             //         toappend += '<li>' + projectName + '</li>';
-                             //
-                             //     }
-                             // }
-                             // toappend += '</ul>';
-                         //}
-                     //}
-                 }
+                        // for (i = 0; i < resultlength; i++) {
+                        //
+                        //     projectName = result[i].nom;
+                        //     projectParent = result[i].parent;
+                        //     projectFils = result[i].fils;
+                        //
+                        //     if ( projectParent !== 'null' ) {
+                        //
+                        //         toappend += '<ul>';
+                        //            // toappend += '<li>' + projectName + '</li>';
+                        //            // toappend += '<ul>';
+                        //
+                        //             for( k=0; k < projectFils.length; k++  ){
+                        //
+                        //                 toappend += '<li>' + projectFils[k] + '</li>';
+                        //                 toappend += '<ul>';
+                        //                 for (s = 0; s < resultlength; s++) {
+                        //                     if (result[s] === projectFils[k] ){
+                        //
+                        //                     }
+                        //                 }
+                        //                 // toappend += '</ul>';
+                        //             }
+                        //
+                        //            toappend += '</ul>';
+                        //         toappend += '</ul>';
 
 
 
-                 toappend += '</ul>';
-                 $('.hierarchie_result_niv_1').append(toappend);
-             },
-             error:function(error){
-                 console.log(error);
-                 jQuery('.result-search').append(error.responseText);
-             }
-         });
-     }
+                        // toappend += '<ul>';
+                        //
+                        // for (j = 0; j < resultlength; j++) {
+                        //
+                        //     //console.log(i - 1);
+                        //     a = i - 1;
+                        //     if (a < 0) {
+                        //         a = 0;
+                        //     }
+                        //
+                        //     if (jQuery.inArray(projectName, result[a].fils)) {
+                        //
+                        //         toappend += '<li>' + projectName + '</li>';
+                        //
+                        //     }
+                        // }
+                        // toappend += '</ul>';
+                        //}
+                        //}
+                    }
+
+
+
+                    toappend += '</ul>';
+                    $('.hierarchie_result_niv_1').append(toappend);
+                },
+                error:function(error){
+                    console.log(error);
+                    jQuery('.result-search').append(error.responseText);
+                }
+            });
+        }
 
 
 
