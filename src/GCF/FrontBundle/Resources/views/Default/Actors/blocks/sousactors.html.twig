@@ -4,6 +4,7 @@
     <i class="fa fa-angle-double-right"></i>
     <i class="fa fa-angle-double-down"></i>
     <label for="c{{ actor.id }}">{{ actor.nom }}</label>
+    <i class="fa fa-eye" aria-hidden="true" onclick="seeDetails( {{ actor.id }} )"></i>
         <ul>
         {% for key, sousactor in actor.acteurFils %}
             {{ render(controller('GCFFrontBundle:Actors:sousActors', { 'id': sousactor.id } )) }}
@@ -11,5 +12,10 @@
         </ul>
     {% else %}
         {{ actor.nom }}
+        <i class="fa fa-eye" aria-hidden="true" onclick="seeDetails( {{ actor.id }} )"></i>
     {% endif %}
 </li>
+
+
+
+

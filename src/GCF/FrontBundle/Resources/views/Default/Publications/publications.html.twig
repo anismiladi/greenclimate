@@ -24,6 +24,7 @@
     </style>
 
 
+
     <h1>Page publications</h1>
 
     <div>
@@ -31,29 +32,33 @@
             <ul class="nav nav-tabs nav_our_and_green_blogger">
                 <li class="active" id="our_pub_tab"><a>Nos Publications</a></li>
                 <li id="green_blogger_pub_tab"><a>Green bloggeur Publications</a></li>
-                <div class="navbar-right"><a class="btn btn-default " data-toggle="modal" data-target="#myModal">+ Green
-                        Blogger</a></div>
+                <div class="navbar-right">
+                    <a class="btn btn-default " data-toggle="modal" data-target="#myModal">+ Green Blogger</a>
+                </div>
             </ul>
         </div>
 
         <div id="our_pub_tab_container">
 
-            {% for i in 0..10 %}
+            {% for publication in publications %}
 
 
                 <div class="col-md-6 col-sm-6 col-xs-12"
                      style="background: whitesmoke;border: solid white; padding-top: 10px; padding-bottom:10px ">
                     <div class="row">
-                        <div class="col-md-5"><a href="#"><img src="http://placehold.it/200x200"
-                                                               class="img-responsive" style="width: 100%;" /></a></div>
+                        <div class="col-md-5">
+                            <a href="#">
+                                <img src="http://placehold.it/200x200" class="img-responsive" style="width: 100%;" />
+                            </a>
+                        </div>
                         <div class="col-md-7">
-                            <h4 class="name">Publication Titre</h4>
+                            <h4 class="name">{{ publication.titre }}</h4>
                             <h6 class="name"><strong>Date :</strong> 2009</h6>
-                            <p class="description" style="font-size: 13px;">Aenean tortor est, vulputate quis leo in,
-                                vehicula rhoncus lacus.</p>
-                            <p style="width: 100%; text-align: right"><a href="#"
-                                                                         style="padding: 5px; background: #22AA86; color: white; text-decoration: none">
-                                    Lire la suite. </a></p>
+                            <p class="description" style="font-size: 13px;">{{ publication.contenu|slice(0, 62) }}...</p>
+                            <p style="width: 100%; text-align: right">
+                                <a href="#" style="padding: 5px; background: #22AA86; color: white; text-decoration: none">
+                                    Lire la suite. </a>
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -95,7 +100,7 @@
 
 
     <!-- Modal -->
-    <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal fade" id="myModal" role="dialog"  style="overflow-y: scroll;">
         <div class="modal-dialog">
 
             <!-- Modal content-->

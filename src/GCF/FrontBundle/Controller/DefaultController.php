@@ -11,11 +11,6 @@ class DefaultController extends Controller
 
     public function indexAction(Request $request ){
 
-        $url = $request->getRequestUri();
-
-        $breadcrumbs = $this->get("white_october_breadcrumbs");
-
-        $breadcrumbs->addNamespaceItem("breadcrumbs", "home");
 
         return $this->render('@GCFFront/Default/index.html.twig');
     }

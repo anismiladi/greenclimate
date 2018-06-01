@@ -1,50 +1,14 @@
 {% extends '@GCFFront/Default/Actors/actors.html.twig' %}
-{% block styleBloc %}
-    <style type="text/css">
-    /* fonctionnel */
-    .hierarchie_result_lvl input {
-      display: none;
-    }
-    .hierarchie_result_lvl input ~ ul {
-     display: none;
-    }
-    .hierarchie_result_lvl input:checked ~ ul {
-     display: block;
-    }
-    .hierarchie_result_lvl input ~ .fa-angle-double-down {
-      display: none;
-    }
-    .hierarchie_result_lvl input:checked ~ .fa-angle-double-right {
-      display: none;
-    }
-    .hierarchie_result_lvl input:checked ~ .fa-angle-double-down {
-      display: inline;
-    }
-
-    /* habillage */
-    .hierarchie_result_lvl li {
-      display: block;
-      font-family: 'Arial';
-      font-size: 15px;
-      padding: 0.2em;
-      border: 1px solid transparent;
-    }
-    .hierarchie_result_lvl li:hover {
-      border: 1px solid grey;
-      border-radius: 3px;
-      background-color: lightgrey;
-    }
-  </style>
-{% endblock %}
 
 {% block actorsSector %}
 
-<h1>{{ sector.nom }}</h1>
-<ul>
-  {% for actor in actors %}
-    {{ render( controller('GCFFrontBundle:Actors:sousActors', { 'id': actor.id } )) }}
-  {% endfor %}
-</ul>
+    <h1>{{ sector.nom }}</h1>
+    <ul>
+        {% for actor in actors %}
+            {{ render( controller('GCFFrontBundle:Actors:sousActors', { 'id': actor.id } )) }}
+        {% endfor %}
+    </ul>
+
 {% endblock %}
 
 

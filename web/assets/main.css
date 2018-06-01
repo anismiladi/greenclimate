@@ -1,8 +1,3 @@
-*{
-    -webkit-transition-duration: 0.5s;
-    transition-duration: 0.5s;
-}
-
 
 .navbar-default .navbar-toggle .icon-bar{
     background-color: white !important; ;
@@ -110,7 +105,9 @@ header and top bar
     background: #22AA86;
     color: white;
 }
-
+.language_container{
+    direction: ltr;
+}
 .language_container .fa, .social_media_container .fa-phone{
     width: 25px;
     padding: 5px;

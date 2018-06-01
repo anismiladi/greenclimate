@@ -2,40 +2,78 @@
 {% block styleBloc %}
     <style>
         /* fonctionnel */
-        .hierarchie_result_niv_1 input {
+        .hierarchie_result_lvl input {
             display: none;
         }
-        .hierarchie_result_niv_1 input ~ ul {
+        .hierarchie_result_lvl input ~ ul {
             display: none;
         }
-        .hierarchie_result_niv_1 input:checked ~ ul {
+        .hierarchie_result_lvl input:checked ~ ul {
             display: block;
         }
-        .hierarchie_result_niv_1 input ~ .fa-angle-double-down {
+        .hierarchie_result_lvl input ~ .fa-angle-double-down {
             display: none;
         }
-        .hierarchie_result_niv_1 input:checked ~ .fa-angle-double-right {
+        .hierarchie_result_lvl input:checked ~ .fa-angle-double-right {
             display: none;
         }
-        .hierarchie_result_niv_1 input:checked ~ .fa-angle-double-down {
+        .hierarchie_result_lvl input:checked ~ .fa-angle-double-down {
             display: inline;
         }
 
         /* habillage */
-        .hierarchie_result_niv_1 li {
+        .hierarchie_result_lvl li {
             display: block;
             font-family: 'Arial';
             font-size: 15px;
             padding: 0.2em;
             border: 1px solid transparent;
         }
-        .hierarchie_result_niv_1 li:hover {
-            border: 1px solid grey;
+        .hierarchie_result_lvl li:hover {
+            border: 1px solid #b3b3b3;
             border-radius: 3px;
-            background-color: lightgrey;
         }
 
-        #accordion .panel-default .panel-title{cursor: pointer}
+        #accordion .panel-default .panel-heading{cursor: pointer}
+
+        .hierarchie_result_lvl ul{ padding-left: 15px }
+
+        .hierarchie_result_lvl li label{ cursor: pointer;}
+        .hierarchie_result_lvl li i.fa-eye{cursor: pointer; margin-left: 20px}
+
+        .page_overlay{
+            display: none;
+            position: fixed;
+            z-index: 1001;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            margin: auto;
+            background: rgba(34, 170, 134, 0.3);
+        }
+        .popup_details_container{
+            display: none;
+            position: fixed;
+            z-index: 1001;
+            margin: auto;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            background: white;
+            width: 700px;
+            height: 400px;
+        }
+        .page_overlay .close_popup{
+            color:white;
+            margin-right:10px;
+            margin-top: 8px;
+            position: absolute;
+            right: 0;
+            cursor: pointer;
+        }
+        .
     </style>
 {% endblock %}
 
@@ -48,28 +86,29 @@
                 <div class="panel-group" id="accordion">
                     {% for key, sector in sectors %}
 
-                            <div class="panel panel-default">
-                                <div class="panel-heading" data-toggle="collapse" data-parent="#accordion" href="#collapse{{ key }}" >
-                                    <h4 class="panel-title">
-
-                                        <a href="{{ path('gcf_front_actorssectorpage', { 'id': sector.id}) }}" style="text-decoration: none;">{{ sector.nom }}</a>
-                                         <i class="fa fa-caret-down" aria-hidden="true" style="float:right"></i>
-                                    </h4>
-                                </div>
-
-                                <div id="collapse{{ key }}" class="panel-collapse collapse">
-                                    <ul class="list-group">
-                                        {% for actor in actors %}
-                                            {% if ( actor.secteurActeur ==  sector.nom ) %}
-                                            <li class="list-group-item">{{ actor.nom }}</li>
-                                            {% endif %}
-                                        {% endfor %}
-                                    </ul>
-                                </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading" data-toggle="collapse" data-parent="#accordion" href="#collapse{{ key }}" >
+                                <h4 class="panel-title">
+                                    <a href="{{ path('gcf_front_actorssectorpage', { 'id': sector.id}) }}" style="text-decoration: none;">{{ sector.nom }}</a>
+                                     <i class="fa fa-caret-down" aria-hidden="true" style="float:right"></i>
+                                </h4>
                             </div>
+                            {% set in='' %}
+                            {% if key == 0 %}
+                                {% set in='in' %}
+                            {% endif %}
+                            <div id="collapse{{ key }}" class="panel-collapse collapse {{ in }}">
+                                <ul class="list-group">
+                                    {% for actor in actors %}
+                                        {% if ( actor.secteurActeur ==  sector.nom ) %}
+                                            <li class="list-group-item"><a href="{{ path('gcf_front_actorssectorpage', { 'id': sector.id}) }}"> {{ actor.nom }}</a> </li>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
 
                     {% endfor %}
-
                 </div>
             </div>
 
@@ -84,9 +123,52 @@
         </div>
     </div>
 
+    <div class="page_overlay" onclick="closePop()">
+        <i class="fa fa-times fa-2x close_popup" aria-hidden="true" onclick="closePop()"></i>
+    </div>
+    <div class="popup_details_container">
+
+    </div>
 {% endblock %}
 
 
 {% block javascripts %}
+    <script type="text/javascript" charset="utf-8">
+        function seeDetails(actor_id){
 
+            $('.page_overlay').css('display', 'block');
+
+            $('.popup_details_container').css('display', 'block');
+
+            var toAppend = '';
+            toAppend = '<table class="table table-striped ">';
+            toAppend +=  '<thead></thead>';
+            toAppend +=  '<tbody>';
+            toAppend +=  ' <tr>';
+            toAppend +=  '<td>ID</td>';
+            toAppend +=  '<td>'+actor_id+'</td>';
+            toAppend +=  '</tr>';
+            toAppend +=  '<tr>';
+            toAppend +=  '<td>Nom</td>';
+            toAppend +=  '<td></td>';
+            toAppend +=  '</tr>';
+            toAppend +=  '<tr>';
+            toAppend +=  '<td>...</td>';
+            toAppend +=  '<td></td>';
+            toAppend +=  '</tr>';
+            toAppend +=  '</tbody>';
+            toAppend +=  '</table>';
+
+            $('.popup_details_container').append(toAppend);
+        }
+        function closePop() {
+
+            $('.page_overlay').css('display', 'none');
+
+            $('.popup_details_container').empty();
+
+            $('.popup_details_container').css('display', 'none');
+
+        }
+    </script>
 {% endblock %}
