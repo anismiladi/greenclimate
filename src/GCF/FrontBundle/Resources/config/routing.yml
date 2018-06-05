@@ -43,3 +43,13 @@ gcf_front_elearningpage:
 gcf_front_searchpage:
     path:     /result
     defaults: { _controller: GCFFrontBundle:Search:search}
+
+
+
+gcf_front_actualitypage:
+    path:     /news
+    defaults: { _controller: GCFFrontBundle:Actuality:index}
+
+gcf_front_greenbloggerpage:
+    path:     /green-blogger
+    defaults: { _controller: GCFFrontBundle:GreenBlogger:index}

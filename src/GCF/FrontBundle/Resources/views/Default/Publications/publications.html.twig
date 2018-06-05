@@ -20,6 +20,10 @@
             display: none;
         }
 
+        #autres_pub_tab_container{
+            display:none;
+        }
+
 
     </style>
 
@@ -32,6 +36,7 @@
             <ul class="nav nav-tabs nav_our_and_green_blogger">
                 <li class="active" id="our_pub_tab"><a>Nos Publications</a></li>
                 <li id="green_blogger_pub_tab"><a>Green bloggeur Publications</a></li>
+                <li id="autres_pub_tab"><a>Autres</a></li>
                 <div class="navbar-right">
                     <a class="btn btn-default " data-toggle="modal" data-target="#myModal">+ Green Blogger</a>
                 </div>
@@ -90,6 +95,29 @@
 
             {% endfor %}
         </div>
+
+        <div id="autres_pub_tab_container">
+            {% for i in 0..10 %}
+
+                <div class="col-md-6 col-sm-6 col-xs-12"
+                     style=" background: rgba(255,239,0,0.1);border: solid white; padding-top: 10px; padding-bottom:10px ">
+                    <div class="row">
+                        <div class="col-md-5"><a href="#"><img src="http://placehold.it/200x200" class="img-responsive"/></a></div>
+                        <div class="col-md-7">
+                            <h4 class="name">Publication {{ i }} Titre</h4>
+                            <h6 class="name"><strong>Date :</strong> 2009</h6>
+                            <p class="description" style="font-size: 13px;">Aenean tortor est, vulputate quis leo in,
+                                vehicula rhoncus lacus.</p>
+                            <p style="width: 100%; text-align: right">
+                                <a href="#" style="padding: 5px; background: rgba(255,239,0,0.4); color: white; text-decoration: none">
+                                    Lire la suite. </a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            {% endfor %}
+        </div>
     </div>
 
 
@@ -136,8 +164,11 @@
 
             jQuery('#our_pub_tab_container').css('display', 'block');
             jQuery('#green_blogger_pub_tab_container').css('display', 'none');
+            jQuery('#autres_pub_tab_container').css('display', 'none');
+
             jQuery('#our_pub_tab').addClass('active');
             jQuery('#green_blogger_pub_tab').removeClass('active');
+            jQuery('#autres_pub_tab').removeClass('active');
 
         });
 
@@ -145,10 +176,26 @@
 
             jQuery('#green_blogger_pub_tab_container').css('display', 'block');
             jQuery('#our_pub_tab_container').css('display', 'none');
+            jQuery('#autres_pub_tab_container').css('display', 'none');
+
             jQuery('#green_blogger_pub_tab').addClass('active');
             jQuery('#our_pub_tab').removeClass('active');
+            jQuery('#autres_pub_tab').removeClass('active');
 
         });
+
+        jQuery('#autres_pub_tab').click(function () {
+
+            jQuery('#autres_pub_tab_container').css('display', 'block');
+            jQuery('#green_blogger_pub_tab_container').css('display', 'none');
+            jQuery('#our_pub_tab_container').css('display', 'none');
+
+            jQuery('#autres_pub_tab').addClass('active');
+            jQuery('#our_pub_tab').removeClass('active');
+            jQuery('#green_blogger_pub_tab').removeClass('active');
+
+        });
+
     </script>
 {% endblock %}
 

@@ -3,16 +3,16 @@
 {% block title %} E-learning {% endblock %}
 {% block body %}
     <style>
-        .nav_our_and_green_blogger{
+        .navigation_elearning{
             margin-bottom: 40px;
         }
-        .nav_our_and_green_blogger li{
+        .navigation_elearning li{
             font-weight: 600;cursor: pointer;
         }
-        .nav_our_and_green_blogger a{
+        .navigation_elearning a{
             color: #22AA86;
         }
-        #green_blogger_pub_tab_container{
+        #legislatives_tab_container{
             display: none;
         }
         .listing{
@@ -47,7 +47,7 @@
             color: #fff;
             font-size: 12px;
         }
-        #our_pub_tab, #green_blogger_pub_tab{
+        #technique_tab, #legislatives_tab{
             padding:0;
         }
         #model_video{
@@ -74,41 +74,56 @@
 
     <div>
         <div class="col-md-12">
-            <ul class="nav nav-tabs nav_our_and_green_blogger">
-                <li class="active col-md-6" id="our_pub_tab"><a >Technique</a></li>
-                <li class="col-md-6" id="green_blogger_pub_tab"><a >Législatives</a></li>
+            <ul class="nav nav-tabs navigation_elearning">
+                <li class="active col-md-6" id="technique_tab"><a >Technique</a></li>
+                <li class="col-md-6" id="legislatives_tab"><a >Législatives</a></li>
             </ul>
         </div>
 
-        <div id="our_pub_tab_container">
+        <div id="technique_tab_container">
 
             {% for i in 0..4 %}
 
 
-                <div class="col-md-6 col-sm-6 col-xs-12">
-                    <div class="listing">
-                        <h4>Vidéo titre</h4>
-                        <div class="type">
-                            <a>
-                                <img id="open_modal_read_video" src="{{ asset('assets/images/YouTube-icon.png') }}" title="Lire la vidéo">
-                            </a>
-                        </div>
-                        <p>Date de publication : 2018</p>
-                        <div class="details">
-                            <p><strong>Adresse :</strong> Lorem ipsum</p>
-                            <p><strong>Type :</strong> Lorem ipsum dolor </p>
-                            <p><strong>Focus :</strong>Lorem</p>
-                            <p><strong>Secteur :</strong>ipsum</p>
-                            <p><strong>Mots clés :</strong>Lorem ipsum, Lorem ipsum dolor sit amet, Lorem dolor, ipsum, Lorem, amet</p>
+                <div class="col-md-6 col-sm-6 col-xs-12"
+                     style="background: #f2fffc;border: solid white; padding-top: 10px; padding-bottom:10px ">
+                    <div class="row">
+                        <div class="col-md-5"><a href="#"><iframe style="max-width: 100%;max-height: 100%" src="https://www.youtube.com/embed/NBRLeyI9Dfk?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></a></div>
+
+                        <div class="col-md-7">
+                            <h4 class="name">Publication Titre</h4>
+                            <h6 class="name"><strong>Date :</strong> 2009</h6>
+                            <p class="description" style="font-size: 13px;">Aenean tortor est, vulputate quis leo in,
+                                vehicula rhoncus lacus.</p>
                         </div>
                     </div>
                 </div>
+
+
+                {#<div class="col-md-6 col-sm-6 col-xs-12">#}
+                    {#<div class="listing">#}
+                        {#<h4>Vidéo titre</h4>#}
+                        {#<div class="type">#}
+                            {#<a>#}
+                                {#<img id="open_modal_read_video" src="{{ asset('assets/images/YouTube-icon.png') }}" title="Lire la vidéo">#}
+                            {#</a>#}
+                        {#</div>#}
+                        {#<p>Date de publication : 2018</p>#}
+                        {#<div class="details">#}
+                            {#<p><strong>Adresse :</strong> Lorem ipsum</p>#}
+                            {#<p><strong>Type :</strong> Lorem ipsum dolor </p>#}
+                            {#<p><strong>Focus :</strong>Lorem</p>#}
+                            {#<p><strong>Secteur :</strong>ipsum</p>#}
+                            {#<p><strong>Mots clés :</strong>Lorem ipsum, Lorem ipsum dolor sit amet, Lorem dolor, ipsum, Lorem, amet</p>#}
+                        {#</div>#}
+                    {#</div>#}
+                {#</div>#}
 
             {% endfor %}
 
         </div>
 
-        <div id="green_blogger_pub_tab_container">
+        <div id="legislatives_tab_container">
 
             {% for i in 0..4 %}
 
@@ -145,21 +160,21 @@
 
 {% block javascripts %}
     <script>
-        jQuery('#our_pub_tab').click(function () {
+        jQuery('#technique_tab').click(function () {
 
-            jQuery('#our_pub_tab_container').css('display', 'block');
-            jQuery('#green_blogger_pub_tab_container').css('display', 'none');
-            jQuery('#our_pub_tab').addClass('active');
-            jQuery('#green_blogger_pub_tab').removeClass('active');
+            jQuery('#technique_tab_container').css('display', 'block');
+            jQuery('#legislatives_tab_container').css('display', 'none');
+            jQuery('#technique_tab').addClass('active');
+            jQuery('#legislatives_tab').removeClass('active');
 
         });
 
-        jQuery('#green_blogger_pub_tab').click(function () {
+        jQuery('#legislatives_tab').click(function () {
 
-            jQuery('#green_blogger_pub_tab_container').css('display', 'block');
-            jQuery('#our_pub_tab_container').css('display', 'none');
-            jQuery('#green_blogger_pub_tab').addClass('active');
-            jQuery('#our_pub_tab').removeClass('active');
+            jQuery('#legislatives_tab_container').css('display', 'block');
+            jQuery('#technique_tab_container').css('display', 'none');
+            jQuery('#legislatives_tab').addClass('active');
+            jQuery('#technique_tab').removeClass('active');
 
         });
     </script>

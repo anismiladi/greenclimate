@@ -10,43 +10,44 @@
 
         .paginate_button.previous, .paginate_button.next{ display: none; }
 
+        .filter_container{margin: 10px 0; padding: 0; border-left: solid #22AA86;}
+        .filter_select_projects{padding-top: 5px;padding-bottom: 5px; width: 100%; max-width:100%; margin: 5px 0;}
+        .filter_select_projects option{color:gray}
+        #myTable thead tr{background: #22AA86; color: white;}
     </style>
 {% endblock %}
 {% block body %}
 
 
 
-    <div class="col-md-12" style="margin: 10px 0; padding: 0; border-left: solid #22AA86;">
-        <div class="col-md-12">
-            <h2>Filtre:</h2>
-        </div>
+    <div class="col-md-12 filter_container">
         <div class="col-md-3">
-            <select class="filter_select_projects col-md-12" name="" id="byGouvernorate" style="padding-top: 16px;padding-bottom: 16px; width: 100%; max-width:100%; margin: 5px 0;">
-                <option value="" style="color:gray">Tous les Gouvernorats</option>
+            <select class="filter_select_projects col-md-12" name="" id="byGouvernorate">
+                <option value="" >Tous les Gouvernorats</option>
                 {% for gouv in gouvernorates  %}
                     <option value="{{ gouv.nom }}">{{ gouv.nom }}</option>
                 {% endfor %}
             </select>
         </div>
         <div class="col-md-3">
-            <select class="filter_select_projects col-md-12" name="" id="byOrganisme" style="padding-top: 16px;padding-bottom: 16px; width: 100%; max-width: 100%; margin: 5px 0;">
-                <option value="" style="color:gray"> Tous les Organismes</option>
+            <select class="filter_select_projects col-md-12" name="" id="byOrganisme" >
+                <option value="" > Tous les Organismes</option>
                 {% for organisme in organismes  %}
                     <option value="{{ organisme.nom }}">{{ organisme.nom}}</option>
                 {% endfor %}
             </select>
         </div>
         <div class="col-md-3">
-            <select class="filter_select_projects col-md-12" name="" id="bySecteur" style="padding-top: 16px;padding-bottom: 16px; width: 100%; max-width:100%; margin: 5px 0;">
-                <option value="" style="color:gray">Tous les Secteurs</option>
+            <select class="filter_select_projects col-md-12" name="" id="bySecteur">
+                <option value="" >Tous les Secteurs</option>
                 {% for secteur in secteurs  %}
                     <option value="{{ secteur.nom }}">{{ secteur.nom }}</option>
                 {% endfor %}
             </select>
         </div>
         <div class="col-md-3">
-            <select class="filter_select_projects col-md-12" name="" id="byFocus" style="padding-top: 16px;padding-bottom: 16px; width: 100%; max-width:100%; margin: 5px 0; ">
-                <option value="" style="color:gray">Tous les Focus</option>
+            <select class="filter_select_projects col-md-12" name="" id="byFocus">
+                <option value="" >Tous les Focus</option>
                 {% for focus in focuss  %}
                     <option value="{{ focus.nom }}">{{ focus.nom }}</option>
                 {% endfor %}
@@ -58,46 +59,51 @@
     <div class="col-md-12">
         <table id="myTable" class="table table-bordered table-striped display" cellspacing="0">
             <thead>
-            <tr style="background: #22AA86; color: white;">
-                <th>Nom</th>
 
-                <th>Gouvernorat</th>
+                <tr>
+                    <th>Nom</th>
 
-                <th>Organisme</th>
+                    <th>Gouvernorat</th>
 
-                <th>Secteur</th>
+                    <th>Organisme</th>
 
-                <th>Focus</th>
+                    <th>Secteur</th>
 
-            </tr>
+                    <th>Focus</th>
+
+                </tr>
+
             </thead>
             <tbody class="result-search">
-            {% for project in projects %}
-                <tr>
-                    <td><a href="{{ path('gcf_front_projectsinglepage', {'id': project.id} ) }}"> {{ project.nom }}</a></td>
 
-                    <td>
-                        {% for gouvernorat in project.gouvernorat %}
-                            {{ gouvernorat.nom }}
-                        {% endfor %}
-                    </td>
+                {% for project in projects %}
+                    <tr>
+                        <td>
+                            <a href="{{ path('gcf_front_projectsinglepage', {'id': project.id} ) }}">{{ project.nom }}</a>
+                        </td>
 
-                    {#organisme---->#}
-                    <td>
-                        {% if project.acteur != null %}
-                            {% if project.acteur.secteurActeur != null %}
-                                {% if (project.acteur.secteurActeur.secteurActeurParent == null) %}
-                                    {{ project.acteur.secteurActeur.nom }}
-                                {% else %}
-                                    {{ project.acteur.secteurActeur.secteurActeurParent.nom }}
+                        <td>
+                            {% for gouvernorat in project.gouvernorat %}
+                                {{ gouvernorat.nom }}
+                            {% endfor %}
+                        </td>
+
+                        {#organisme---->#}
+                        <td>
+                            {% if project.acteur != null %}
+                                {% if project.acteur.secteurActeur != null %}
+                                    {% if (project.acteur.secteurActeur.secteurActeurParent == null) %}
+                                        {{ project.acteur.secteurActeur.nom }}
+                                    {% else %}
+                                        {{ project.acteur.secteurActeur.secteurActeurParent.nom }}
+                                    {% endif %}
                                 {% endif %}
                             {% endif %}
-                        {% endif %}
-                    </td>
+                        </td>
 
-                    <td>{{ project.secteurProjet.nom }}</td>
+                        <td>{{ project.secteurProjet.nom }}</td>
 
-                    {% spaceless %}
+                        {% spaceless %}
                         <td>
                             <ul>
                                 {% for focus in project.focus %}
@@ -105,13 +111,12 @@
                                 {% endfor %}
                             </ul>
                         </td>
-                    {% endspaceless %}
+                        {% endspaceless %}
 
+                    </tr>
+                {% endfor %}
 
-                </tr>
-            {% endfor %}
             </tbody>
-
         </table>
     </div>
 
@@ -130,7 +135,7 @@
 
                 "lengthChange": false,
                 //"lengthMenu": [ 5, 10, 20 ],
-                "lengthMenu": [ 5, 10, 20 ],
+                "lengthMenu": [ 10, 20 ],
 
                 "ordering": true,
 

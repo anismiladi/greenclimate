@@ -93,6 +93,7 @@ class ActorsController extends Controller
             array( 'secteurActeurParent' => Null)
         );
 
+
         return $this->render('@GCFFront/Default/Actors/actorsSector.html.twig',array(
             'sector' => $sector,
             'actors' => $actors,

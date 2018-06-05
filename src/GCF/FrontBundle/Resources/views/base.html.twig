@@ -71,12 +71,14 @@
                 <div class="container">
 
                     <div class="navbar-header">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar" style=" border-radius: 0;">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="{{ path('gcf_front_homepage') }}" style="padding: 0"><img src="{{ asset('assets/images/GCF-white-LOGO.png') }}" alt="GCF-Logo" style="max-width: 190px"></a>
+                        <a class="navbar-brand" href="{{ path('gcf_front_homepage') }}">
+                            <img src="{{ asset('assets/images/GCF-logo-final-green.png') }}" alt="GCF-Logo">
+                        </a>
 
                     </div>
 
@@ -97,6 +99,13 @@
                             <li>
                                 <a href="{{ path('gcf_front_elearningpage') }}">{{ 'menu.E-learning'|trans }}</a>
                             </li>
+                            <li>
+                                <a href="{{ path('gcf_front_actualitypage') }}">{{ 'menu.News'|trans }}</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('gcf_front_greenbloggerpage') }}" style="padding: 5px 10px !important; border-radius: 2px; margin: 5px auto;background: rgba(122, 201, 67, 1);">{{ 'menu.GreenBlogger'|trans }}</a>
+                            </li>
+
                         </ul>
                     </div>
                 </div>
@@ -117,10 +126,9 @@
 
                         <div class="container">
 
-                            <img class="slogan_banner_img" src="{{ asset('assets/images/GCF-FULL-LOGO.png') }}" alt="GCF">
                             <h2 class="slogan_banner_txt">Think green</h2>
 
-                            <form action="" class="col-md-10 col-md-offset-1 home_banner_search">
+                            <form action="{{ path('gcf_front_searchpage') }}" class="col-md-10 col-md-offset-1 home_banner_search">
 
                                 <div class="form-group col-md-5" style="margin: 0;">
                                     <input type="text" placeholder="Recherche" class="form-control" id="search">
@@ -201,7 +209,7 @@
                 object-fit: cover;
                 margin-bottom: 40px;
             }
-            .under_header_navigation div{
+            .under_header_navigation > div{
                 position: absolute;
                 bottom: 0;
                 left: 0;
@@ -212,19 +220,37 @@
                 bottom: 0;
                 left: 0;
                 right: 0;
-                width: 100%;
+                margin-bottom: 20px;
+                list-style: none;
+                border-radius: 4px;
             }
+            .custom_breadcrumb h1{margin:0; font-size: 24px; padding: 5px; font-weight: 600}
+
+            .custom_breadcrumb .breadcrumb{text-align: right}
+
+            .custom_breadcrumb > div { border-radius: 4px; padding: 0;}
+
         </style>
 
         <div class="under_header_navigation">
-            <div class="container" style="">
-                <ol class="breadcrumb custom_breadcrumb">
-                    <li><a href="{{ path('gcf_front_homepage') }}">Accueil</a></li>
-                    <li><a href="#">Library</a></li>
-                    <li class="active"><a href="" class="actual_page" style="color: gray">Data</a></li>
-                </ol>
+            <div class="container custom_breadcrumb">
+                <div class="col-md-12">
+                    <div>
+                        <div class=" col-md-6" >
+                            <h1>Page Name</h1>
+                        </div>
+                        <div class=" col-md-6">
+                            <ol class="breadcrumb" style="margin: 0; background: transparent">
+                                <li><a href="{{ path('gcf_front_homepage') }}">Accueil</a></li>
+                                <li><a href="#">Library</a></li>
+                                <li class="active"><a href="" class="actual_page" style="color: gray">Data</a></li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+
 
     {% endif %}
     {#<div class="banner" style="margin-top:-71px">#}
@@ -235,11 +261,11 @@
 
 <div class="main-page-site">
     <div class="container ">
-        <div class="col-md-9 col-sm-12" style="border-right: solid 1px #e7e7e7;margin: 10px 0;">
+        <div class="col-md-9 col-sm-12" style="padding: 0;">
             {% block body %}{% endblock %}
 
         </div>
-        <div class="col-md-3 col-sm-12">
+        <div class="col-md-3 col-sm-12 side_bar_custom">
 
             <div class="col-md-12">
                 <svg height="487.5" version="1.1" width="230" xmlns="http://www.w3.org/2000/svg" style="overflow: hidden; position: relative;">
@@ -322,7 +348,7 @@
 
             </div>
             <div class="col-md-12" style="display: flex">
-                <img class="sidebar_patenaire_img" src="http://placehold.it/231x50" style="max-width: 100%;">
+                <img class="sidebar_patenaire_img" src="http://placehold.it/231x100" style="max-width: 100%;">
             </div>
 
         </div>
@@ -331,6 +357,51 @@
 
 
 </div><!-- End main page site -->
+
+<div id="button_newsletter" class="button_newsletter" title="Newsletter">
+    <i class="fa fa-envelope"></i>
+</div><!-- End newsletter -->
+
+<div class="close_my_newsletter_modal">
+<!-- Modal -->
+</div>
+<div class="my_newsletter_modal">
+    <div class="my_newsletter_form">
+        <div class="close_newsletter">
+            <i class="fa fa-times-circle" aria-hidden="true"></i>
+        </div>
+        <div class="my_newsletter_form_header">
+
+        </div>
+        <div class="my_newsletter_form_inner">
+            <form action="#">
+                {#ajax function instead#}
+
+                <div class="form-group">
+                    <label for="name">Nom:</label>
+                    <input type="text" class="form-control" id="name" placeholder="Nom" name="name">
+                </div>
+                <div class="form-group">
+                    <label for="lastname">Prenom:</label>
+                    <input type="text" class="form-control" id="lastname" placeholder="Prenom" name="lastName">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" class="form-control" id="email" placeholder="Email" name="email">
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary form-control" style=" background: #7ac943; border-color: #7ac943;">Souscrire</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div id="button_go_top" class="button_go_top" >
+    <i class="fa fa-chevron-up" aria-hidden="true" onclick="topFunction()"></i>
+</div><!-- End newsletter -->
+
+
 {#web site footer#}
 <div class="footer-basic">
     <footer>
@@ -338,9 +409,9 @@
             <div class="row">
                 <div class="col-md-4 col-sm-4 footer_logo_description item" >
                     <div class="footer_social_media_header">
-                        <img class="footer_logo_GCF" src="{{ asset('assets/images/GCF-white-LOGO.png') }}" alt="" style="">
+                        <img class="footer_logo_GCF" src="{{ asset('assets/images/GCF-logo-final-green.png') }}" alt="" style="">
                         <div style="border: solid 0.5px white; height: 50px; margin: auto;"></div>
-                        <img class="footer_logo_RAJ" src="{{ asset('assets/images/RAJ-white-logo.png') }}" alt="" style="">
+                        <img class="footer_logo_RAJ" src="{{ asset('assets/images/RAJ-red-logo.png') }}" alt="" style="">
                     </div>
                     <div class="footer_description_GCF">
                         GCF a pour objectif de fournir aux utilisateurs une base de données en ligne
@@ -436,6 +507,45 @@
     //     ]
     // });
 </script>
+
+<script>
+
+    $('#button_newsletter').click(function () {
+        $('.my_newsletter_modal').css('display', 'block' );
+        $('.close_my_newsletter_modal').css('display', 'block' );
+
+    });
+
+    $('.close_my_newsletter_modal').click(function () {
+        $('.my_newsletter_modal').css('display', 'none' );
+        $('.close_my_newsletter_modal').css('display', 'none' );
+    });
+
+    $('.close_newsletter').click(function () {
+        $('.my_newsletter_modal').css('display', 'none' );
+        $('.close_my_newsletter_modal').css('display', 'none' );
+    });
+
+</script>
+<script>
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function() {scrollFunction()};
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+            document.getElementById("button_go_top").style.display = "block";
+        } else {
+            document.getElementById("button_go_top").style.display = "none";
+        }
+    }
+
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+</script>
+
 {% block javascripts %}{% endblock %}
 </body>
 </html>

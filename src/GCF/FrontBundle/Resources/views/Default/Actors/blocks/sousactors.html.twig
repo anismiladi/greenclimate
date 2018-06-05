@@ -1,18 +1,19 @@
 <li>
     {% if actor.acteurFils|length > 0 %}
     <input type="checkbox" id="c{{ actor.id }}" />
-    <i class="fa fa-angle-double-right"></i>
-    <i class="fa fa-angle-double-down"></i>
-    <label for="c{{ actor.id }}">{{ actor.nom }}</label>
-    <i class="fa fa-eye" aria-hidden="true" onclick="seeDetails( {{ actor.id }} )"></i>
+
+    <label for="c{{ actor.id }}">
+        <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+        <i class="fa fa-hand-o-down" aria-hidden="true"></i>
+    </label>
+    <span onclick="seeDetails( {{ actor.id }} )">{{ actor.nom }}</span>
         <ul>
         {% for key, sousactor in actor.acteurFils %}
             {{ render(controller('GCFFrontBundle:Actors:sousActors', { 'id': sousactor.id } )) }}
         {% endfor %}
         </ul>
     {% else %}
-        {{ actor.nom }}
-        <i class="fa fa-eye" aria-hidden="true" onclick="seeDetails( {{ actor.id }} )"></i>
+        <span onclick="seeDetails( {{ actor.id }} )">{{ actor.nom }}</span>
     {% endif %}
 </li>
 
