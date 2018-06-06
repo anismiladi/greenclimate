@@ -10,9 +10,7 @@
     <link rel="stylesheet" href="{{ asset('assets/font-awesome-4.7.0/css/font-awesome.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/slick/slick.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/slick/slick-theme.css') }}">
-    
     {% block styleBloc %}{% endblock %}
-    {% block scriptBloc %}{% endblock %}
 </head>
 
 <body>
@@ -73,12 +71,14 @@
                 <div class="container">
 
                     <div class="navbar-header">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar" style=" border-radius: 0;">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="{{ path('gcf_front_homepage') }}" style="padding: 0"><img src="{{ asset('assets/images/GCF-white-LOGO.png') }}" alt="GCF-Logo" style="max-width: 190px"></a>
+                        <a class="navbar-brand" href="{{ path('gcf_front_homepage') }}">
+                            <img src="{{ asset('assets/images/GCF-logo-final-green.png') }}" alt="GCF-Logo">
+                        </a>
 
                     </div>
 
@@ -99,6 +99,13 @@
                             <li>
                                 <a href="{{ path('gcf_front_elearningpage') }}">{{ 'menu.E-learning'|trans }}</a>
                             </li>
+                            <li>
+                                <a href="{{ path('gcf_front_actualitypage') }}">{{ 'menu.News'|trans }}</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('gcf_front_greenbloggerpage') }}" style="padding: 5px 10px !important; border-radius: 2px; margin: 5px auto;background: rgba(122, 201, 67, 1);">{{ 'menu.GreenBlogger'|trans }}</a>
+                            </li>
+
                         </ul>
                     </div>
                 </div>
@@ -119,10 +126,9 @@
 
                         <div class="container">
 
-                            <img class="slogan_banner_img" src="{{ asset('assets/images/GCF-FULL-LOGO.png') }}" alt="GCF">
                             <h2 class="slogan_banner_txt">Think green</h2>
 
-                            <form action="" class="col-md-10 col-md-offset-1 home_banner_search">
+                            <form action="{{ path('gcf_front_searchpage') }}" class="col-md-10 col-md-offset-1 home_banner_search">
 
                                 <div class="form-group col-md-5" style="margin: 0;">
                                     <input type="text" placeholder="Recherche" class="form-control" id="search">
@@ -195,7 +201,7 @@
         <style>
             .under_header_navigation{
 
-                background-image: url("http://127.0.0.1:8000/assets/images/BACKGROUND.jpg");
+                background-image: url("{{ asset('assets/images/BACKGROUND.jpg') }}");
                 position: relative;
                 width: 100%;
                 height: 200px;
@@ -203,7 +209,7 @@
                 object-fit: cover;
                 margin-bottom: 40px;
             }
-            .under_header_navigation div{
+            .under_header_navigation > div{
                 position: absolute;
                 bottom: 0;
                 left: 0;
@@ -212,18 +218,40 @@
             .custom_breadcrumb{
                 position: absolute;
                 bottom: 0;
-                width: 100%;
+                left: 0;
+                right: 0;
+                margin-bottom: 20px;
+                list-style: none;
+                border-radius: 4px;
             }
+            .custom_breadcrumb h1{margin:0; font-size: 24px; padding: 5px; font-weight: 600}
+
+            .custom_breadcrumb .breadcrumb{text-align: right}
+
+            .custom_breadcrumb > div { border-radius: 4px; padding: 0;}
+
         </style>
+
         <div class="under_header_navigation">
-            <div class="container" style="">
-                <ol class="breadcrumb custom_breadcrumb">
-                    <li><a href="{{ path('gcf_front_homepage') }}">Accueil</a></li>
-                    <li><a href="#">Library</a></li>
-                    <li class="active"><a href="" class="actual_page" style="color: gray">Data</a></li>
-                </ol>
+            <div class="container custom_breadcrumb">
+                <div class="col-md-12">
+                    <div>
+                        <div class=" col-md-6" >
+                            <h1>Page Name</h1>
+                        </div>
+                        <div class=" col-md-6">
+                            <ol class="breadcrumb" style="margin: 0; background: transparent">
+                                <li><a href="{{ path('gcf_front_homepage') }}">Accueil</a></li>
+                                <li><a href="#">Library</a></li>
+                                <li class="active"><a href="" class="actual_page" style="color: gray">Data</a></li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+
+
     {% endif %}
     {#<div class="banner" style="margin-top:-71px">#}
     {#<img src="http://placehold.it/2400x500" style="max-width:100%" height="500px" alt="">#}
@@ -233,11 +261,11 @@
 
 <div class="main-page-site">
     <div class="container ">
-        <div class="col-md-9 col-sm-12" style="border-right: solid 1px #e7e7e7;margin: 10px 0;">
+        <div class="col-md-9 col-sm-12" style="padding: 0;">
             {% block body %}{% endblock %}
 
         </div>
-        <div class="col-md-3 col-sm-12">
+        <div class="col-md-3 col-sm-12 side_bar_custom">
 
             <div class="col-md-12">
                 <svg height="487.5" version="1.1" width="230" xmlns="http://www.w3.org/2000/svg" style="overflow: hidden; position: relative;">
@@ -269,7 +297,7 @@
                         <a xlink:title="Kasserine  " style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
                             <path d="m30.98363,117.55598l1.96129,0.65697l2.85015,0.86953l1.96128,1.09177l1.74874,0.22219l1.97095,0.22224l2.1835,-0.44444l4.81143,-1.9613l5.46842,-2.62794l3.05306,-2.18347l1.53617,-2.40575l0.65698,-1.97092l1.30429,-1.09177l0.22223,-1.314l1.31396,-0.65695l2.84048,-0.86958l1.97095,-1.31397l0.65697,-3.06266l0,-2.39603l-0.44442,-1.314l-0.86954,-0.65699l-0.65696,-0.43478l-0.65701,-0.2222l-1.09175,-0.43476l-0.43476,-1.09176l0,-1.5362l1.09177,-1.96127l1.52651,-0.87919l0.22221,-0.86953l0.21255,-0.8792l1.10141,-0.65698l1.30431,-0.86955l0.65699,-0.87918l0,-1.74875l-0.86955,-1.09175l-1.53617,-1.09177l-1.9613,-1.31395l-1.74873,-1.09173l-0.87919,-0.65698l-1.31396,-0.43478l-0.21255,-0.22224l-1.53619,-0.43476l-0.86953,-0.87921l0,-0.43474l-0.8792,-1.31396l-0.65697,-0.21257l-0.64734,0l-1.97094,-0.44444l-2.1835,-1.52652l-0.65699,-0.43474l-2.19318,-0.65701l-1.5265,-0.43474l-0.86954,-0.22224l-0.8792,0l-1.31396,0l-0.43478,1.09175l-0.86952,1.53621l0,1.30431l0,0.657l-0.44444,0.87915l-1.09176,0.65699l-0.86952,0l-1.09175,0l-1.10142,-1.09171l-0.65698,-0.44443l-1.52652,0.22218l-0.86954,0.43478l-0.8792,0.87917l-0.22221,0.43478l-1.30431,0.43476l-0.33816,0.03867l-0.31882,4.11579l-0.43477,3.49749l-0.65699,2.84045l0,1.97097l0.43477,1.74875l0.86953,1.7487l1.97095,3.27527l0.22222,0.44444l-0.22222,0.43473l-0.86954,0.65701l-1.10141,1.31398l-1.3043,2.39606l-0.65698,2.40571l-0.22221,3.71966l-0.43477,2.62794l0,3.71004l0.22222,0.65697l0.21255,1.09174l0.22221,0.65701l0,0.22222z"></path>
                         </a>
-                        <a xlink:title="Kébili  " style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+                        <a xlink:title="Kébili" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
                             <path d="m33.53427,216.87642l6.41525,-1.60397l12.01893,-3.06262l7.65191,-1.52637l4.37659,0l3.49761,-0.65698l5.68097,-1.31396l2.61836,-0.86969l1.97094,-0.43466l1.74866,-1.74866l1.74865,-0.8793l1.74866,-0.65695l1.74897,0.22226l1.97095,1.74866l2.40563,2.61835l1.96137,1.74866l1.09167,0.22229l1.74866,0.43472l-0.86938,-1.31396l-1.09197,-1.5267l-0.657,-2.61801l0.8697,-3.94193l0.87927,-3.06293l0.65698,-1.74866l-0.43499,-1.52637l-1.74866,-1.52663l-0.44427,-0.65703l0.22197,-0.657l0.2223,-1.52634l0.6474,-3.06293l-0.2127,-0.657l-0.4347,-0.87898l-1.31396,-0.43498l-3.06262,-1.09169l-1.31397,-1.09167l-0.21271,-0.43466l0,-0.8793l-0.44427,-0.22224l-3.27533,-3.27538l-3.9323,-5.02399l-0.222,-0.657l0.43469,-1.09166l0.44428,-1.10127l0.43499,-1.09196l0.4347,-0.65697l-0.65699,-0.43469l-1.09167,-1.74867l-2.18365,-1.74869l-2.62792,-1.31396l-1.31397,-1.09196l-1.96136,-3.06261l-1.74867,-3.4973l-0.22228,-2.18365l-1.09167,-4.15431l0.43469,-0.86969l0.65697,-2.40562l0.435,-2.40565l0,-1.31398l-0.21272,-0.43498l-0.22228,-1.09169l-1.52637,0l-1.53625,0.86967l-3.93232,0l-1.52637,0.657l-0.65699,1.09169l-0.87927,1.74864l-1.52636,0.4446l-0.43501,-0.65695l-1.74865,0l-1.53626,0.21236l-2.61803,0.4446l-1.53626,0l-1.74865,0.43471l-1.7972,-0.32864l0.04823,0.32864l0,1.31395l-0.86938,1.09167l-0.65698,1.74866l-1.52667,1.74896l-1.31396,1.96104l-1.74866,1.10158l-1.53626,1.09167l-1.09167,1.5267l-1.96137,1.31392l-1.53594,1.31398l-2.18366,1.09169l-1.52636,1.30437l-0.44459,0l-0.65698,1.53593l-0.86938,0.43498l-1.09189,1.09169l-0.87922,0.22231l-1.09174,1.31398l-1.31397,1.30408l-1.09176,0.44456l-0.21255,0.43471l-0.44443,0l-1.09173,0.657l-0.65699,1.09164l-0.65698,0.657l-0.43478,0.43501l-2.1835,1.09166l-2.1835,1.31396l-1.31396,0.65698l-2.4057,0.53146l0,0.99492l0,5.46855l0.43476,1.74864l0.87921,0.86971l0.86954,0.87897l2.4057,0.86972l1.31397,0.87923l2.1835,0.43469l2.40574,1.314l1.31396,0.22231l1.74872,0.43466l0.43478,0.22231l0,0.86937l0.43475,0.65697l1.09177,0.86971l2.85029,4.37659l2.61804,4.37662l1.09198,1.96136l0.22198,1.53625l0.22229,3.27502l0.6474,4.37689l0.22229,2.61801l0.22197,0.87927l0.14501,0.06772z"></path>
                         </a>
                         <a xlink:title="Le Kef  " style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
@@ -320,7 +348,7 @@
 
             </div>
             <div class="col-md-12" style="display: flex">
-                <img class="sidebar_patenaire_img" src="http://placehold.it/231x50" style="max-width: 100%;">
+                <img class="sidebar_patenaire_img" src="http://placehold.it/231x100" style="max-width: 100%;">
             </div>
 
         </div>
@@ -329,6 +357,51 @@
 
 
 </div><!-- End main page site -->
+
+<div id="button_newsletter" class="button_newsletter" title="Newsletter">
+    <i class="fa fa-envelope"></i>
+</div><!-- End newsletter -->
+
+<div class="close_my_newsletter_modal">
+<!-- Modal -->
+</div>
+<div class="my_newsletter_modal">
+    <div class="my_newsletter_form">
+        <div class="close_newsletter">
+            <i class="fa fa-times-circle" aria-hidden="true"></i>
+        </div>
+        <div class="my_newsletter_form_header">
+
+        </div>
+        <div class="my_newsletter_form_inner">
+            <form action="#">
+                {#ajax function instead#}
+
+                <div class="form-group">
+                    <label for="name">Nom:</label>
+                    <input type="text" class="form-control" id="name" placeholder="Nom" name="name">
+                </div>
+                <div class="form-group">
+                    <label for="lastname">Prenom:</label>
+                    <input type="text" class="form-control" id="lastname" placeholder="Prenom" name="lastName">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" class="form-control" id="email" placeholder="Email" name="email">
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary form-control" style=" background: #7ac943; border-color: #7ac943;">Souscrire</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div id="button_go_top" class="button_go_top" >
+    <i class="fa fa-chevron-up" aria-hidden="true" onclick="topFunction()"></i>
+</div><!-- End newsletter -->
+
+
 {#web site footer#}
 <div class="footer-basic">
     <footer>
@@ -336,9 +409,9 @@
             <div class="row">
                 <div class="col-md-4 col-sm-4 footer_logo_description item" >
                     <div class="footer_social_media_header">
-                        <img class="footer_logo_GCF" src="{{ asset('assets/images/GCF-white-LOGO.png') }}" alt="" style="">
+                        <img class="footer_logo_GCF" src="{{ asset('assets/images/GCF-logo-final-green.png') }}" alt="" style="">
                         <div style="border: solid 0.5px white; height: 50px; margin: auto;"></div>
-                        <img class="footer_logo_RAJ" src="{{ asset('assets/images/RAJ-white-logo.png') }}" alt="" style="">
+                        <img class="footer_logo_RAJ" src="{{ asset('assets/images/RAJ-red-logo.png') }}" alt="" style="">
                     </div>
                     <div class="footer_description_GCF">
                         GCF a pour objectif de fournir aux utilisateurs une base de données en ligne
@@ -406,8 +479,8 @@
 
 </div>
 
-<script src="{{ asset('assets/jquery/dist/jquery.js') }}"></script>
-<script src="{{ asset('assets/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('assets/jquery/dist/jquery.js') }}" type="text/javascript" charset="utf-8"></script>
+<script src="{{ asset('assets/bootstrap/dist/js/bootstrap.min.js') }}" type="text/javascript" charset="utf-8"></script>
 <script src="{{ asset('assets/slick/slick.min.js') }}" type="text/javascript" charset="utf-8"></script>
 <script>
     // $('.slider_projects').slick({
@@ -434,6 +507,45 @@
     //     ]
     // });
 </script>
+
+<script>
+
+    $('#button_newsletter').click(function () {
+        $('.my_newsletter_modal').css('display', 'block' );
+        $('.close_my_newsletter_modal').css('display', 'block' );
+
+    });
+
+    $('.close_my_newsletter_modal').click(function () {
+        $('.my_newsletter_modal').css('display', 'none' );
+        $('.close_my_newsletter_modal').css('display', 'none' );
+    });
+
+    $('.close_newsletter').click(function () {
+        $('.my_newsletter_modal').css('display', 'none' );
+        $('.close_my_newsletter_modal').css('display', 'none' );
+    });
+
+</script>
+<script>
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function() {scrollFunction()};
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+            document.getElementById("button_go_top").style.display = "block";
+        } else {
+            document.getElementById("button_go_top").style.display = "none";
+        }
+    }
+
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+</script>
+
 {% block javascripts %}{% endblock %}
 </body>
 </html>

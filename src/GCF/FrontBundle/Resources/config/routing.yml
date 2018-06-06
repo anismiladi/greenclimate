@@ -1,8 +1,8 @@
+#routing.yml
+
 gcf_front_homepage:
     path:     /
     defaults: { _controller: GCFFrontBundle:Default:index}
-
-
 
 
 gcf_front_actorspage:
@@ -12,26 +12,10 @@ gcf_front_actorspage:
 gcf_front_actorssectorpage:
     path:     /actors/secteur/{id}
     defaults: { _controller: GCFFrontBundle:Actors:ActorsSector }
-    
-gcf_front_opublicpage:
-    path:     /actors/organisme-public
-    defaults: { _controller: GCFFrontBundle:Actors:oPublic }
 
-gcf_front_oprivatepage:
-    path:     /actors/organisme-private
-    defaults: { _controller: GCFFrontBundle:Actors:oPrivate }
-
-gcf_front_scivilepage:
-    path:     /actors/societe-civile
-    defaults: { _controller: GCFFrontBundle:Actors:sCivile }
-
-gcf_front_parlementpage:
-    path:     /actors/parlement
-    defaults: { _controller: GCFFrontBundle:Actors:parlement }
-
-gcf_front_getActorspage:
-    path:     /actors/get-actors/{clicked}
-    defaults: { _controller: GCFFrontBundle:Actors:gethierarchie }
+#gcf_front_getActorspage:
+#    path:     /actors/get-actors/{clicked}
+#    defaults: { _controller: GCFFrontBundle:Actors:gethierarchie }
 
 
 
@@ -48,7 +32,6 @@ gcf_front_projectsinglepage:
     defaults: { _controller: GCFFrontBundle:Projects:singleProject}
 
 
-
 gcf_front_publicationspage:
     path:     /publications
     defaults: { _controller: GCFFrontBundle:Publications:index }
@@ -61,3 +44,12 @@ gcf_front_searchpage:
     path:     /result
     defaults: { _controller: GCFFrontBundle:Search:search}
 
+
+
+gcf_front_actualitypage:
+    path:     /news
+    defaults: { _controller: GCFFrontBundle:Actuality:index}
+
+gcf_front_greenbloggerpage:
+    path:     /green-blogger
+    defaults: { _controller: GCFFrontBundle:GreenBlogger:index}

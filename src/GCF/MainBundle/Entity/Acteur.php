@@ -46,7 +46,7 @@ class Acteur extends AbstractPersonalTranslatable implements TranslatableInterfa
      * @ORM\Column(name="nomcomplet", type="string", length=255)
      */
     private $nomcomplet;
-    
+
     /**
      * @var string
      *
@@ -120,7 +120,7 @@ class Acteur extends AbstractPersonalTranslatable implements TranslatableInterfa
      * @ORM\JoinColumn(name="etat", referencedColumnName="id")
      */
     private $etatPub;
-    
+
     /**
      * @var ArrayCollection
      *
@@ -131,7 +131,7 @@ class Acteur extends AbstractPersonalTranslatable implements TranslatableInterfa
      * )
      */
     protected $translations;
-    
+
     /**
      * @return mixed
      */
@@ -510,7 +510,7 @@ class Acteur extends AbstractPersonalTranslatable implements TranslatableInterfa
     public function __toString() {
         if ($this->getNom())
         {
-          return $this->getNom();
+            return $this->getNom();
         }
         else
             return "";

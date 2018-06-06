@@ -50,6 +50,12 @@ class ActeurAdmin extends AbstractAdmin
                     },
                 )
             );
+        /*
+        ->add('secteurActeur', ModelType::class, [
+            'attr' => [
+                'data-sonata-select2' => 'true'
+            ]
+        ])*/
             /*
             ->add('secteurActeur', ModelType::class, [
                 'attr' => [
@@ -68,14 +74,14 @@ class ActeurAdmin extends AbstractAdmin
         $listMapper->add('nom', TranslationFieldList::class)
             // You may also specify the actions you want to be displayed in the list
             ->add('_action', 'actions', array(
-                    'actions' => array(
-                //    'show' => array(),
+                'actions' => array(
+                    //    'show' => array(),
                     'edit' => array(),
                     'delete' => array(),
                 )
             ));
     }
-    
+
     public function prePersist($page)
     {
         $this->manageEmbeddedImageAdmins($page);
