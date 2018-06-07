@@ -78,8 +78,14 @@
 
                  {% for key, nb_by_proj in nbr_by_project %}
                  <div class="col-md-2 col-sm-2 col-sm-offset-1 col-md-offset-1 project_container">
-                     <center><img class="project_icon" src="{{ asset('assets/images/agriculture.png') }}" alt="Agriculture"> <br>
-                         <a class="project_name" href="#">P.{{ key }}</a>
+                     <center><img class="project_icon" src="http://via.placeholder.com/70x70" alt="Agriculture"> <br>
+                         <a class="project_name" href="#" title="{{ key }}">
+                             {% if key|length > 15 %}
+                                 P.{{ key|slice(0, 13) }}...
+                             {% else %}
+                                 P.{{ key}}
+                             {% endif %}
+                         </a>
                          <span class="badge project_number">{{ nb_by_proj  }}</span></center>
                  </div>
                  {% endfor %}
