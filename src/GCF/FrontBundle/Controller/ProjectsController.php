@@ -15,6 +15,8 @@ class ProjectsController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
+        $pageTitle = 'Projets';
+
         $gouvernorates = $em->getRepository('GCFMainBundle:Gouvernorat')->findAll();
 
         $organismes = $em->getRepository('GCFMainBundle:SecteurActeur')->findAll();
@@ -33,6 +35,7 @@ class ProjectsController extends Controller
         $focus = $em->getRepository('GCFMainBundle:Focus')->findAll();
 
         return $this->render('@GCFFront/Default/Projects/projects.html.twig',array(
+            'pageTitle' => $pageTitle,
             'gouvernorates' => $gouvernorates,
             'organismes' => $org,
             'secteurs' => $secteurs,
@@ -248,15 +251,64 @@ class ProjectsController extends Controller
     }
 
 
-    public function singleProjectAction($id){
+    public function singleProjectAction($id, Request $request){
+
+
 
         $em = $this->getDoctrine()->getManager();
 
-        $project = $em->getRepository('GCFMainBundle:Projet')->findOneBy(  array(
+        $project = $em->getRepository('GCFMainBundle:Projet')->findOneBy(array(
             'id' => $id
         ));
 
+        $pageTitle = 'Projet: '.substr($project->getNom(), 0, 30).'...';
+
+        $response = array();
+
+        $response['id'] = '';
+        $response['id'] = $project->getId();
+
+        $response['nom'] = '';
+        $response['nom'] = $project->getNom();
+
+        $response['description'] = '';
+        $response['description'] = $project->getDescription();
+
+        $response['secteurProjet'] = '';
+        $response['secteurProjet'] = $project->getSecteurProjet()->getNom();
+
+        $response['acteur'] = '';
+        if ( !empty($project->getActeur())  ){
+
+            $response['acteur'] = $project->getActeur()->getNom();
+
+        }
+
+        $response['focus'] = '';
+
+        foreach ( $project->getFocus() as $focus){
+
+                $response['focus'] = $focus->getNom();
+
+        }
+
+        $response['gouvernorat'] = '';
+
+        foreach ( $project->getGouvernorat() as $gouvernorat) {
+
+                $response['gouvernorat'] = $gouvernorat->getNom();
+
+        }
+
+
+        if($request->request->get('details-projet')) {
+
+            return new Response(json_encode($response));
+
+        }
+
         return $this->render('@GCFFront/Default/Projects/single-projects.html.twig',array(
+            'pageTitle' => $pageTitle,
             'project' => $project
         ));
     }

@@ -1,4 +1,7 @@
 {% extends '@GCFFront/base.html.twig' %}
+
+{% block title %}GCF - {{ pageTitle }}{% endblock %}
+
 {% block styleBloc %}
     <style>
         /* fonctionnel */
@@ -72,9 +75,12 @@
             right: 0;
             left: 0;
             background: white;
-            min-height: 300px;
-            height: 300px;
+            height: -moz-max-content;
+            height: -webkit-max-content;
+            height: max-content;
             width: 500px;
+            border-radius: 4px;
+            border: solid 2px #22aa86;
         }
 
         .popup_details_container .close_popup{

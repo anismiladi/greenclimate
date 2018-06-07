@@ -28,17 +28,24 @@ gcf_front_resultprojectspage:
     defaults: { _controller: GCFFrontBundle:Projects:resut  }
 
 gcf_front_projectsinglepage:
-    path: /projects/{id}
+    path: /get-projects-{id}
     defaults: { _controller: GCFFrontBundle:Projects:singleProject}
+
 
 
 gcf_front_publicationspage:
     path:     /publications
     defaults: { _controller: GCFFrontBundle:Publications:index }
 
+gcf_front_single_publications_page:
+    path:     /publications/{id}
+    defaults: { _controller: GCFFrontBundle:Publications:singlePublication }
+
+
 gcf_front_elearningpage:
     path:     /e-learning
     defaults: { _controller: GCFFrontBundle:Elearning:index }
+
 
 gcf_front_searchpage:
     path:     /result
@@ -53,3 +60,7 @@ gcf_front_actualitypage:
 gcf_front_greenbloggerpage:
     path:     /green-blogger
     defaults: { _controller: GCFFrontBundle:GreenBlogger:index}
+
+gcf_front_contactpage:
+    path:     /contact-us
+    defaults: { _controller: GCFFrontBundle:Contact:index}

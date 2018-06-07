@@ -11,6 +11,7 @@ class ActorsController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
+        $pageTitle = 'Acteurs';
 
         $sectors = $em->getRepository('GCFMainBundle:SecteurActeur')->findBy(
             array(
@@ -26,6 +27,7 @@ class ActorsController extends Controller
 
 
         return $this->render('@GCFFront/Default/Actors/actors.html.twig',array(
+            'pageTitle' => $pageTitle,
             'sectors' => $sectors,
             'actors' => $actors
 
@@ -93,11 +95,13 @@ class ActorsController extends Controller
             array( 'secteurActeurParent' => Null)
         );
 
+        $pageTitle = 'Sous secteur';
 
         return $this->render('@GCFFront/Default/Actors/actorsSector.html.twig',array(
             'sector' => $sector,
             'actors' => $actors,
             'sectors' => $sectors,
+            'pageTitle' => $pageTitle
         ));
 
     }

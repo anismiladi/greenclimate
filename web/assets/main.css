@@ -6,6 +6,10 @@
     background: #22AA86; /* Gecko Browsers */
     color:white;
 }
+*{
+    -webkit-transition-duration: 0.2s;
+    transition-duration: 0.2s;
+}
 
 .navbar-default .navbar-toggle .icon-bar{
     background-color: white !important; ;
@@ -40,6 +44,17 @@
     }
 }
 
+.button_see_more { padding: 5px 10px; background: #7ac943; color: white; border: 0;}
+.button_see_more_lg { padding: 5px 20px; background: #7ac943; color: white; border: 0;}
+.button_see_more_lg:hover, .button_see_more_lg:focus { background: #91e54a; color:white; text-decoration: none; }
+.button_see_more:hover, .button_see_more:focus { background: #91e54a; color:white; text-decoration: none; }
+
+.button_see_more_dg { padding: 5px 10px; background: #22AA86; color: white; border: 0;}
+.button_see_more_lg_dg {  padding: 5px 20px; background: #22AA86; color: white; border: 0; }
+.button_see_more_lg_dg:hover, .button_see_more_lg_dg:focus { background: #2bd9ac; color:white; text-decoration: none; }
+.button_see_more_dg:hover, .button_see_more_dg:focus { background: #2bbd90; color:white;  text-decoration: none; }
+
+
 /*
 =================================================
 
@@ -52,14 +67,23 @@ header and top bar
 ==================
 */
 .navbar-header button{border-radius: 0!important;}
+
 .navbar-header .navbar-brand {padding: 0;}
-.navbar-header .navbar-brand img{max-width: 130px !important;}
+
+.navbar-header .navbar-brand img{max-width: 130px;}
+
 .navbar-nav>li>a { font-size: 16px !important; font-weight: 600;line-height: 42px !important; color: white !important;padding-bottom: 10px !important; padding-top: 10px !important; }
+
 .navbar-nav>li>a:hover { color: #cccccc !important; }
+
 .bar_fixed_top{ padding: 10px 0;  background:#22AA86; color: white; }
+
 @media screen and (max-width: 1023px){
+
     .slogan_banner_img{display:none}
+
     .home_banner_search input, .home_banner_search select, .home_banner_search button{margin: 5px 0}
+
 }
 @media screen and (max-width: 767px){
 
@@ -94,8 +118,11 @@ header and top bar
     .rs_btns_containers .fa-phone:hover{ background: white ; color: #22AA86; }
 
     .navbar-header .navbar-brand {padding: 0 15px;}
-    .navbar-header .navbar-brand img{max-width: 100px !important}
+
+    .navbar-header .navbar-brand img{max-width: 100px }
+
     .navbar li a{line-height: 20px !important; font-weight: unset; font-size: 16px !important;}
+
 
 
     .slogan_banner_txt{  font-size: 30px; margin-bottom: 40px; }
@@ -103,6 +130,15 @@ header and top bar
     .footer-basic .copyright{font-size:12px}
 
     .side_bar_custom{position: relative;}
+
+    .language_container, .social_media_container { text-align: center; }
+
+    .slogan_banner_img{  max-width: 250px !important; }
+
+    .custom_navigation nav { padding: 10px 0; }
+
+    .affix .navbar-brand img{ max-width: 80px !important; }
+
 }
 .language_rs_container{display:none; }
 
@@ -168,12 +204,9 @@ header and top bar
     text-decoration: none;
 }
 @media (max-width: 767px){
-    .language_container, .social_media_container {
-        text-align: center;
-    }
-    .slogan_banner_img{  max-width: 250px !important; }
-    .custom_navigation nav { padding: 10px 0; }
+
 }
+
 .custom_carousel_caption{width: 100% }
 .carousel-inner .item > img{width:100%;max-height: 600px;min-height: 500px}
 .slogan_banner_img{  max-width: 400px; }
@@ -187,14 +220,23 @@ header and top bar
     border-color: transparent !important;
 }
 
-.navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover{
-    background-color: #22AA86 !important;
-}
+.navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover{ background-color: #7ac943 !important;}
 .navbar-right{margin-right:0 !important; }
 .custom_navigation{
     position: absolute;
     width: 100%;
+    z-index: 1000;
 }
+.affix{ top:0 !important; background: #b0b0b0; }
+
+.affix nav{ margin: 0; padding: 0 !important; }
+
+.affix .navbar-brand img{
+    padding: 5px 0;
+    max-width: 110px  ;
+}
+.affix  .navbar-nav>li>a{ font-size: 14px !important; }
+
 
 .custom_carousel_caption{
     width: 100% !important;
@@ -398,16 +440,6 @@ footer .footer_social_media_header{display: flex; height: 80px;}
 footer .footer_website_nav .footer_website_nav_menu {display: flex; height: 80px;}
 footer .rs_btns_footer_container{margin: 0 0 10px 0}
 
-
-
-.project_number_by_sectors .project_container{padding: 15px 8px; }
-.project_number_by_sectors .project_icon{  max-width: 70px; margin-bottom:  5px; border: solid 2px transparent; border-radius: 50%; padding: 5px; cursor: pointer;}
-.project_number_by_sectors .project_icon:hover{ border: solid 2px #aaaaaa; }
-.project_number_by_sectors .project_name{ text-decoration: none; font-size: 13px; font-weight: 600;}
-.project_number_by_sectors .project_number{}
-
-.slick-prev:before, .slick-next:before{color:gray !important;}
-.slick-prev:before, .slick-next:before{color:gray !important;}
 
 /**
 ======================

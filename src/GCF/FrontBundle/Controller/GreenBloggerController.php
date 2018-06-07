@@ -10,11 +10,19 @@ namespace GCF\FrontBundle\Controller;
 
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 
 class GreenBloggerController extends Controller
 {
-    public function indexAction()
+    public function indexAction(Request $request)
     {
-        return $this->render('GCFFrontBundle:Default:green-blogger.html.twig');
+        $pageTitle = 'Green Blogger';
+
+        dump($request->getPathInfo());
+        die();
+
+        return $this->render('GCFFrontBundle:Default:green-blogger.html.twig',array(
+            'pageTitle' => $pageTitle
+        ));
     }
 }

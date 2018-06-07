@@ -9,23 +9,40 @@ use Symfony\Component\HttpFoundation\Request;
 class DefaultController extends Controller
 {
 
-    public function indexAction(Request $request ){
+    public function indexAction(){
 
+        $pageTitle = 'Accueil';
 
-        return $this->render('@GCFFront/Default/index.html.twig');
-    }
+        $em = $this->getDoctrine()->getManager();
 
+        $projects = $em->getRepository('GCFMainBundle:Projet')->findAll();
 
-    public function yourAction( Request $request )
-    {
-        $url = $request->getRequestUri();
+        $sectors = $em->getRepository('GCFMainBundle:SecteurProjet')->findAll();
 
-        $breadcrumbs = $this->get("white_october_breadcrumbs");
+        $nbrProj= array();
 
-        $breadcrumbs->addNamespaceItem("maroine", "home", $url);
+        foreach ($sectors as $sector){
 
-        // Simple example
-        //$breadcrumbs->addItem("Home", $this->get("router")->generate("base.html.twig"));
+            $i=0;
+
+            foreach ($projects as $project){
+
+                if( $project->getSecteurProjet()->getNom() ==  $sector->getNom() ) {
+
+                    $i = $i + 1;
+
+                }
+
+            }
+
+            $nbrProj[$sector->getNom()] = $i;
+
+        }
+
+        return $this->render('@GCFFront/Default/index.html.twig',array(
+            'pageTitle' => $pageTitle,
+            'nbr_by_project' => $nbrProj
+        ));
     }
 
 }

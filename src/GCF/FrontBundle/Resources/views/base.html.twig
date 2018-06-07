@@ -2,6 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>{% block title %}Welcome!{% endblock %}</title>
     {% block stylesheets %}{% endblock %}
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
@@ -65,7 +66,7 @@
     </div>
 
     <!-- header navigation bar -->
-    <div class="custom_navigation">
+    <div class="custom_navigation"  data-spy="affix" data-offset-top="20">
         <nav class="navbar navbar-default navbar-static-top" >
             <div style="position: relative">
                 <div class="container">
@@ -165,38 +166,14 @@
             </div>
 
         </div>
-        <div class="project_number_by_sectors" style="margin-bottom: 40px;">
-            <div class="container">
-                <div class="col-md-12 slider slider_projects" >
 
-                    <div class="col-md-2 col-sm-2 col-sm-offset-1 col-md-offset-1 project_container">
-                        <center><img class="project_icon" src="{{ asset('assets/images/agriculture.png') }}" alt="Agriculture"> <br>
-                            <a class="project_name" href="#">P agriculture</a>
-                            <span class="badge project_number">10</span></center>
-                    </div>
-                    <div class="col-md-2 col-sm-2 project_container">
-                        <center><img class="project_icon" src="{{ asset('assets/images/Infrastructure-3.png') }}" alt="Infrastructure"> <br>
-                            <a class="project_name" href="#"> P Infrastructure </a>
-                            <span class="badge project_number">20</span></center>
-                    </div>
-                    <div class="col-md-2 col-sm-2 project_container">
-                        <center><img class="project_icon" src="{{ asset('assets/images/energie-1.png') }}" alt="Energie"> <br>
-                            <a class="project_name" href="#">P Energie </a>
-                            <span class="badge project_number">15</span> </center>
-                    </div>
-                    <div class="col-md-2 col-sm-2 project_container">
-                        <center><img class="project_icon" src="{{ asset('assets/images/dechets.png') }}" alt="Dechets"> <br>
-                            <a class="project_name" href="#">P Déchets </a>
-                            <span class="badge project_number">12</span></center>
-                    </div>
-                    <div class=" col-md-2 col-sm-2 project_container">
-                        <center><img class="project_icon" src="{{ asset('assets/images/sante-1.png') }}" alt="Santé"><br>
-                            <a class="project_name" href="#" >P Santé </a>
-                            <span class="badge project_number">20</span></center>
-                    </div>
-                </div>
-            </div>
-        </div>
+
+        {#=================================================#}
+                    {#projects number by sector#}
+        {#=================================================#}
+        {% block PBS %}
+        {% endblock %}
+
     {% else %}
         <style>
             .under_header_navigation{
@@ -237,7 +214,7 @@
                 <div class="col-md-12">
                     <div>
                         <div class=" col-md-6" >
-                            <h1>Page Name</h1>
+                            <h1>{{ pageTitle }}</h1>
                         </div>
                         <div class=" col-md-6">
                             <ol class="breadcrumb" style="margin: 0; background: transparent">
@@ -261,7 +238,7 @@
 
 <div class="main-page-site">
     <div class="container ">
-        <div class="col-md-9 col-sm-12" style="padding: 0;">
+        <div class="col-md-9 col-sm-12" style="padding: 0; position:static;">
             {% block body %}{% endblock %}
 
         </div>
@@ -461,11 +438,11 @@
                     </div>
                     <nav>
                         <ul class="">
-                            <li style="list-style: none;"><a href="#" style="color:white;text-decoration: none">Event</a></li>
-                            <li style="list-style: none;"><a href="#" style="color:white;text-decoration: none">Bibliotheque</a></li>
-                            <li style="list-style: none;"><a href="#" style="color:white;text-decoration: none">Green Bloggeur</a></li>
-                            <li style="list-style: none;"><a href="#" style="color:white;text-decoration: none">RAJ Tunisie</a></li>
-                            <li style="list-style: none;"><a href="#" style="color:white;text-decoration: none">Contactez Nous</a></li>
+                            <li style="list-style: none;"><a href="#evenement" style="color:white;text-decoration: none">Evenement</a></li>
+                            <li style="list-style: none;"><a href="#bibliotheque" style="color:white;text-decoration: none">Bibliotheque</a></li>
+                            <li style="list-style: none;"><a href="{{ path('gcf_front_greenbloggerpage') }}" style="color:white;text-decoration: none">Green Bloggeur</a></li>
+                            <li style="list-style: none;"><a href="http://raj-tunisie.org" target="_blank" style="color:white;text-decoration: none">RAJ Tunisie</a></li>
+                            <li style="list-style: none;"><a href="{{ path('gcf_front_contactpage') }}" style="color:white;text-decoration: none">Contactez Nous</a></li>
                         </ul>
                     </nav>
 
@@ -482,31 +459,7 @@
 <script src="{{ asset('assets/jquery/dist/jquery.js') }}" type="text/javascript" charset="utf-8"></script>
 <script src="{{ asset('assets/bootstrap/dist/js/bootstrap.min.js') }}" type="text/javascript" charset="utf-8"></script>
 <script src="{{ asset('assets/slick/slick.min.js') }}" type="text/javascript" charset="utf-8"></script>
-<script>
-    // $('.slider_projects').slick({
-    //     dots: false,
-    //     slidesToShow: 3,
-    //     slidesToScroll: 1,
-    //     touchMove: false,
-    //     autoplay: true,
-    //     autoplaySpeed: 5000,
-    //     responsive: [
-    //         {
-    //             breakpoint: 1023,
-    //             settings: {
-    //                 speed: 10,
-    //                 slidesToShow: 3,
-    //                 slidesToScroll: 1,
-    //                 arrows: false,
-    //                 touchMove: false,
-    //                 autoplay:true,
-    //                 autoplaySpeed:5000
-    //
-    //             }
-    //         },
-    //     ]
-    // });
-</script>
+
 
 <script>
 

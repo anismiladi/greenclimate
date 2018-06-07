@@ -1,5 +1,7 @@
 {% extends '@GCFFront/base.html.twig' %}
 
+{% block title %} GCF - {{ pageTitle }} {% endblock %}
+
 {% block body %}
 
 
@@ -25,10 +27,12 @@
         </tr>
         <tr>
             <td>Organisme</td><td>
-                {% if (project.acteur.secteurActeur.secteurActeurParent == null) %}
-                    {{ project.acteur.secteurActeur.nom }}
-                {% else %}
-                    {{ project.acteur.secteurActeur.secteurActeurParent.nom }}
+                {% if project.acteur != null %}
+                    {% if (project.acteur.secteurActeur.secteurActeurParent == null) %}
+                        {{ project.acteur.secteurActeur.nom }}
+                    {% else %}
+                        {{ project.acteur.secteurActeur.secteurActeurParent.nom }}
+                    {% endif %}
                 {% endif %}
             </td>
         </tr>
