@@ -1,0 +1,9 @@
+#routing.yml
+
+gcf_default_homepage:
+    path:     /
+    defaults: { _controller: GCFFrontBundle:Default:index}
+
+gcf_front_blocks_cercles:
+    path:     /cercles
+    defaults: { _controller: GCFFrontBundle:Default:Cercles}

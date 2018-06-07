@@ -17,7 +17,9 @@ gcf_front_actorssectorpage:
 #    path:     /actors/get-actors/{clicked}
 #    defaults: { _controller: GCFFrontBundle:Actors:gethierarchie }
 
-
+gcf_default:
+    resource: "@GCFFrontBundle/Resources/config/default.yml"
+    prefix:   /
 
 gcf_front_projectspage:
     path:     /projects

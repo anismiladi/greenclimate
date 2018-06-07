@@ -1,0 +1,20 @@
+<svg height="487.5" version="1.1" width="230" xmlns="http://www.w3.org/2000/svg" style="overflow: hidden; position: relative;">
+    
+    <g class="map" transform="scale(1.5)">
+        {% for i in 1..24 %}
+            <a xlink:title="{{ Gouvernorats[i]["name"] }}" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+                <path d="{{ Gouvernorats[i]["map"] }}"></path><!--  -->
+            </a>
+        {% endfor %}
+    </g>
+
+    <defs>
+        <filter id="f1" x="0" y="0">
+          <feGaussianBlur in="SourceGraphic" stdDeviation="15" />
+        </filter>
+    </defs>
+    {% for Gouv in Gouvs  %}
+        <circle cx="{{ Gouvernorats[Gouv.idmap]["x"] }}" cy="{{ Gouvernorats[Gouv.idmap]["y"] }}" r="{{ (Gouv.nbProjets/maxNbProjets)*35 }}" fill="green" fill-opacity="0.40"  />
+    {% endfor %}
+
+</svg>

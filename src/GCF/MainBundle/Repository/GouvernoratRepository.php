@@ -10,4 +10,33 @@ namespace GCF\MainBundle\Repository;
  */
 class GouvernoratRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function nbProjetsByGouv()
+    {
+        //echo $txtWhere. "<br>";
+        //$gouvs = array();
+        $gouvs = $this->getEntityManager()
+            ->createQueryBuilder()
+            //->select('g')
+            ->from('GCFMainBundle:Gouvernorat', 'g')
+            ->leftJoin('g.projet', 'p')
+            //->Where('nbProjets > 0')
+            ->groupBy('g.idmap')
+            ->select('g.idmap, Count(p.id) as nbProjets')
+            
+            //->andWhere(" ")
+            //->orderBy('p.nom', 'ASC')
+            //->orderBy('a.Num', 'ASC')
+            //->setParameter('course', $course->getId())
+            //->setParameter('null', NULL)
+            //->groupBy('p.')
+            //->select('SUM(fc.numberPrinted) as fortunesPrinted')
+            //->setMaxResults($limit)
+                
+            ->getQuery()
+            ->getResult();
+            //->getSingleScalarResult();
+        
+        return $gouvs;
+    }
+    
 }

@@ -38,8 +38,8 @@ class ProjetRepository extends \Doctrine\ORM\EntityRepository
         }/**/
         $txtWhere .= '';
         //echo $txtWhere. "<br>";
-        $chevaux = array();
-        $chevaux = $this->getEntityManager()
+        
+        $projets = $this->getEntityManager()
             ->createQueryBuilder()
             ->select('p')
             ->from('GCFMainBundle:Projet', 'p')
@@ -54,6 +54,6 @@ class ProjetRepository extends \Doctrine\ORM\EntityRepository
             ->getQuery()
             ->getResult();
         
-        return $chevaux;
+        return $projets;
     }
 }
