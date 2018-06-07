@@ -15,7 +15,7 @@ class ProjetRepository extends \Doctrine\ORM\EntityRepository
         //$em = $this->getEntityManager();
         //$typejeu = $em->getRepository('TierceBundle:TypeJeu')->findOneByidEurotierce(27);
         $txtWhere = '(p.id > 0)';
-        
+
         if($gouv)
         {
             if($txtWhere != ''){ $txtWhere .= ' AND '; }
@@ -38,8 +38,8 @@ class ProjetRepository extends \Doctrine\ORM\EntityRepository
         }/**/
         $txtWhere .= '';
         //echo $txtWhere. "<br>";
-        $chevaux = array();
-        $chevaux = $this->getEntityManager()
+
+        $projets = $this->getEntityManager()
             ->createQueryBuilder()
             ->select('p')
             ->from('GCFMainBundle:Projet', 'p')
@@ -53,7 +53,7 @@ class ProjetRepository extends \Doctrine\ORM\EntityRepository
             //->setParameter('null', NULL)
             ->getQuery()
             ->getResult();
-        
-        return $chevaux;
+
+        return $projets;
     }
 }

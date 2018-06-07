@@ -26,13 +26,21 @@ class Gouvernorat extends AbstractPersonalTranslatable implements TranslatableIn
     private $id;
 
     /**
+     * @var int
+     *
+     * @ORM\Column(name="idmap", type="integer")
+     * *
+     */
+    private $idmap;
+
+    /**
      * @var string
      *
      * @Gedmo\Translatable
      * @ORM\Column(name="nom", type="string", length=255)
      */
     private $nom;
-    
+
     /**
      * @var ArrayCollection
      *
@@ -43,7 +51,7 @@ class Gouvernorat extends AbstractPersonalTranslatable implements TranslatableIn
      * )
      */
     protected $translations;
-    
+
     /**
      * @ORM\ManyToMany(targetEntity="GCF\MainBundle\Entity\Projet", inversedBy="gouvernorat")
      * @ORM\JoinTable(
@@ -78,6 +86,30 @@ class Gouvernorat extends AbstractPersonalTranslatable implements TranslatableIn
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set idmap
+     *
+     * @param int $idmap
+     *
+     * @return Gouvernorat
+     */
+    public function setIdmap($idmap)
+    {
+        $this->idmap = $idmap;
+
+        return $this;
+    }
+
+    /**
+     * Get idmap
+     *
+     * @return int
+     */
+    public function getIdmap()
+    {
+        return $this->idmap;
     }
 
     /**
@@ -135,7 +167,7 @@ class Gouvernorat extends AbstractPersonalTranslatable implements TranslatableIn
     {
         $this->projet->removeElement($projet);
     }
-    
+
     public function __toString() {
         if ($this->getNom())
         {

@@ -17,24 +17,29 @@ class GouvernoratAdmin extends AbstractAdmin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('nom');
+            ->add('nom')
+            ->add('idmap');
     }
 
     /**/protected function configureDatagridFilters(DatagridMapper $datagridMapper)
-    {
-        $datagridMapper->add('nom', TranslationFieldFilter::class);
-    }
+{
+    $datagridMapper
+        ->add('idmap')
+        ->add('nom', TranslationFieldFilter::class);
+}
 
     /**/protected function configureListFields(ListMapper $listMapper)
-    {
-        $listMapper->add('nom', TranslationFieldList::class)
-            // You may also specify the actions you want to be displayed in the list
-            ->add('_action', 'actions', array(
-                    'actions' => array(
+{
+    $listMapper
+        ->add('idmap')
+        ->add('nom', TranslationFieldList::class)
+        // You may also specify the actions you want to be displayed in the list
+        ->add('_action', 'actions', array(
+            'actions' => array(
                 //    'show' => array(),
-                    'edit' => array(),
-                    'delete' => array(),
-                )
-            ));
-    }
+                'edit' => array(),
+                'delete' => array(),
+            )
+        ));
+}
 }
