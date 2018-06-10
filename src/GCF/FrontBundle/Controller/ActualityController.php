@@ -15,6 +15,10 @@ class ActualityController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('@GCFFront/Default/actuality.html.twig');
+        $pageTitle = 'News ';
+
+        return $this->render('@GCFFront/Default/actuality.html.twig',array(
+            'pageTitle' => $pageTitle
+        ));
     }
 }

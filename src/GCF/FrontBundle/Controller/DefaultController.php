@@ -32,12 +32,13 @@ class DefaultController extends Controller
                     $i = $i + 1;
 
                 }
-
             }
 
+            if( $i>0 )
             $nbrProj[$sector->getNom()] = $i;
 
         }
+        arsort($nbrProj);
 
         return $this->render('@GCFFront/Default/index.html.twig',array(
             'pageTitle' => $pageTitle,

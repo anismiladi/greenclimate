@@ -15,6 +15,10 @@ class ElearningController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('@GCFFront/Default/Elearning/e-learning.html.twig');
+        $pageTitle = 'E-learning';
+
+        return $this->render('@GCFFront/Default/Elearning/e-learning.html.twig',array(
+            'pageTitle' => $pageTitle
+        ));
     }
 }

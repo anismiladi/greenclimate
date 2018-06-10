@@ -108,9 +108,9 @@ swiftmailer:
     spool: { type: memory }
 
 sonata_admin:
-    title: GCF Admin
+    title: Admin
 #    title_logo: img/logo_small.png
-    title_logo: /assets/images/GCF-white-LOGO-Blue.png
+    title_logo: assets/images/GCF-logo-final-green.png
 
     options:
         html5_validate:    true     # enable or disable html5 form validation

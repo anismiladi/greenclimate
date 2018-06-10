@@ -104,7 +104,7 @@
                                 <a href="{{ path('gcf_front_actualitypage') }}">{{ 'menu.News'|trans }}</a>
                             </li>
                             <li>
-                                <a href="{{ path('gcf_front_greenbloggerpage') }}" style="padding: 5px 10px !important; border-radius: 2px; margin: 5px auto;background: rgba(122, 201, 67, 1);">{{ 'menu.GreenBlogger'|trans }}</a>
+                                <a class="green_Blogger_btn" onclick="showGBpopup()">{{ 'menu.GreenBlogger'|trans }}</a>
                             </li>
 
                         </ul>
@@ -238,7 +238,8 @@
 
 <div class="main-page-site">
     <div class="container ">
-        <div class="col-md-9 col-sm-12" style="padding: 0;">
+        <div class="col-md-9 col-sm-12" style="padding: 0; position:static;">
+
             {% block body %}{% endblock %}
 
         </div>
@@ -297,8 +298,8 @@
     </div>
 </div>
 
-<div id="button_go_top" class="button_go_top" >
-    <i class="fa fa-chevron-up" aria-hidden="true" onclick="topFunction()"></i>
+<div id="button_go_top" class="button_go_top" onclick="topFunction()" >
+    <i class="fa fa-chevron-up" aria-hidden="true" ></i>
 </div><!-- End newsletter -->
 
 
@@ -363,7 +364,7 @@
                         <ul class="">
                             <li style="list-style: none;"><a href="#evenement" style="color:white;text-decoration: none">Evenement</a></li>
                             <li style="list-style: none;"><a href="#bibliotheque" style="color:white;text-decoration: none">Bibliotheque</a></li>
-                            <li style="list-style: none;"><a href="{{ path('gcf_front_greenbloggerpage') }}" style="color:white;text-decoration: none">Green Bloggeur</a></li>
+                            <li style="list-style: none;"><a href="#" style="color:white;text-decoration: none">Green Bloggeur</a></li>
                             <li style="list-style: none;"><a href="http://raj-tunisie.org" target="_blank" style="color:white;text-decoration: none">RAJ Tunisie</a></li>
                             <li style="list-style: none;"><a href="{{ path('gcf_front_contactpage') }}" style="color:white;text-decoration: none">Contactez Nous</a></li>
                         </ul>
@@ -379,49 +380,70 @@
 
 </div>
 
+
+{{ render( controller('GCFFrontBundle:Publications:popup' )) }}
+
 <script src="{{ asset('assets/jquery/dist/jquery.js') }}" type="text/javascript" charset="utf-8"></script>
 <script src="{{ asset('assets/bootstrap/dist/js/bootstrap.min.js') }}" type="text/javascript" charset="utf-8"></script>
 <script src="{{ asset('assets/slick/slick.min.js') }}" type="text/javascript" charset="utf-8"></script>
-
+<script src="{{ asset('assets/main.js') }}" type="text/javascript" charset="utf-8"></script>
 
 <script>
 
-    $('#button_newsletter').click(function () {
-        $('.my_newsletter_modal').css('display', 'block' );
-        $('.close_my_newsletter_modal').css('display', 'block' );
+    //====================================
+    // saving gb post
+    //====================================
+    $('#gb_posts_form').submit(function(e) {
+
+        e.preventDefault();
+        $.ajax({
+            url: '{{ path('gcf_front_save_gb_post_page') }}',
+            data: $(this).serialize(),
+            type: 'POST',
+            dataType: 'json',
+            success: function (result) {
+               // console.log(result);
+                var responseToAppend = '';
+
+                responseToAppend =  '<div class="notif_pub_success">';
+                responseToAppend += '<p>';
+                responseToAppend += 'Votre article est pris en compte';
+                responseToAppend += '</p>';
+                responseToAppend += '</div>';
+
+                $('#notif_pub').empty();
+                $('#notif_pub').addClass('success');
+                $('#notif_pub').append(responseToAppend);
+
+                $('#gb_name').val('');
+                $('#gb_email').val('');
+                $('#gb_article_title').val('');
+                $('#gb_article_content').val('');
+                $('#gb_article_project').val('');
+
+                return false;
+            },
+            error: function (error) {
+                //console.log(error);
+
+                var responseToAppend = '';
+                responseToAppend =  '<div class="notif_pub_error">';
+                responseToAppend += '<p>';
+                responseToAppend += 'Votre article est pris en compte';
+                responseToAppend += '</p>';
+                responseToAppend += '</div>';
+
+                $('#notif_pub').empty();
+                $('#notif_pub').addClass('error');
+                $('#notif_pub').append(responseToAppend);
+
+                return false;
+            }
+        });
+        return false;
 
     });
-
-    $('.close_my_newsletter_modal').click(function () {
-        $('.my_newsletter_modal').css('display', 'none' );
-        $('.close_my_newsletter_modal').css('display', 'none' );
-    });
-
-    $('.close_newsletter').click(function () {
-        $('.my_newsletter_modal').css('display', 'none' );
-        $('.close_my_newsletter_modal').css('display', 'none' );
-    });
-
 </script>
-<script>
-    // When the user scrolls down 20px from the top of the document, show the button
-    window.onscroll = function() {scrollFunction()};
-
-    function scrollFunction() {
-        if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
-            document.getElementById("button_go_top").style.display = "block";
-        } else {
-            document.getElementById("button_go_top").style.display = "none";
-        }
-    }
-
-    // When the user clicks on the button, scroll to the top of the document
-    function topFunction() {
-        document.body.scrollTop = 0;
-        document.documentElement.scrollTop = 0;
-    }
-</script>
-
 {% block javascripts %}{% endblock %}
 </body>
 </html>

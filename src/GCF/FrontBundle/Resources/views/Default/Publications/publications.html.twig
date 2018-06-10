@@ -25,59 +25,6 @@
         #autres_pub_tab_container{
             display:none;
         }
-    </style>
-    <style>
-        .page_overlay{
-            display: none;
-            position: fixed;
-            z-index: 1001;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            margin: auto;
-            background: rgba(0, 0, 0, 0.4);
-        }
-
-        .popup_details_container{
-            display: none;
-            position: absolute;
-            z-index: 1001;
-            margin: auto;
-            top: 45px;
-            right: 0;
-            left: 0;
-            background: white;
-            height: -moz-max-content;
-            height: -webkit-max-content;
-            height: max-content;
-            width: 500px;
-            border-radius: 2px;
-            border: solid 1px #7ac943;
-        }
-
-        .popup_details_container .close_popup{
-            position: absolute;
-            top: -6px;
-            right: -5px;
-            font-size: 20px;
-            color: red;
-            cursor: pointer;
-        }
-
-        .popup_details_container_inner{ padding: 20px; }
-
-        .popup_details_container_inner table{ margin-bottom: 0; }
-
-        .form-control{border-radius: 2px !important;}
-
-        .form-group label.control-label{ text-align: unset !important; }
-
-        #Article-content{ min-width: 100%; max-width: 100%; }
-
-        .form-group button{ width: 100%; }
-
-
         .nav_our_and_green_blogger li a h2{
             font-weight: inherit ;
             font-size: inherit;
@@ -85,11 +32,12 @@
             margin: inherit;
         }
 
-        #gb_article_content{width: 100% !important;}
-
         .post_title{color:#333 }
+
         .post_title:hover{ text-decoration: none; color:#333 }
+
     </style>
+
 
 {% endblock %}
 {% block body %}
@@ -102,7 +50,7 @@
                 <li id="green_blogger_pub_tab"><a><h2>Green bloggeur Publications</h2></a></li>
                 <li id="autres_pub_tab"><a><h2>Autres</h2></a></li>
                 <div class="navbar-right">
-                    <a class="btn btn-default" onclick="showDetails(1)">+ Green Blogger</a>
+                    <a class="btn btn-default" onclick="showGBpopup()">+ Green Blogger</a>
                 </div>
             </ul>
         </div>
@@ -190,156 +138,46 @@
         </div>
     </div>
 
-
-
-
-
-    <div class="page_overlay" onclick="closePop()">
-
-    </div>
-    <div class="popup_details_container">
-        <i class="fa fa-times-circle close_popup" aria-hidden="true" onclick="closePop()"></i>
-        <div class="popup_details_container_inner">
-
-
-
-
-            <div >
-                <h2><strong><center>Green Blogger</center></strong></h2>
-                <form class="form-horizontal" action="" method="post">
-                    <div class="form-group">
-                        <label class="control-label col-sm-12" for="gb_name">Nom:</label>
-                        <div class="col-sm-12">
-                            <input type="text" class="form-control" id="gb_name" placeholder="Enter votre nom" name="gb_name">
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="control-label col-sm-12" for="gb_email">Email:</label>
-                        <div class="col-sm-12">
-                            <input type="email" class="form-control" id="gb_email" placeholder="Entrer votre email" name="gb_email">
-                        </div>
-                    </div>
-                    <h3><center><strong>Article</strong></center></h3>
-                    <div class="form-group">
-                        <label class="control-label col-sm-12" for="gb_article_title">Title:</label>
-                        <div class="col-sm-12">
-                            <input type="text" class="form-control" id="gb_article_title" placeholder="" name="gb_article_title">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label col-sm-12" for="gb_article_content">Content:</label>
-                        <div class="col-sm-12">
-                            <textarea class="form-control" rows="10" name="gb_article_content" id="gb_article_content"></textarea>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label col-sm-12" for="gb_article_project">Projet:</label>
-                        <div class="col-sm-12">
-                            <select class="form-control" id="gb_article_project" name="gb_article_project">
-                                <option></option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class=" col-sm-12">
-                            <button type="submit" class="btn btn-default">Submit</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-
-
-        </div>
-    </div>
 {% endblock %}
 
 {% block javascripts %}
-    <script>
-        jQuery('#our_pub_tab').click(function () {
+<script>
+    jQuery('#our_pub_tab').click(function () {
 
-            jQuery('#our_pub_tab_container').css('display', 'block');
-            jQuery('#green_blogger_pub_tab_container').css('display', 'none');
-            jQuery('#autres_pub_tab_container').css('display', 'none');
+        jQuery('#our_pub_tab_container').css('display', 'block');
+        jQuery('#green_blogger_pub_tab_container').css('display', 'none');
+        jQuery('#autres_pub_tab_container').css('display', 'none');
 
-            jQuery('#our_pub_tab').addClass('active');
-            jQuery('#green_blogger_pub_tab').removeClass('active');
-            jQuery('#autres_pub_tab').removeClass('active');
+        jQuery('#our_pub_tab').addClass('active');
+        jQuery('#green_blogger_pub_tab').removeClass('active');
+        jQuery('#autres_pub_tab').removeClass('active');
 
-        });
+    });
 
-        jQuery('#green_blogger_pub_tab').click(function () {
+    jQuery('#green_blogger_pub_tab').click(function () {
 
-            jQuery('#green_blogger_pub_tab_container').css('display', 'block');
-            jQuery('#our_pub_tab_container').css('display', 'none');
-            jQuery('#autres_pub_tab_container').css('display', 'none');
+        jQuery('#green_blogger_pub_tab_container').css('display', 'block');
+        jQuery('#our_pub_tab_container').css('display', 'none');
+        jQuery('#autres_pub_tab_container').css('display', 'none');
 
-            jQuery('#green_blogger_pub_tab').addClass('active');
-            jQuery('#our_pub_tab').removeClass('active');
-            jQuery('#autres_pub_tab').removeClass('active');
+        jQuery('#green_blogger_pub_tab').addClass('active');
+        jQuery('#our_pub_tab').removeClass('active');
+        jQuery('#autres_pub_tab').removeClass('active');
 
-        });
+    });
 
-        jQuery('#autres_pub_tab').click(function () {
+    jQuery('#autres_pub_tab').click(function () {
 
-            jQuery('#autres_pub_tab_container').css('display', 'block');
-            jQuery('#green_blogger_pub_tab_container').css('display', 'none');
-            jQuery('#our_pub_tab_container').css('display', 'none');
+        jQuery('#autres_pub_tab_container').css('display', 'block');
+        jQuery('#green_blogger_pub_tab_container').css('display', 'none');
+        jQuery('#our_pub_tab_container').css('display', 'none');
 
-            jQuery('#autres_pub_tab').addClass('active');
-            jQuery('#our_pub_tab').removeClass('active');
-            jQuery('#green_blogger_pub_tab').removeClass('active');
+        jQuery('#autres_pub_tab').addClass('active');
+        jQuery('#our_pub_tab').removeClass('active');
+        jQuery('#green_blogger_pub_tab').removeClass('active');
 
-        });
+    });
 
-    </script>
-
-
-    <script>
-        {#{{ path('gcf_front_projectsinglepage', {'id': project.id} ) }}#}
-        function showDetails(id){
-
-            $('.page_overlay').css('display', 'block');
-            $('.popup_details_container').css('display', 'block');
-
-            {#url = '{{ path('gcf_front_projectsinglepage', {'id': 'id'} ) }}';#}
-            {#url = url.replace("id", id);#}
-            {#//console.log(url);#}
-            {#$.ajax({#}
-                {#url: url,#}
-                {#data: {'details-projet': 'test'},#}
-                {#type: 'POST',#}
-                {#dataType: 'json',#}
-                {#success: function (result) {#}
-                    {#console.log(result);#}
-
-                    {#var toAppend = '';#}
-                    {#toAppend = '<table class="table table-striped table-bordered">';#}
-                    {#toAppend +=  '</table>';#}
-
-                    {#$('.popup_details_container_inner').append(toAppend);#}
-
-                {#},#}
-                {#error: function (error) {#}
-                    {#alert(error);#}
-                    {#console.log(error);#}
-                {#}#}
-            {#});#}
-
-
-        }
-
-        function closePop() {
-
-            $('.page_overlay').css('display', 'none');
-
-            $('.popup_details_container').css('display', 'none');
-
-        }
-    </script>
+</script>
 {% endblock %}
 

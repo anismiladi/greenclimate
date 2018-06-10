@@ -9,7 +9,7 @@
             transition-duration: 0.5s;
         }
 
-        .project_number_by_sectors .project_container{padding: 15px 8px; }
+        .project_number_by_sectors .project_container{padding: 15px 8px; margin: auto;}
         .project_number_by_sectors .project_icon{  max-width: 70px; margin-bottom:  5px; border: solid 2px transparent; border-radius: 50%; padding: 5px; cursor: pointer;}
         .project_number_by_sectors .project_icon:hover{ border: solid 2px #aaaaaa; }
         .project_number_by_sectors .project_name{ text-decoration: none; font-size: 13px; font-weight: 600;}
@@ -18,8 +18,8 @@
         .slick-prev:before, .slick-next:before{color:gray !important;}
         .slick-prev:before, .slick-next:before{color:gray !important;}
 
-        .slick-next{right: 0 !important;}
-        .slick-prev{left:0 !important;}
+        .slick-next{right: 0 !important; height: 100% !important;}
+        .slick-prev{left:0 !important; height: 100% !important;}
 
 
         .section_title {
@@ -47,7 +47,7 @@
 
         .projects_news .single_element {  margin-bottom: 10px; background: #fefefe; }
 
-        .single_element_image_container{ height: 100px; max-height: 100px; padding: 0; display: flex;}
+        .single_element_image_container{ height: 100px; max-height: 100px; padding: 0 !important; display: flex;}
 
         .single_element_image_container a{margin: auto;width: 100%; height: 100%;}
 
@@ -78,37 +78,17 @@
 
                  {% for key, nb_by_proj in nbr_by_project %}
                  <div class="col-md-2 col-sm-2 col-sm-offset-1 col-md-offset-1 project_container">
-                     <center><img class="project_icon" src="http://via.placeholder.com/70x70" alt="Agriculture"> <br>
+                     <center><img class="project_icon" src="http://via.placeholder.com/70x70" alt="{{ key }}"> <br>
                          <a class="project_name" href="#" title="{{ key }}">
                              {% if key|length > 15 %}
-                                 P.{{ key|slice(0, 13) }}...
+                                 Projets {{ key|slice(0, 13) }}...
                              {% else %}
-                                 P.{{ key}}
+                                 Projets {{ key}}
                              {% endif %}
                          </a>
                          <span class="badge project_number">{{ nb_by_proj  }}</span></center>
                  </div>
                  {% endfor %}
-                 {#<div class="col-md-2 col-sm-2 project_container">#}
-                     {#<center><img class="project_icon" src="{{ asset('assets/images/Infrastructure-3.png') }}" alt="Infrastructure"> <br>#}
-                         {#<a class="project_name" href="#"> P Infrastructure </a>#}
-                         {#<span class="badge project_number">20</span></center>#}
-                 {#</div>#}
-                 {#<div class="col-md-2 col-sm-2 project_container">#}
-                     {#<center><img class="project_icon" src="{{ asset('assets/images/energie-1.png') }}" alt="Energie"> <br>#}
-                         {#<a class="project_name" href="#">P Energie </a>#}
-                         {#<span class="badge project_number">15</span> </center>#}
-                 {#</div>#}
-                 {#<div class="col-md-2 col-sm-2 project_container">#}
-                     {#<center><img class="project_icon" src="{{ asset('assets/images/dechets.png') }}" alt="Dechets"> <br>#}
-                         {#<a class="project_name" href="#">P Déchets </a>#}
-                         {#<span class="badge project_number">12</span></center>#}
-                 {#</div>#}
-                 {#<div class=" col-md-2 col-sm-2 project_container">#}
-                     {#<center><img class="project_icon" src="{{ asset('assets/images/sante-1.png') }}" alt="Santé"><br>#}
-                         {#<a class="project_name" href="#" >P Santé </a>#}
-                         {#<span class="badge project_number">20</span></center>#}
-                 {#</div>#}
              </div>
          </div>
      </div>
@@ -411,8 +391,10 @@
     <script>
         $('.slider_projects').slick({
             dots: false,
+            infinite: false,
             slidesToShow: 5,
             slidesToScroll: 1,
+
             touchMove: false,
             autoplay: true,
             autoplaySpeed: 5000,
@@ -421,10 +403,11 @@
                     breakpoint: 1023,
                     settings: {
                         speed: 10,
+                        infinite: false,
                         slidesToShow: 3,
                         slidesToScroll: 1,
                         arrows: false,
-                        touchMove: false,
+                        touchMove: true,
                         autoplay:true,
                         autoplaySpeed:5000
 

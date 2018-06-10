@@ -59,10 +59,12 @@ gcf_front_actualitypage:
     path:     /news
     defaults: { _controller: GCFFrontBundle:Actuality:index}
 
-gcf_front_greenbloggerpage:
-    path:     /green-blogger
-    defaults: { _controller: GCFFrontBundle:GreenBlogger:index}
-
 gcf_front_contactpage:
     path:     /contact-us
     defaults: { _controller: GCFFrontBundle:Contact:index}
+
+
+
+gcf_front_save_gb_post_page:
+    path:     /green-blogger/save-post
+    defaults: { _controller: GCFFrontBundle:Publications:saveGbPost }
