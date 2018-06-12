@@ -13,14 +13,24 @@ class ProjectsController extends Controller
 {
     public function indexAction()
     {
-        $em = $this->getDoctrine()->getManager();
-
         $pageTitle = 'Projets';
+
+        $breadcrumbs = $this->get("white_october_breadcrumbs");
+        // Simple example
+        $breadcrumbs->addItem("Accueil", $this->get("router")->generate("gcf_front_homepage"));
+        // Simple example
+        $breadcrumbs->addItem("Projets", $this->get("router")->generate("gcf_front_projectspage"));
+        // example with route params
+        $breadcrumbs->addItem("Projets", $this->get("router")->generate("gcf_front_projectsinglepage", array('id' => '1') ));
+
+        $em = $this->getDoctrine()->getManager();
 
         $gouvernorates = $em->getRepository('GCFMainBundle:Gouvernorat')->findAll();
 
         $organismes = $em->getRepository('GCFMainBundle:SecteurActeur')->findAll();
+
         $org = array();
+
         $projects = $em->getRepository('GCFMainBundle:Projet')->findAll();
 
         foreach ( $organismes as $organisme){
@@ -252,8 +262,6 @@ class ProjectsController extends Controller
 
 
     public function singleProjectAction($id, Request $request){
-
-
 
         $em = $this->getDoctrine()->getManager();
 

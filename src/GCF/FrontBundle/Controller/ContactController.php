@@ -10,6 +10,7 @@ namespace GCF\FrontBundle\Controller;
 
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
 class ContactController extends Controller
@@ -27,46 +28,50 @@ class ContactController extends Controller
         $breadcrumbs->addItem("Home", $this->get("router")->generate("gcf_front_homepage"));
 
         // Example without URL
-        $breadcrumbs->addItem("contact");
-
-
-
-
-
-    $bread = '';
-
-    $bread .= '<ul id="crumbs">';
-	/* get array containing each directory name in the path */
-	$parts = explode("/", dirname($_SERVER['REQUEST_URI']));
-    $bread .= '<li><a href="/">Home</a></li>';
-	foreach ($parts as $key => $dir) {
-
-		switch ($dir) {
-			case "about": $label = "About Us"; break;
-			/* if not in the exception list above,
-			use the directory name, capitalized */
-			default: $label = ucwords($dir); break;
-		}
-
-		/* start fresh, then add each directory back to the URL */
-		$url = "";
-
-		for ($i = 1; $i <= $key; $i++)
-		{
-			$url .= $parts[$i] ."/";
-		}
-		if ($dir != "")
-        $bread .= '<li>> <a href="/'.$url.'">'.$label.'</a></li>';
-	}
-    $bread .= "</ul>";
-
-
-
+        $breadcrumbs->addItem("Contact");
 
 
         return $this->render('@GCFFront/Default/contact.html.twig',array(
             'pageTitle' => $pageTitle,
-            'bread' => $bread
         ));
+    }
+
+    public function contactAjaxAction(Request $request){
+
+        $name = $_POST['name'];
+        $email = $_POST['email'];
+        $message = $_POST['message'];
+        $subject = $_POST['subject'];
+        header('Content-Type: application/json');
+
+        if ($name === ''){
+            return new JsonResponse(array('message' => 'Le Nom ne peut pas être vide', 'code' => 0));
+            exit();
+        }
+        if ($email === ''){
+            return new JsonResponse(array('message' => "L'Email ne peut pas être vide", 'code' => 0));
+            exit();
+        } else {
+            if (!filter_var($email, FILTER_VALIDATE_EMAIL)){
+                return new JsonResponse(array('message' => "Le format de l'Email est invalide.", 'code' => 0));
+                exit();
+            }
+        }
+        if ($subject === ''){
+            return new JsonResponse(array('message' => 'Le Subject ne peut pas être vide', 'code' => 0));
+            exit();
+        }
+        if ($message === ''){
+            return new JsonResponse(array('message' => 'Message ne peut pas être vide', 'code' => 0));
+
+        }
+        $content="From: $name \nEmail: $email \nMessage: $message";
+        $recipient = "younes.maroine@gmail.com";
+        $mailheader = "From: $email \r\n";
+        mail($recipient, $subject, $content, $mailheader) or die("Error!");
+        return new JsonResponse(array('message' => 'Votre message est envoyé avec succès', 'code' => 1));
+
+
+
     }
 }

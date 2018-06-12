@@ -32,6 +32,7 @@ class PublicationAdmin extends AbstractAdmin
                     },
                 )
             )
+            ->add('categorie')
             ;
     }
 

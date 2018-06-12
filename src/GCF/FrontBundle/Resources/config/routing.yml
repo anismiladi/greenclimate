@@ -63,8 +63,18 @@ gcf_front_contactpage:
     path:     /contact-us
     defaults: { _controller: GCFFrontBundle:Contact:index}
 
+gcf_front_contact_validation_page:
+    path:     /validation-contact-us
+    defaults: { _controller: GCFFrontBundle:Contact:contactAjax}
+
 
 
 gcf_front_save_gb_post_page:
     path:     /green-blogger/save-post
     defaults: { _controller: GCFFrontBundle:Publications:saveGbPost }
+
+
+
+gcf_front_event_page:
+    path:     /events
+    defaults: { _controller: GCFFrontBundle:Event:eventIndex }

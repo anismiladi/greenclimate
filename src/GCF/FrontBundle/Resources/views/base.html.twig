@@ -104,7 +104,7 @@
                                 <a href="{{ path('gcf_front_actualitypage') }}">{{ 'menu.News'|trans }}</a>
                             </li>
                             <li>
-                                <a class="green_Blogger_btn" onclick="showGBpopup()">{{ 'menu.GreenBlogger'|trans }}</a>
+                                <a class="green_Blogger_btn" onclick="showGBpopup()" style="color: white !important;">{{ 'menu.GreenBlogger'|trans }}</a>
                             </li>
 
                         </ul>
@@ -117,7 +117,7 @@
 
     {%  if ( path(app.request.get('_route'), app.request.get('_route_params')) == path('gcf_front_homepage') ) %}
         <!-- Banner website -->
-        <div id="myCarousel" class="carousel slide" data-ride="carousel" style="margin-bottom: 50px">
+        <div id="myCarousel" class="carousel slide" data-ride="carousel" style="margin-bottom: 30px">
             <!-- Wrapper for slides -->
             <div class="carousel-inner">
 
@@ -201,12 +201,22 @@
                 list-style: none;
                 border-radius: 4px;
             }
-            .custom_breadcrumb h1{margin:0; font-size: 24px; padding: 5px; font-weight: 600}
+            .custom_breadcrumb h1{margin:0; font-size: 24px; padding: 5px; font-weight: 600;}
 
-            .custom_breadcrumb .breadcrumb{text-align: right}
+            .custom_breadcrumb .breadcrumb{text-align: right; background: transparent}
 
             .custom_breadcrumb > div { border-radius: 4px; padding: 0;}
 
+            .custom_breadcrumb .col-md-6{padding:0}
+            
+            .custom_breadcrumb li a{
+                color: #22AA86;
+                text-decoration: none;
+            }
+            .custom_breadcrumb li a:hover ,  {
+                text-decoration: none;
+                color: #25caa2;
+            }
         </style>
 
         <div class="under_header_navigation">
@@ -217,17 +227,17 @@
                             <h1>{{ pageTitle }}</h1>
                         </div>
                         <div class=" col-md-6">
-                            <ol class="breadcrumb" style="margin: 0; background: transparent">
-                                <li><a href="{{ path('gcf_front_homepage') }}">Accueil</a></li>
-                                <li><a href="#">Library</a></li>
-                                <li class="active"><a href="" class="actual_page" style="color: gray">Data</a></li>
-                            </ol>
+                            {#<ol class="breadcrumb" style="margin: 0; background: transparent">#}
+                                {#<li><a href="{{ path('gcf_front_homepage') }}">Accueil</a></li>#}
+                                {#<li><a href="#">Library</a></li>#}
+                                {#<li class="active"><a href="" class="actual_page" style="color: gray">Data</a></li>#}
+                            {#</ol>#}
+                            {{ wo_render_breadcrumbs() }}
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
 
     {% endif %}
     {#<div class="banner" style="margin-top:-71px">#}
@@ -375,7 +385,7 @@
             </div>
 
         </div>
-        <p class="copyright">CGF Tunisie © 2018 Tous droits réservés CARTHAGE SOLUTIONS</p>
+        <p class="copyright">CGF Tunisie © 2018 Tous droits réservés <a href="http://www.carthage-solutions.com" target="_blank">CARTHAGE SOLUTIONS</a></p>
     </footer>
 
 </div>
@@ -402,7 +412,7 @@
             type: 'POST',
             dataType: 'json',
             success: function (result) {
-               // console.log(result);
+               console.log(result);
                 var responseToAppend = '';
 
                 responseToAppend =  '<div class="notif_pub_success">';
@@ -424,12 +434,12 @@
                 return false;
             },
             error: function (error) {
-                //console.log(error);
+                console.log(error);
 
                 var responseToAppend = '';
                 responseToAppend =  '<div class="notif_pub_error">';
                 responseToAppend += '<p>';
-                responseToAppend += 'Votre article est pris en compte';
+                responseToAppend += ' S"il vous plaiz essayer plus tard et si l"erreur persist contactez-nous';
                 responseToAppend += '</p>';
                 responseToAppend += '</div>';
 

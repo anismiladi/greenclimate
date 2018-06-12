@@ -72,6 +72,28 @@ class Publication extends AbstractPersonalTranslatable implements TranslatableIn
     private $etatPub;
 
     /**
+     * @ORM\ManyToOne(targetEntity="GCF\MainBundle\Entity\CatPublication" )
+     * @ORM\JoinColumn(name="categorie_id", referencedColumnName="id")
+     */
+    private $categorie;
+
+    /**
+     * @return mixed
+     */
+    public function getCategorie()
+    {
+        return $this->categorie;
+    }
+
+    /**
+     * @param mixed $categorie
+     */
+    public function setCategorie($categorie)
+    {
+        $this->categorie = $categorie;
+    }
+
+    /**
      * @return mixed
      */
     public function getProjet()

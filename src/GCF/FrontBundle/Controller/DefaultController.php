@@ -38,11 +38,24 @@ class DefaultController extends Controller
             $nbrProj[$sector->getNom()] = $i;
 
         }
-        arsort($nbrProj);
+        arsort($nbrProj); //trier selon le grand nbre de projet//
+
+
+        //Block article & publication
+        $nospublications = $em->getRepository('GCFMainBundle:Publication')->findlast2_Nospublication();
+
+        $gbpublications = $em->getRepository('GCFMainBundle:Publication')->findLastGbPublication();
+
+        $autrespublications = $em->getRepository('GCFMainBundle:Publication')->findLastAutresPublication();
+
 
         return $this->render('@GCFFront/Default/index.html.twig',array(
             'pageTitle' => $pageTitle,
-            'nbr_by_project' => $nbrProj
+            'nbr_by_project' => $nbrProj,
+
+            'nospublications' => $nospublications,
+            'gbpublications' => $gbpublications,
+            'autrespublications' => $autrespublications
         ));
     }
 

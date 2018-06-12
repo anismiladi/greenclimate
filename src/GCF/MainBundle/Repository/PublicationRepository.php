@@ -10,4 +10,46 @@ namespace GCF\MainBundle\Repository;
  */
 class PublicationRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findlast2_Nospublication(){
+
+        $nosPub = $this->getEntityManager()
+            ->createQueryBuilder()
+            ->select('p')
+            ->from('GCFMainBundle:Publication', 'p')
+            ->where('p.categorie = 1' )
+            ->setMaxResults(2)
+            ->orderBy('p.id', 'DESC')
+            ->getQuery()
+            ->getResult();
+
+        return $nosPub;
+    }
+    public function findLastGbPublication(){
+
+        $nosPub = $this->getEntityManager()
+            ->createQueryBuilder()
+            ->select('p')
+            ->from('GCFMainBundle:Publication', 'p')
+            ->where('p.categorie = 2' )
+            ->setMaxResults(1)
+            ->orderBy('p.id', 'DESC')
+            ->getQuery()
+            ->getResult();
+
+        return $nosPub;
+    }
+    public function findLastAutresPublication(){
+
+        $nosPub = $this->getEntityManager()
+            ->createQueryBuilder()
+            ->select('p')
+            ->from('GCFMainBundle:Publication', 'p')
+            ->where('p.categorie = 3' )
+            ->setMaxResults(1)
+            ->orderBy('p.id', 'DESC')
+            ->getQuery()
+            ->getResult();
+
+        return $nosPub;
+    }
 }

@@ -33,13 +33,6 @@
 
         .projects_news .description { font-size: 13px; margin: 0 }
 
-        /*.button_see_more {*/
-        /*border-radius: 0 !important;*/
-        /*background: #7ac943!important;*/
-        /*color: white !important;*/
-        /*font-size: 13px !important;*/
-        /*}*/
-
         .read_more_container { text-align: right;  margin-top: 10px; }
 
         .read_more_container button{ padding: 6px 50px; }
@@ -55,6 +48,28 @@
 
         .single_element_desc_container{ height: 100px; max-height: 100%; }
 
+        .item a{
+            text-decoration: none;
+            color: inherit;
+        }
+        .item a:hover{
+            text-decoration: none;
+            color: #22aa86 ;
+        }
+        .read_more_container a{
+            text-decoration: none;
+            color: inherit ;
+        }
+        .read_more_container a:hover{
+            text-decoration: none;
+            color: inherit ;
+        }
+        .section_art_pub_title{
+            background: #22aa86 !important;
+            color: white;
+            padding: 0 0 0 20px;
+        }
+
         @media screen and (max-width: 440px){
             .single_element_desc_container h4{ font-size: 17px; font-weight: 600; margin: 5px 0;}
             .projects_news .theme{font-size: 12px;}
@@ -65,6 +80,10 @@
         @media screen and ( min-width: 989px ) and ( max-width: 1200px ){
             .single_element_desc_container h4{ margin: 5px 0 }
         }
+
+        .btn-default.filter-button{ border-color: transparent; outline: none ;    margin-bottom: 10px;}
+        .btn-default.filter-button:hover, .btn-default.filter-button:focus, .btn-default.filter-button:active ,.btn-default.filter-button:active:focus{ border-color: transparent; background: white;box-shadow: none;outline: none}
+
     </style>
 
 {% endblock %}
@@ -95,6 +114,7 @@
  {% endblock %}
 
 {% block body %}
+
 
 
     <div class="col-md-12 col-sm-12" style="margin-bottom: 50px;    padding: 0;">
@@ -322,69 +342,80 @@
     </div><br>
 
 
-    <div class="col-md-12 col-sm-12" style="margin-bottom: 50px; padding: 0;">
+    <div class="col-md-12 col-sm-12" style="margin-bottom: 50px; padding: 0; min-height: 440px;">
         <div class="projects-horizontal">
             <div class="intro">
-                <h2 style="background: #22aa86 !important; color: white; padding: 0 0 0 20px;">Articles & Publications</h2>
+                <h2 class="section_art_pub_title">Publications</h2>
             </div>
-            <div class=" projects">
-                <div class="col-sm-6 item" style="background: #f7f7f7;border: solid 2px white;">
-                    <div class="row">
-                        <div class="col-md-12 col-lg-5 col-xs-5">
-                            <a href="#">
-                                <img class="img-fluid" src="https://placeimg.com/200/200/nature/any/blur" style="max-width: 100%;max-height: 100%"/>
-                            </a>
-                        </div>
-                        <div class="col">
-                            <h4 class="name">Article 1</h4>
-                            <p class="description">Aenean tortor est, vulputate quis leo
-                                in, vehicula rhoncus lacus. Praesent aliquam in tellus eu.</p>
+            <div class="projects">
+                <div align="center">
+                    <button class="btn btn-default filter-button" data-filter="all">All</button>
+                    <button class="btn btn-default filter-button" data-filter="ours">Nos Publications</button>
+                    <button class="btn btn-default filter-button" data-filter="gb">Green Blogger Publications</button>
+                    <button class="btn btn-default filter-button" data-filter="others">Autres</button>
+                </div>
+                <br/>
+                {% for nospublication in nospublications %}
+                    <div class="col-sm-6 item filter_display ours" style="background: #f7f7f7;border: solid 2px white;">
+                        <div class="row">
+                            <div class="col-md-12 col-lg-5 col-xs-5">
+                                <a href="{{ path('gcf_front_single_publications_page',{'id': nospublication.id }) }}">
+                                    <img class="img-fluid" src="https://placeimg.com/200/200/nature/any/blur" title="{{ nospublication.titre }}" style="max-width: 100%;max-height: 100%"/>
+                                </a>
+                            </div>
+                            <div class="col">
+                                <h4 class="name"><a href="{{ path('gcf_front_single_publications_page',{'id': nospublication.id }) }}">{{ nospublication.titre }}</a></h4>
+                                <p class="description">Aenean tortor est, vulputate quis leo
+                                    in, vehicula rhoncus lacus. Praesent aliquam in tellus eu.</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-sm-6 item" style="background: #f7f7f7;border: solid 2px white;">
-                    <div class="row">
-                        <div class="col-md-12 col-lg-5 col-xs-5"><a href="#">
-                                <img class="img-fluid" src="https://placeimg.com/200/200/nature/any/blur" style="max-width: 100%;max-height: 100%"/></a>
-                        </div>
-                        <div class="col">
-                            <h4 class="name">Article 2</h4>
-                            <p class="description"> Aenean tortor est, vulputate quis leo
-                                in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravida.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 item" style="background: #f7f7f7;border: solid 2px white;">
-                    <div class="row">
-                        <div class="col-md-12 col-lg-5 col-xs-5"><a href="#">
-                                <img class="img-fluid" src="https://placeimg.com/200/200/nature/any/blur" style="max-width: 100%;max-height: 100%"/></a>
-                        </div>
-                        <div class="col">
-                            <h4 class="name">Article 3</h4>
-                            <p class="description"> Aenean tortor est, vulputate quis leo
-                                in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravida.</p>
+                {% endfor %}
+
+                {% for gbpublication in gbpublications %}
+                    <div class="col-sm-6 item filter_display gb" style="background: #f7f7f7;border: solid 2px white;">
+                        <div class="row">
+                            <div class="col-md-12 col-lg-5 col-xs-5">
+                                <a href="{{ path('gcf_front_single_publications_page',{'id': gbpublication.id }) }}">
+                                    <img class="img-fluid" src="https://placeimg.com/200/200/arch/any/blur" title="{{ gbpublication.titre }}" style="max-width: 100%;max-height: 100%"/>
+                                </a>
+                            </div>
+                            <div class="col">
+                                <h4 class="name"><a href="{{ path('gcf_front_single_publications_page',{'id': gbpublication.id }) }}">{{ gbpublication.titre }}</a></h4>
+                                <p class="description">Aenean tortor est, vulputate quis leo
+                                    in, vehicula rhoncus lacus. Praesent aliquam in tellus eu.</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-sm-6 item" style="background: #f7f7f7;border: solid 2px white;">
-                    <div class="row">
-                        <div class="col-md-12 col-lg-5 col-xs-5"><a href="#">
-                                <img class="img-fluid" src="https://placeimg.com/200/200/nature/any/blur" style="max-width: 100%;max-height: 100%"/></a>
-                        </div>
-                        <div class="col">
-                            <h4 class="name">Article 4</h4>
-                            <p class="description"> Aenean tortor est, vulputate quis leo
-                                in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravida.</p>
+                {% endfor %}
+
+                {% for autrespublication in autrespublications %}
+                    <div class="col-sm-6 item filter_display others" style="background: #f7f7f7;border: solid 2px white;">
+                        <div class="row">
+                            <div class="col-md-12 col-lg-5 col-xs-5">
+                                <a href="{{ path('gcf_front_single_publications_page',{'id': autrespublication.id }) }}">
+                                    <img class="img-fluid" src="https://placeimg.com/200/200/tech/any/blur" title="{{ autrespublication.titre }}" style="max-width: 100%;max-height: 100%"/>
+                                </a>
+                            </div>
+                            <div class="col">
+                                <h4 class="name"><a href="{{ path('gcf_front_single_publications_page',{'id': autrespublication.id }) }}">{{ autrespublication.titre }}</a></h4>
+                                <p class="description">Aenean tortor est, vulputate quis leo
+                                    in, vehicula rhoncus lacus. Praesent aliquam in tellus eu.</p>
+                            </div>
                         </div>
                     </div>
-                </div>
+                {% endfor %}
             </div>
             <div class="row read_more_container col-sm-12">
-                <button class="button_see_more_lg">Voir Plus
-                </button>
+                <a href="{{ path('gcf_front_publicationspage') }}">
+                    <button class="button_see_more_lg">
+                        Voir Plus
+                    </button>
+                </a>
             </div>
         </div>
     </div>
+
 {% endblock %}
 
 {% block javascripts %}
@@ -414,6 +445,34 @@
                     }
                 },
             ]
+        });
+    </script>
+    <script>
+        $(document).ready(function(){
+
+            $(".filter-button").click(function(){
+                var value = $(this).attr('data-filter');
+
+                if(value == "all")
+                {
+                    //$('.filter').removeClass('hidden');
+                    $('.filter_display').show('1000');
+                }
+                else
+                {
+//            $('.filter[filter-item="'+value+'"]').removeClass('hidden');
+//            $(".filter").not('.filter[filter-item="'+value+'"]').addClass('hidden');
+                    $(".filter_display").not('.'+value).hide('3000');
+                    $('.filter_display').filter('.'+value).show('3000');
+
+                }
+            });
+
+            if ($(".filter-button").removeClass("active")) {
+                $(this).removeClass("active");
+            }
+            $(this).addClass("active");
+
         });
     </script>
 {% endblock %}

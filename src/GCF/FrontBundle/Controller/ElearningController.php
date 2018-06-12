@@ -16,6 +16,11 @@ class ElearningController extends Controller
     public function indexAction()
     {
         $pageTitle = 'E-learning';
+        $breadcrumbs = $this->get("white_october_breadcrumbs");
+        // Simple example
+        $breadcrumbs->addItem("Accueil", $this->get("router")->generate("gcf_front_homepage"));
+        // Simple example
+        $breadcrumbs->addItem("E-learning");
 
         return $this->render('@GCFFront/Default/Elearning/e-learning.html.twig',array(
             'pageTitle' => $pageTitle

@@ -9,9 +9,17 @@ class ActorsController extends Controller
 {
     public function indexAction()
     {
-        $em = $this->getDoctrine()->getManager();
-
         $pageTitle = 'Acteurs';
+
+        $breadcrumbs = $this->get("white_october_breadcrumbs");
+
+        // Simple example
+        $breadcrumbs->addItem("Accueil", $this->get("router")->generate("gcf_front_homepage"));
+        // Simple example
+        $breadcrumbs->addItem("Acteurs", $this->get("router")->generate("gcf_front_actorspage"));
+
+
+        $em = $this->getDoctrine()->getManager();
 
         $sectors = $em->getRepository('GCFMainBundle:SecteurActeur')->findBy(
             array(
@@ -108,6 +116,7 @@ class ActorsController extends Controller
     public function sousActorsAction($id){
 
         $em = $this->getDoctrine()->getManager();
+
 
         $actor = $em->getRepository('GCFMainBundle:Acteur')->findOneById($id);
 

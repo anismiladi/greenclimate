@@ -3,14 +3,19 @@
 namespace GCF\MainBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Sonata\TranslationBundle\Model\Gedmo\AbstractPersonalTranslatable;
+use Gedmo\Mapping\Annotation as Gedmo;
+use Sonata\TranslationBundle\Model\Gedmo\TranslatableInterface;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Event
  *
  * @ORM\Table(name="event")
  * @ORM\Entity(repositoryClass="GCF\MainBundle\Repository\EventRepository")
+ * @Gedmo\TranslationEntity(class="GCF\MainBundle\Entity\EventTranslation")
  */
-class Event
+class Event extends AbstractPersonalTranslatable implements TranslatableInterface
 {
     /**
      * @var int
@@ -24,6 +29,7 @@ class Event
     /**
      * @var string
      *
+     * @Gedmo\Translatable
      * @ORM\Column(name="nom", type="string", length=255)
      */
     private $nom;
@@ -31,6 +37,7 @@ class Event
     /**
      * @var string
      *
+     * @Gedmo\Translatable
      * @ORM\Column(name="description", type="text")
      */
     private $description;
@@ -52,14 +59,14 @@ class Event
     /**
      * @var string
      *
-     * @ORM\Column(name="photoCouverture", type="string", length=255)
+     * @ORM\Column(name="photoCouverture", type="string", length=255,nullable=true)
      */
     private $photoCouverture;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="photoAffiche", type="string", length=255)
+     * @ORM\Column(name="photoAffiche", type="string", length=255,nullable=true)
      */
     private $photoAffiche;
 
@@ -80,15 +87,28 @@ class Event
     /**
      * @var string
      *
+     * @Gedmo\Translatable
      * @ORM\Column(name="lieu", type="string", length=255)
      */
     private $lieu;
 
     /**
      * @ORM\ManyToOne(targetEntity="GCF\MainBundle\Entity\EtatPub", inversedBy="event")
-     * @ORM\JoinColumn(name="etat", referencedColumnName="id")
+     * @ORM\JoinColumn(name="etat", referencedColumnName="id",nullable=true)
      */
     private $etatPub;
+
+
+    /**
+     * @var ArrayCollection
+     *
+     * @ORM\OneToMany(
+     *     targetEntity="GCF\MainBundle\Entity\EventTranslation",
+     *     mappedBy="object",
+     *     cascade={"persist", "remove"}
+     * )
+     */
+    protected $translations;
 
     /**
      * @return mixed
