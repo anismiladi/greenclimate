@@ -12,10 +12,6 @@ use Sonata\AdminBundle\Form\Type\ModelType;
 use Sonata\AdminBundle\Form\Type\AdminType;
 use Sonata\FormatterBundle\Form\Type\SimpleFormatterType;
 
-$formMapper->add('comment', SimpleFormatterType::class, [
-    'format' => 'markdown',
-    'ckeditor_context' => 'default', // optional
-]);
 
 class ActeurAdmin extends AbstractAdmin
 {
@@ -33,9 +29,9 @@ class ActeurAdmin extends AbstractAdmin
                 ->add('hierarchie')
                 ->add('mission')
                 ->add('contact')
-                ->add('adresse', SimpleFormatterType::class, [
+                /*->add('adresse', SimpleFormatterType::class, [
                     'format' => 'markdown',
-                    'ckeditor_context' => 'default'])
+                    'ckeditor_context' => 'default'])*/
                 ->add('tel')
                 ->add('fax')
                 ->add('siteweb')            

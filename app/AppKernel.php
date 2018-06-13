@@ -46,6 +46,10 @@ class AppKernel extends Kernel
             
             new WhiteOctober\BreadcrumbsBundle\WhiteOctoberBreadcrumbsBundle(),
             
+            new Knp\Bundle\MarkdownBundle\KnpMarkdownBundle(),
+            new FOS\CKEditorBundle\FOSCKEditorBundle(),
+            new Sonata\FormatterBundle\SonataFormatterBundle(),
+            
             new GCF\MainBundle\GCFMainBundle(),
             new GCF\FrontBundle\GCFFrontBundle(),
             new Application\Sonata\MediaBundle\ApplicationSonataMediaBundle(),
