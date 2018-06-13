@@ -38,7 +38,11 @@ class ProjetRepository extends \Doctrine\ORM\EntityRepository
         }/**/
         $txtWhere .= '';
         //echo $txtWhere. "<br>";
+<<<<<<< HEAD
 
+=======
+        
+>>>>>>> Anis
         $projets = $this->getEntityManager()
             ->createQueryBuilder()
             ->select('p')
@@ -53,7 +57,11 @@ class ProjetRepository extends \Doctrine\ORM\EntityRepository
             //->setParameter('null', NULL)
             ->getQuery()
             ->getResult();
+<<<<<<< HEAD
 
+=======
+        
+>>>>>>> Anis
         return $projets;
     }
 }

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 <svg viewBox=" 0 0 230 487.5"   version="1.1"   xmlns="http://www.w3.org/2000/svg" style="overflow: hidden; position: relative;">
 
@@ -5,10 +6,19 @@
         {% for i in 1..24 %}
             <a xlink:title="{{ Gouvernorats[i]["name"] }}" id="{{ Gouvernorats[i]["name"] }}" class="HI-map" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
                 <path d="{{ Gouvernorats[i]["map"] }}" ></path><!--  -->
+=======
+<svg height="487.5" version="1.1" width="230" xmlns="http://www.w3.org/2000/svg" style="overflow: hidden; position: relative;">
+    
+    <g class="map" transform="scale(1.5)">
+        {% for i in 1..24 %}
+            <a xlink:title="{{ Gouvernorats[i]["name"] }}" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+                <path d="{{ Gouvernorats[i]["map"] }}"></path><!--  -->
+>>>>>>> Anis
             </a>
         {% endfor %}
     </g>
 
+<<<<<<< HEAD
     <defs>
         <filter id="f1" x="0" y="0">
           <feGaussianBlur in="SourceGraphic" stdDeviation="15" />
@@ -79,3 +89,18 @@
 
 
 </script>
+=======
+ <defs>
+  <filter height="200%" width="200%" y="-50%" x="-50%" id="flou_blur">
+   <feGaussianBlur stdDeviation="3" in="SourceGraphic"/>
+  </filter>
+ </defs>
+    {% for Gouv in Gouvs  %}
+        {% if Gouv.nbProjets %}
+        <circle filter="url(#flou_blur)" cx="{{ Gouvernorats[Gouv.idmap]["x"] }}" cy="{{ Gouvernorats[Gouv.idmap]["y"] }}" r="{{ (Gouv.nbProjets/maxNbProjets)*35 }}" fill="green" fill-opacity="0.40"  />
+        <circle cx="{{ Gouvernorats[Gouv.idmap]["x"] }}" cy="{{ Gouvernorats[Gouv.idmap]["y"] }}" r="2" fill="green" fill-opacity="1"  />
+        {% endif %}
+    {% endfor %}
+
+</svg>
+>>>>>>> Anis

@@ -10,36 +10,64 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Sonata\TranslationBundle\Filter\TranslationFieldFilter;
 use Sonata\AdminBundle\Form\Type\ModelType;
 use Sonata\AdminBundle\Form\Type\AdminType;
+use Sonata\FormatterBundle\Form\Type\SimpleFormatterType;
 
+$formMapper->add('comment', SimpleFormatterType::class, [
+    'format' => 'markdown',
+    'ckeditor_context' => 'default', // optional
+]);
 
 class ActeurAdmin extends AbstractAdmin
 {
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('logo', 'sonata_media_type', array(
-                'provider' => 'sonata.media.provider.image',
-                'context'  => 'default'
-            ))
-            ->add('nom')
-            ->add('nomcomplet')
-            ->add('description')
-            ->add('hierarchie')
-            ->add('mission')
-            ->add('responsable')
-            ->add('contact')
-            ->add('critique')
-            ->add('acteurParent','sonata_type_model_autocomplete',
-                array(
-                    'required' => false,
-                    'multiple' => false,
-                    'minimum_input_length' => 1,
-                    'property' => 'nom',
-                    'to_string_callback' => function($enitity, $property) {
-                        return $enitity->getNom();
-                    },
+            ->with('Gestion les Acteurs ', ['class' => 'col-md-8'])
+                ->add('logo', 'sonata_media_type', array(
+                    'provider' => 'sonata.media.provider.image',
+                    'context'  => 'default'
+                ))
+                ->add('nom')
+                ->add('nomcomplet')
+                ->add('description')
+                ->add('hierarchie')
+                ->add('mission')
+                ->add('contact')
+                ->add('adresse', SimpleFormatterType::class, array(
+                    'format' => 'markdown',
+                    'ckeditor_context' => 'default'))
+                ->add('tel')
+                ->add('fax')
+                ->add('siteweb')            
+                ->add('acteurParent','sonata_type_model_autocomplete',
+                    array(
+                        'required' => false,
+                        'multiple' => false,
+                        'minimum_input_length' => 1,
+                        'property' => 'nom',
+                        'to_string_callback' => function($enitity, $property) {
+                            return $enitity->getNom();
+                        },
+                    )
                 )
-            )
+                ->add('secteurActeur', ModelType::class, [
+                    'attr' => [
+                        'data-sonata-select2' => 'true'
+                    ]
+                ])
+            ->end()
+
+
+                
+            ->with('Responsable accès à l\'information', ['class' => 'col-md-4'])
+                ->add('responsable', 'text', array('label' => "Nom")) 
+                ->add('telresponsable', 'text', array('label' => "Téléphone"))
+                ->add('emailresponsable', 'text', array('label' => "Email"))
+            ->end();
+//->add('critique')
+
+            
+            /*  
             ->add('secteurActeur','sonata_type_model_autocomplete',
                 array(
                     'required' => false,
@@ -49,13 +77,11 @@ class ActeurAdmin extends AbstractAdmin
                         return $enitity->getNom();
                     },
                 )
-            );
-        /*
-        ->add('secteurActeur', ModelType::class, [
-            'attr' => [
-                'data-sonata-select2' => 'true'
-            ]
-        ])*/
+            )
+        
+             */
+
+
             /*
             ->add('secteurActeur', ModelType::class, [
                 'attr' => [

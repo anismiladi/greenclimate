@@ -22,7 +22,11 @@ class GouvernoratRepository extends \Doctrine\ORM\EntityRepository
             //->Where('nbProjets > 0')
             ->groupBy('g.idmap')
             ->select('g.idmap, Count(p.id) as nbProjets')
+<<<<<<< HEAD
 
+=======
+            
+>>>>>>> Anis
             //->andWhere(" ")
             //->orderBy('p.nom', 'ASC')
             //->orderBy('a.Num', 'ASC')
@@ -31,6 +35,7 @@ class GouvernoratRepository extends \Doctrine\ORM\EntityRepository
             //->groupBy('p.')
             //->select('SUM(fc.numberPrinted) as fortunesPrinted')
             //->setMaxResults($limit)
+<<<<<<< HEAD
 
             ->getQuery()
             ->getResult();
@@ -39,4 +44,14 @@ class GouvernoratRepository extends \Doctrine\ORM\EntityRepository
         return $gouvs;
     }
 
+=======
+                
+            ->getQuery()
+            ->getResult();
+            //->getSingleScalarResult();
+        
+        return $gouvs;
+    }
+    
+>>>>>>> Anis
 }

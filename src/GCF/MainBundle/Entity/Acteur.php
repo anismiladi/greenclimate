@@ -81,10 +81,59 @@ class Acteur extends AbstractPersonalTranslatable implements TranslatableInterfa
     /**
      * @var string
      *
+     * @ORM\Column(name="emailresponsable", type="string", length=255, nullable=true)
+     */
+    private $emailresponsable;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="telresponsable", type="string", length=255, nullable=true)
+     */
+    private $telresponsable;
+    /**
+     * @var string
+     *
      * @ORM\Column(name="contact", type="string", length=255, nullable=true)
      */
     private $contact;
+    
+    /**
+     * @var string
+     *
+     * @Gedmo\Translatable
+     * @ORM\Column(name="adresse", type="text", nullable=true)
+     */
+    private $adresse;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="email", type="string", length=255, nullable=true)
+     */
+    private $email;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="tel", type="string", length=255, nullable=true)
+     */
+    private $tel;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="fax", type="string", length=255, nullable=true)
+     */
+    private $fax;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="siteweb", type="string", length=255, nullable=true)
+     */
+    private $siteweb;
+    
     /**
      * @var string
      *
@@ -514,5 +563,173 @@ class Acteur extends AbstractPersonalTranslatable implements TranslatableInterfa
         }
         else
             return "";
+    }
+
+    /**
+     * Set adresse.
+     *
+     * @param string|null $adresse
+     *
+     * @return Acteur
+     */
+    public function setAdresse($adresse = null)
+    {
+        $this->adresse = $adresse;
+
+        return $this;
+    }
+
+    /**
+     * Get adresse.
+     *
+     * @return string|null
+     */
+    public function getAdresse()
+    {
+        return $this->adresse;
+    }
+
+    /**
+     * Set tel.
+     *
+     * @param string|null $tel
+     *
+     * @return Acteur
+     */
+    public function setTel($tel = null)
+    {
+        $this->tel = $tel;
+
+        return $this;
+    }
+
+    /**
+     * Get tel.
+     *
+     * @return string|null
+     */
+    public function getTel()
+    {
+        return $this->tel;
+    }
+
+    /**
+     * Set fax.
+     *
+     * @param string|null $fax
+     *
+     * @return Acteur
+     */
+    public function setFax($fax = null)
+    {
+        $this->fax = $fax;
+
+        return $this;
+    }
+
+    /**
+     * Get fax.
+     *
+     * @return string|null
+     */
+    public function getFax()
+    {
+        return $this->fax;
+    }
+
+    /**
+     * Set siteweb.
+     *
+     * @param string|null $siteweb
+     *
+     * @return Acteur
+     */
+    public function setSiteweb($siteweb = null)
+    {
+        $this->siteweb = $siteweb;
+
+        return $this;
+    }
+
+    /**
+     * Get siteweb.
+     *
+     * @return string|null
+     */
+    public function getSiteweb()
+    {
+        return $this->siteweb;
+    }
+
+    /**
+     * Set emailresponsable.
+     *
+     * @param string|null $emailresponsable
+     *
+     * @return Acteur
+     */
+    public function setEmailresponsable($emailresponsable = null)
+    {
+        $this->emailresponsable = $emailresponsable;
+
+        return $this;
+    }
+
+    /**
+     * Get emailresponsable.
+     *
+     * @return string|null
+     */
+    public function getEmailresponsable()
+    {
+        return $this->emailresponsable;
+    }
+
+    /**
+     * Set telresponsable.
+     *
+     * @param string|null $telresponsable
+     *
+     * @return Acteur
+     */
+    public function setTelresponsable($telresponsable = null)
+    {
+        $this->telresponsable = $telresponsable;
+
+        return $this;
+    }
+
+    /**
+     * Get telresponsable.
+     *
+     * @return string|null
+     */
+    public function getTelresponsable()
+    {
+        return $this->telresponsable;
+    }
+
+    /**
+     * Set email.
+     *
+     * @param string|null $email
+     *
+     * @return Acteur
+     */
+    public function setEmail($email = null)
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * Get email.
+     *
+     * @return string|null
+     */
+    public function getEmail()
+    {
+        return $this->email;
     }
 }

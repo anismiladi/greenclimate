@@ -24,7 +24,15 @@ class Gouvernorat extends AbstractPersonalTranslatable implements TranslatableIn
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
+    
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="idmap", type="integer")
+     * *
+     */
+    private $idmap;
+                
     /**
      * @var int
      *
@@ -101,7 +109,11 @@ class Gouvernorat extends AbstractPersonalTranslatable implements TranslatableIn
 
         return $this;
     }
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> Anis
     /**
      * Get idmap
      *
@@ -111,7 +123,11 @@ class Gouvernorat extends AbstractPersonalTranslatable implements TranslatableIn
     {
         return $this->idmap;
     }
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> Anis
     /**
      * Set nom
      *
