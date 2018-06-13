@@ -15,13 +15,18 @@ class EventController extends Controller
 {
     public function eventIndexAction(){
 
-        $pageTitle = 'Evenemet';
+        $pageTitle = 'Evenement';
+        $breadcrumbs = $this->get("white_october_breadcrumbs");
+        // Simple example
+        $breadcrumbs->addItem("Accueil", $this->get("router")->generate("gcf_front_homepage"));
+        // Simple example
+        $breadcrumbs->addItem("Evénement");
 
         $em = $this->getDoctrine()->getManager();
 
         $evenements = $em->getRepository('GCFMainBundle:Event')->findBy(
             array(),
-            array('id'=> 'desc')
+            array('debut'=> 'desc')
         );
 
         return $this->render('@GCFFront/Default/Event/eventIndex.html.twig',array(

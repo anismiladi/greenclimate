@@ -6,9 +6,31 @@
     background: #22AA86; /* Gecko Browsers */
     color:white;
 }
+/* width */
+::-webkit-scrollbar {
+    width: 10px ;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
 *{
     -webkit-transition-duration: 0.2s;
     transition-duration: 0.2s;
+
+    font-family: Myriad-pro-reg;
 }
 
 .navbar-default .navbar-toggle .icon-bar{
