@@ -8,13 +8,16 @@
         {% endfor %}
     </g>
 
-    <defs>
-        <filter id="f1" x="0" y="0">
-          <feGaussianBlur in="SourceGraphic" stdDeviation="15" />
-        </filter>
-    </defs>
+ <defs>
+  <filter height="200%" width="200%" y="-50%" x="-50%" id="flou_blur">
+   <feGaussianBlur stdDeviation="3" in="SourceGraphic"/>
+  </filter>
+ </defs>
     {% for Gouv in Gouvs  %}
-        <circle cx="{{ Gouvernorats[Gouv.idmap]["x"] }}" cy="{{ Gouvernorats[Gouv.idmap]["y"] }}" r="{{ (Gouv.nbProjets/maxNbProjets)*35 }}" fill="green" fill-opacity="0.40"  />
+        {% if Gouv.nbProjets %}
+        <circle filter="url(#flou_blur)" cx="{{ Gouvernorats[Gouv.idmap]["x"] }}" cy="{{ Gouvernorats[Gouv.idmap]["y"] }}" r="{{ (Gouv.nbProjets/maxNbProjets)*35 }}" fill="green" fill-opacity="0.40"  />
+        <circle cx="{{ Gouvernorats[Gouv.idmap]["x"] }}" cy="{{ Gouvernorats[Gouv.idmap]["y"] }}" r="2" fill="green" fill-opacity="1"  />
+        {% endif %}
     {% endfor %}
 
 </svg>
