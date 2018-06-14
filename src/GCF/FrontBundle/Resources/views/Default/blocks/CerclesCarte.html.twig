@@ -1,24 +1,13 @@
-<<<<<<< HEAD
-
 <svg viewBox=" 0 0 230 487.5"   version="1.1"   xmlns="http://www.w3.org/2000/svg" style="overflow: hidden; position: relative;">
 
     <g class="map" transform="scale(1.5)">
         {% for i in 1..24 %}
             <a xlink:title="{{ Gouvernorats[i]["name"] }}" id="{{ Gouvernorats[i]["name"] }}" class="HI-map" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
                 <path d="{{ Gouvernorats[i]["map"] }}" ></path><!--  -->
-=======
-<svg height="487.5" version="1.1" width="230" xmlns="http://www.w3.org/2000/svg" style="overflow: hidden; position: relative;">
-    
-    <g class="map" transform="scale(1.5)">
-        {% for i in 1..24 %}
-            <a xlink:title="{{ Gouvernorats[i]["name"] }}" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
-                <path d="{{ Gouvernorats[i]["map"] }}"></path><!--  -->
->>>>>>> Anis
             </a>
         {% endfor %}
     </g>
 
-<<<<<<< HEAD
     <defs>
         <filter id="f1" x="0" y="0">
           <feGaussianBlur in="SourceGraphic" stdDeviation="15" />

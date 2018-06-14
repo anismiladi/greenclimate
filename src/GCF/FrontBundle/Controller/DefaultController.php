@@ -226,7 +226,9 @@ class DefaultController extends Controller
             'maxNbProjets' => $maxNbProjets,
         ));
     }
+
     
+/*
     public function CerclesAction()
     {
         //$url = $request->getRequestUri();
@@ -394,5 +396,5 @@ class DefaultController extends Controller
             'maxNbProjets' => $maxNbProjets,
         ));
     }
-
+*/
 }
