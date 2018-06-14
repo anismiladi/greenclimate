@@ -10,7 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Sonata\TranslationBundle\Filter\TranslationFieldFilter;
 use Sonata\AdminBundle\Form\Type\ModelType;
 use Sonata\AdminBundle\Form\Type\AdminType;
-use Sonata\FormatterBundle\Form\Type\SimpleFormatterType;
+//use Sonata\FormatterBundle\Form\Type\SimpleFormatterType;
 
 class ActeurAdmin extends AbstractAdmin
 {
@@ -24,16 +24,21 @@ class ActeurAdmin extends AbstractAdmin
                 ))
                 ->add('nom')
                 ->add('nomcomplet')
-                ->add('description')
-                ->add('hierarchie')
-                ->add('mission')
-                ->add('contact')
-                ->add('adresse', SimpleFormatterType::class, array(
+                ->add('description', 'textarea', array('attr' => array('class' => 'ckeditor')))
+                ->add('hierarchie', 'textarea', array('attr' => array('class' => 'ckeditor')))
+                ->add('mission', 'textarea', array('attr' => array('class' => 'ckeditor')))
+                
+                /*->add('adresse', SimpleFormatterType::class, array(
                     'format' => 'markdown',
                     'ckeditor_context' => 'default'))
+                 * 
+                 */
+                ->add('adresse', 'textarea', array('attr' => array('class' => 'ckeditor')))
+                ->add('email')
                 ->add('tel')
                 ->add('fax')
-                ->add('siteweb')            
+                ->add('siteweb') 
+                /*
                 ->add('acteurParent','sonata_type_model_autocomplete',
                     array(
                         'required' => false,
@@ -45,6 +50,14 @@ class ActeurAdmin extends AbstractAdmin
                         },
                     )
                 )
+                 * 
+                 */
+                ->add('acteurParent', ModelType::class, [
+                    'attr' => [
+                        'data-sonata-select2' => 'true',
+                        'data-sonata-select2-allow-clear' => 'true'
+                    ]
+                ])
                 ->add('secteurActeur', ModelType::class, [
                     'attr' => [
                         'data-sonata-select2' => 'true'
@@ -55,9 +68,9 @@ class ActeurAdmin extends AbstractAdmin
 
                 
             ->with('Responsable accès à l\'information', ['class' => 'col-md-4'])
-                ->add('responsable', 'text', array('label' => "Nom")) 
-                ->add('telresponsable', 'text', array('label' => "Téléphone"))
-                ->add('emailresponsable', 'text', array('label' => "Email"))
+                ->add('responsable', 'text', array('label' => "Nom", 'required' => false))
+                ->add('telresponsable', 'text', array('label' => "Téléphone", 'required' => false))
+                ->add('emailresponsable', 'text', array('label' => "Email", 'required' => false))
             ->end();
 //->add('critique')
 

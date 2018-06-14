@@ -21,42 +21,42 @@ class ProjetAdmin extends AbstractAdmin
             ->add('nom')
             ->add('description')
             /**/
-            ->add('focus','sonata_type_model_autocomplete',
+            ->add('focus','sonata_type_model',        //_autocomplete
                 array(
                     'required' => false,
                     'multiple' => true,
-                    'minimum_input_length' => 1,
+                    //'minimum_input_length' => 1,
                     'property' => 'nom',
-                    'to_string_callback' => function($enitity, $property) {
+                    /*'to_string_callback' => function($enitity, $property) {
                         return $enitity->getNom();
-                    },
+                    },*/
                 )
             )
             ->add('fichier', 'sonata_media_type', array(
                 'provider' => 'sonata.media.provider.file',
                 'context'  => 'default',
             ))
-            ->add('secteurProjet','sonata_type_model_autocomplete',
+            ->add('secteurProjet','sonata_type_model',        //_autocomplete
                 array(
                     'required' => true,
                     'multiple' => false,
-                    'minimum_input_length' => 1,
+                    //'minimum_input_length' => 1,
                     'property' => 'nom',
-                    'to_string_callback' => function($enitity, $property) {
+                    /*'to_string_callback' => function($enitity, $property) {
                         return $enitity->getNom();
-                    }
+                    }*/
                 )
             )
                        
-            ->add('acteur','sonata_type_model_autocomplete',
+            ->add('acteur','sonata_type_model',        //_autocomplete
                 array(
                     'required' => false,
                     'multiple' => false,
-                    'minimum_input_length' => 1,
+                    //'minimum_input_length' => 1,
                     'property' => 'nom',
-                    'to_string_callback' => function($enitity, $property) {
+                    /*'to_string_callback' => function($enitity, $property) {
                         return $enitity->getNom();
-                    }
+                    }*/
                 )
             )
 
@@ -66,15 +66,15 @@ class ProjetAdmin extends AbstractAdmin
                 'expanded' => true
                 ))
             */
-            ->add('gouvernorat','sonata_type_model_autocomplete',
+            ->add('gouvernorat','sonata_type_model',        //_autocomplete
                 array(
                     'required' => false,
                     'multiple' => true,
-                    'minimum_input_length' => 1,
+                    //'minimum_input_length' => 1,
                     'property' => 'nom',
-                    'to_string_callback' => function($enitity, $property) {
+                    /*'to_string_callback' => function($enitity, $property) {
                         return $enitity->getNom();
-                    },
+                    },*/
                 )
             )
             ;

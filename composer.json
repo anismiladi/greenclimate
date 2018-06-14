@@ -25,8 +25,9 @@
         "php": ">=5.5.9",
         "doctrine/doctrine-bundle": "^1.6",
         "doctrine/orm": "^2.5",
-        "easycorp/easyadmin-bundle": "1.x-dev",
+        "egeloen/ckeditor-bundle": "dev-master",
         "incenteev/composer-parameter-handler": "^2.0",
+        "kms/froala-editor-bundle": "dev-master",
         "knplabs/doctrine-behaviors": "1.4.1",
         "knplabs/knp-menu-bundle": "dev-master",
         "sensio/distribution-bundle": "^5.0.19",
@@ -83,5 +84,8 @@
             "file": "app/config/parameters.yml"
         },
         "branch-alias": null
+    },
+    "replace": {
+        "egeloen/ckeditor-bundle": "*"
     }
 }

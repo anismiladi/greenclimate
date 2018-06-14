@@ -40,6 +40,7 @@ twig:
 
     form_themes:
         - '@SonataMedia/Form/media_widgets.html.twig'
+    #    - '@SonataFormatter/Form/formatter.html.twig'
         
 # Doctrine Configuration
 doctrine:
@@ -122,7 +123,8 @@ sonata_admin:
         form_type:         standard # can also be 'horizontal'
 
     templates:
-        edit:              '@SonataAdmin/CRUD/edit.html.twig'
+        edit:                GCFMainBundle:CRUD:edit.html.twig
+        #edit:              '@SonataAdmin/CRUD/edit.html.twig'
         tab_menu_template: '@SonataAdmin/Core/tab_menu_template.html.twig'
         dashboard: '@SonataAdmin/Core/dashboard.html.twig'
 
@@ -203,175 +205,3 @@ white_october_breadcrumbs:
     locale:             ~ # defaults to null, so the default locale is used
     translation_domain: ~ # defaults to null, so the default domain is used
     viewTemplate:       'WhiteOctoberBreadcrumbsBundle::microdata.html.twig'
-
-
-easy_admin:
-    site_name: 'GCF Admin'
-    design:
-        color_scheme: 'light'
-        menu:
-            - label: 'Acteurs'
-              icon: 'users'
-              children:
-                - { label: 'Liste Acteurs', icon: 'list', entity: 'Acteur' }
-                - { label: 'Secteurs', icon: 'folder-open', entity: 'SecteurActeur' }
-
-            - label: 'Projets'
-              icon: 'th-large'
-              children:
-                - { label: 'Liste Projets', icon: 'list', entity: 'Projet' }    
-                - { label: 'Focus', icon: 'folder-open', entity: 'Focus' }
-                - { label: 'Secteurs', icon: 'folder-open', entity: 'SecteurProjet' }
-
-            - label: 'Publications'
-              icon: 'pencil'
-              children:
-                - { label: 'Liste Publications', icon: 'list', entity: 'Publication' }
-
-            - label: 'Elearning'
-              icon: 'paperclip'
-              children:
-                - { label: 'Liste Elearning', icon: 'list', entity: 'Elearning' }
-                - { label: 'Catégories', icon: 'folder-open', entity: 'CatLearning' }
-
-            - label: 'Événements'
-              icon: 'calendar'
-              children:
-                - { label: 'Liste Événements', icon: 'list', entity: 'Event' }
-
-            - label: 'Paramètres'
-              icon: 'cog'
-              children:
-                - { label: 'Gouvernorats', icon: 'map-marker', entity: 'Gouvernorat' }
-                - { label: 'États Pub', icon: 'edit', entity: 'EtatPub' }
-
-            - label: 'About'
-              children:
-                - { label: 'Help', url: 'http://example.com/external-docs'  }
-                - { label: 'Docs', url: 'http://example.com/external-docs' }
-    entities:
-        Acteur:
-            class: GCF\MainBundle\Entity\Acteur
-            form:
-                fields:
-                    #- id
-                    - { property: 'nomFr', type: 'text' }
-                    - { property: 'nomEn', type: 'text' }
-                    - { property: 'nomAr', type: 'text' }
-                    - { property: 'logo', type: 'file', label: 'Upload Logo', help: 'Selectionnez une image à uploader'}
-                    - { property: 'descriptionFr', type: 'textarea' }
-                    - { property: 'descriptionEn', type: 'textarea' }
-                    - { property: 'descriptionAr', type: 'textarea' }
-                    - { property: 'hierarchie', type: 'text' }
-                    - { property: 'missionFr', type: 'text' }
-                    - { property: 'missionEn', type: 'text' }
-                    - { property: 'missionAr', type: 'text' } 
-                    - { property: 'responsableFr', type: 'text' }
-                    - { property: 'responsableEn', type: 'text' }
-                    - { property: 'responsableAr', type: 'text' }
-                    - { property: 'contact', type: 'text' }
-                    - { property: 'critiqueFr', type: 'textarea' }
-                    - { property: 'critiqueEn', type: 'textarea' }
-                    - { property: 'critiqueAr', type: 'textarea' }
-                    
-                    - { property: 'secteurActeur', type: 'easyadmin_autocomplete', type_options: { class: 'GCF\MainBundle\Entity\SecteurActeur' } }
-                    - { property: 'acteurParent', type: 'easyadmin_autocomplete', type_options: { class: 'GCF\MainBundle\Entity\Acteur' } }
-
-                    #- { property: 'email', type: 'email', type_options: { trim: true } }
-                    #- { property: 'interests', type_options: { expanded: true, multiple: true } }
-                    #- { property: 'updated_at', type_options: { widget: 'single_text' } }
-            list:
-                fields: ['nomFr', 'nomAr', 'logo', 'responsableFr', 'contact']
-                
-        SecteurActeur:
-            class: GCF\MainBundle\Entity\SecteurActeur
-            form:
-                fields:
-                    - { property: 'nomFr', type: 'text' }
-                    - { property: 'nomEn', type: 'text' }
-                    - { property: 'nomAr', type: 'text' }
-                    - { property: 'secteurActeurParent', type: 'easyadmin_autocomplete', type_options: { class: 'GCF\MainBundle\Entity\SecteurActeur' } }
-            list:
-                fields: ['nomFr', 'nomAr']
-                
-        Projet:
-            class: GCF\MainBundle\Entity\Projet
-            form:
-                fields:
-                    - { property: 'nomFr', type: 'text' }
-                    - { property: 'nomEn', type: 'text' }
-                    - { property: 'nomAr', type: 'text' }
-                    - { property: 'gouvernorat', type: 'easyadmin_autocomplete', type_options: { class: 'GCF\MainBundle\Entity\Gouvernorat' } }
-                    - { property: 'acteur', type: 'easyadmin_autocomplete', type_options: { class: 'GCF\MainBundle\Entity\Acteur' } }
-                    - { property: 'secteurProjet', type: 'easyadmin_autocomplete', type_options: { class: 'GCF\MainBundle\Entity\SecteurProjet' } }
-                    
-            list:
-                fields: ['nomFr', 'nomAr']
-                
-        SecteurProjet:
-            class: GCF\MainBundle\Entity\SecteurProjet
-            form:
-                fields:
-                    - { property: 'nomFr', type: 'text' }
-                    - { property: 'nomEn', type: 'text' }
-                    - { property: 'nomAr', type: 'text' }
-                    - { property: 'couleur', type: 'text' }
-                    - { property: 'secteurProjetParent', type: 'easyadmin_autocomplete', type_options: { class: 'GCF\MainBundle\Entity\SecteurProjet' } }
-            list:
-                fields: ['nomFr', 'nomAr']
-                
-        Focus:
-            class: GCF\MainBundle\Entity\Focus
-            form:
-                fields:
-                    - { property: 'nomFr', type: 'text' }
-                    - { property: 'nomEn', type: 'text' }
-                    - { property: 'nomAr', type: 'text' }
-                    
-            list:
-                fields: ['nomFr', 'nomAr']
-            
-        Publication:
-            class: GCF\MainBundle\Entity\Publication
-            form:
-                fields:
-                    - { property: 'titreFr', type: 'text' }
-                    - { property: 'titreEn', type: 'text' }
-                    - { property: 'titreAr', type: 'text' }
-                    - { property: 'contenuFr', type: 'textarea' }
-                    - { property: 'contenuEn', type: 'textarea' }
-                    - { property: 'contenuAr', type: 'textarea' }
-                    - { property: 'emailBloggeur', type: 'email' }
-                    - { property: 'projet', type: 'easyadmin_autocomplete', type_options: { class: 'GCF\MainBundle\Entity\Projet' } }
-            list:
-                fields: ['titreFr', 'titreAr']
-        Elearning:
-            class: GCF\MainBundle\Entity\Elearning
-            
-        CatLearning:
-            class: GCF\MainBundle\Entity\CatLearning
-            form:
-                fields:
-                    - { property: 'nomFr', type: 'text' }
-                    - { property: 'nomEn', type: 'text' }
-                    - { property: 'nomAr', type: 'text' }
-                    - { property: 'catLearningParent', type: 'easyadmin_autocomplete', type_options: { class: 'GCF\MainBundle\Entity\CatLearning' } }
-            list:
-                fields: ['nomFr', 'nomAr']
-                
-        Event:
-            class: GCF\MainBundle\Entity\Event 
-          
-        Gouvernorat:
-            class: GCF\MainBundle\Entity\Gouvernorat
-            form:
-                fields:
-                    - { property: 'nomFr', type: 'text' }
-                    - { property: 'nomEn', type: 'text' }
-                    - { property: 'nomAr', type: 'text' }
-                    
-            list:
-                fields: ['nomFr', 'nomAr']
-        EtatPub:
-            class: GCF\MainBundle\Entity\EtatPub
-            

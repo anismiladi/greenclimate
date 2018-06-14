@@ -19,8 +19,13 @@ class PublicationAdmin extends AbstractAdmin
     {
         $formMapper
             ->add('titre')
-            ->add('contenu')
-            /**/
+            ->add('contenu', 'textarea', array('attr' => array('class' => 'ckeditor')))
+            ->add('projet', ModelType::class, [
+                    'attr' => [
+                        'data-sonata-select2' => 'true'
+                    ]
+                ])
+            /*
             ->add('projet','sonata_type_model_autocomplete',
                 array(
                     'required' => false,
@@ -31,7 +36,7 @@ class PublicationAdmin extends AbstractAdmin
                         return $enitity->getNom();
                     },
                 )
-            )
+            )*/
             ->add('categorie')
             ;
     }

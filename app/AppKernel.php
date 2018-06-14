@@ -40,7 +40,7 @@ class AppKernel extends Kernel
             // You need to add this dependency to make media functional
             new JMS\SerializerBundle\JMSSerializerBundle(),
             
-            new EasyCorp\Bundle\EasyAdminBundle\EasyAdminBundle(),
+            //new EasyCorp\Bundle\EasyAdminBundle\EasyAdminBundle(),
             
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
             

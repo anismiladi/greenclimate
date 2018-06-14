@@ -58,7 +58,7 @@ class Acteur extends AbstractPersonalTranslatable implements TranslatableInterfa
     /**
      * @var string
      *
-     * @ORM\Column(name="hierarchie", type="string", length=255, nullable=true)
+     * @ORM\Column(name="hierarchie", type="text", nullable=true)
      */
     private $hierarchie;
 
