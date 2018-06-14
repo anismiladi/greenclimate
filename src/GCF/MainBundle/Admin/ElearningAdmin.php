@@ -21,10 +21,12 @@ class ElearningAdmin extends AbstractAdmin
             ->add('nom')
             ->add('description')
             ->add('youtube', 'sonata_media_type', array(
+                'required' => false,
                 'provider' => 'sonata.media.provider.youtube',
                 'context'  => 'default'
             ))
             ->add('fichier', 'sonata_media_type', array(
+                'required' => false,
                 'provider' => 'sonata.media.provider.file',
                 'context'  => 'default'
             ))

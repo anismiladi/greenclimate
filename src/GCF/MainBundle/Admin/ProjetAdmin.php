@@ -36,7 +36,7 @@ class ProjetAdmin extends AbstractAdmin
                 'provider' => 'sonata.media.provider.file',
                 'context'  => 'default',
             ))
-            ->add('secteurProjet','sonata_type_model',        //_autocomplete
+            ->add('secteurProjet', ModelType::class,        //_autocomplete
                 array(
                     'required' => true,
                     'multiple' => false,
@@ -48,7 +48,7 @@ class ProjetAdmin extends AbstractAdmin
                 )
             )
                        
-            ->add('acteur','sonata_type_model',        //_autocomplete
+            ->add('acteur', ModelType::class,        //_autocomplete
                 array(
                     'required' => false,
                     'multiple' => false,
@@ -66,7 +66,7 @@ class ProjetAdmin extends AbstractAdmin
                 'expanded' => true
                 ))
             */
-            ->add('gouvernorat','sonata_type_model',        //_autocomplete
+            ->add('gouvernorat', ModelType::class,        //_autocomplete
                 array(
                     'required' => false,
                     'multiple' => true,

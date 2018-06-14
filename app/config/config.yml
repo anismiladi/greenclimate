@@ -132,7 +132,6 @@ sonata_admin:
 sonata_block:
     default_contexts: [cms]
     blocks:
-
         # enable the SonataAdminBundle block
         sonata.admin.block.admin_list:
             contexts:   [admin]
@@ -151,7 +150,7 @@ stof_doctrine_extensions:
     default_locale: fr_FR
     uploadable:
         # Default file path: This is one of the three ways you can configure the path for the Uploadable extension
-        default_file_path:       "%kernel.root_dir%/../web/uploads"
+        #default_file_path:       "%kernel.root_dir%/../web/uploads"
     orm:
         default:
             tree: true
@@ -164,10 +163,13 @@ sonata_media:
     #    media: MyVendor\MediaBundle\Entity\Media
     #    gallery: MyVendor\MediaBundle\Entity\Gallery
     #    gallery_has_media: MyVendor\MediaBundle\Entity\GalleryHasMedia
-    db_driver: doctrine_orm # or doctrine_mongodb, doctrine_phpcr it is mandatory to choose one here
-    default_context: default # you need to set a context
+    db_driver: doctrine_orm 
+    # or doctrine_mongodb, doctrine_phpcr it is mandatory to choose one here
+    default_context: default 
+    # you need to set a context
     contexts:
-        default:  # the default context is mandatory
+        default:  
+        # the default context is mandatory
             providers:
                 - sonata.media.provider.dailymotion
                 - sonata.media.provider.youtube
@@ -177,16 +179,17 @@ sonata_media:
 
             formats:
                 small: { width: 100 , quality: 70}
-                big:   { width: 500 , quality: 70}
+                big:   { width: 500 , quality: 150}
     cdn:
         server:
-            path: /uploads/media # http://media.sonata-project.org/
+            path: /uploads/media 
+            # http://media.sonata-project.org/
 
     filesystem:
         local:
-            #directory:  "%kernel.root_dir%/../public/uploads/media" #flex
-            directory:  "%kernel.root_dir%/../web/uploads/media" #non-flex
-            create:     false
+            directory:  "%kernel.root_dir%/../web/uploads/media" 
+            #non-flex
+            create:     true
     providers:
         image:
             resizer: sonata.media.resizer.square

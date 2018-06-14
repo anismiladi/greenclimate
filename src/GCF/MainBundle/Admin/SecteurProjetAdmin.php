@@ -22,15 +22,15 @@ class SecteurProjetAdmin extends AbstractAdmin
                 'provider' => 'sonata.media.provider.image',
                 'context'  => 'default'
             ))
-            ->add('secteurProjetParent','sonata_type_model_autocomplete',
+            ->add('secteurProjetParent','sonata_type_model',        //_autocomplete',
                 array(
                     'required' => false,
                     'multiple' => false,
-                    'minimum_input_length' => 1,
+                    //'minimum_input_length' => 1,
                     'property' => 'nom',
-                    'to_string_callback' => function($enitity, $property) {
+                    /*'to_string_callback' => function($enitity, $property) {
                         return $enitity->getNom();
-                    },
+                    },*/
                 )
             );
         //->add('translations', TranslationsType::class)

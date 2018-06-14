@@ -43,14 +43,21 @@ services:
         tags:
             - { name: sonata.admin, manager_type: orm, group: Publications, label: Gestion les Publications }
         public: true
-
+        
+    #admin.PublicationGreen:
+    #    class: GCF\MainBundle\Admin\PublicationGreenAdmin
+    #    arguments: [~, GCF\MainBundle\Entity\Publication, ~]
+    #    tags:
+    #        - { name: sonata.admin, manager_type: orm, group: Publications, label: Publications des GreenBloggers}
+    #    public: true
+    
     #cateogries publication MARWEN#
     admin.CatPublication:
         class: GCF\MainBundle\Admin\CatPublicationAdmin
         arguments: [~, GCF\MainBundle\Entity\CatPublication, ~]
         tags:
             - { name: sonata.admin, manager_type: orm, group: Publications, label: Categories }
-        public: true
+        public: false
     #END cateogries publication MARWEN#
 
     admin.Elearning:
@@ -66,18 +73,17 @@ services:
         tags:
             - { name: sonata.admin, manager_type: orm, group: Elearning, label: Categories Elearning }
         public: true
+
+    admin.Events:
+        class: GCF\MainBundle\Admin\EventAdmin
+        arguments: [~, GCF\MainBundle\Entity\Event, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Evénements, label: Gestion des Evénements }
+        public: true
         
     admin.gouvernorats:
         class: GCF\MainBundle\Admin\GouvernoratAdmin
         arguments: [~, GCF\MainBundle\Entity\Gouvernorat, ~]
         tags:
             - { name: sonata.admin, manager_type: orm, group: Autres, label: Gouvernorats }
-        public: true
-
-
-    admin.events:
-        class: GCF\MainBundle\Admin\EventAdmin
-        arguments: [~, GCF\MainBundle\Entity\Event, ~]
-        tags:
-            - { name: sonata.admin, manager_type: orm, group: Evénements, label: Gestion des Evénements }
-        public: true
+        public: false

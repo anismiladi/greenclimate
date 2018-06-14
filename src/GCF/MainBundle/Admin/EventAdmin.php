@@ -17,11 +17,17 @@ class EventAdmin extends AbstractAdmin
     {
         $formMapper
             ->add('nom')
-            ->add('description')
+            ->add('description', 'textarea', array('attr' => array('class' => 'ckeditor')))
             ->add('lienFB')
             ->add('lienAutre')
-//            ->add('photoCouverture')
-//            ->add('photoAffiche')
+            /*->add('photoCouverture', 'sonata_media_type', array(
+                    'provider' => 'sonata.media.provider.image',
+                    'context'  => 'default'
+                ))
+            ->add('photoAffiche', 'sonata_media_type', array(
+                    'provider' => 'sonata.media.provider.image',
+                    'context'  => 'default'
+                ))*/
             ->add('debut')
             ->add('fin')
             ->add('lieu')

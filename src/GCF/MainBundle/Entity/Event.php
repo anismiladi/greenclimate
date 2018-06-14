@@ -50,25 +50,23 @@ class Event extends AbstractPersonalTranslatable implements TranslatableInterfac
     private $lienFB;
 
     /**
+     * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media", cascade={"persist", "remove"} )
+     * @ORM\Column(name="photoCouverture", nullable=true)
+     */
+    private $photoCouverture;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media", cascade={"persist", "remove"} )
+     * @ORM\Column(name="photoAffiche", nullable=true)
+     */
+    private $photoAffiche;
+    
+    /**
      * @var string
      *
      * @ORM\Column(name="lienAutre", type="string", length=255)
      */
     private $lienAutre;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="photoCouverture", type="string", length=255,nullable=true)
-     */
-    private $photoCouverture;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="photoAffiche", type="string", length=255,nullable=true)
-     */
-    private $photoAffiche;
 
     /**
      * @var \DateTime
@@ -233,54 +231,6 @@ class Event extends AbstractPersonalTranslatable implements TranslatableInterfac
     }
 
     /**
-     * Set photoCouverture
-     *
-     * @param string $photoCouverture
-     *
-     * @return Event
-     */
-    public function setPhotoCouverture($photoCouverture)
-    {
-        $this->photoCouverture = $photoCouverture;
-
-        return $this;
-    }
-
-    /**
-     * Get photoCouverture
-     *
-     * @return string
-     */
-    public function getPhotoCouverture()
-    {
-        return $this->photoCouverture;
-    }
-
-    /**
-     * Set photoAffiche
-     *
-     * @param string $photoAffiche
-     *
-     * @return Event
-     */
-    public function setPhotoAffiche($photoAffiche)
-    {
-        $this->photoAffiche = $photoAffiche;
-
-        return $this;
-    }
-
-    /**
-     * Get photoAffiche
-     *
-     * @return string
-     */
-    public function getPhotoAffiche()
-    {
-        return $this->photoAffiche;
-    }
-
-    /**
      * Set debut
      *
      * @param \DateTime $debut
@@ -350,5 +300,17 @@ class Event extends AbstractPersonalTranslatable implements TranslatableInterfac
     public function getLieu()
     {
         return $this->lieu;
+    }
+
+    /**
+     * Remove translation.
+     *
+     * @param \GCF\MainBundle\Entity\EventTranslation $translation
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeTranslation(\GCF\MainBundle\Entity\EventTranslation $translation)
+    {
+        return $this->translations->removeElement($translation);
     }
 }
