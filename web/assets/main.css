@@ -29,8 +29,15 @@
 *{
     -webkit-transition-duration: 0.2s;
     transition-duration: 0.2s;
-
-    font-family: Myriad-pro-reg;
+}
+html,body{
+    font-family: Myriad-pro-reg !important;
+}
+h1{
+    font-family: Cabo-Rounded !important;
+}
+h2 {
+    font-family: Rounded_Elegance !important;
 }
 
 .navbar-default .navbar-toggle .icon-bar{
@@ -94,7 +101,7 @@ header and top bar
 
 .navbar-header .navbar-brand img{max-width: 130px;}
 
-.navbar-nav>li>a { font-size: 16px !important; font-weight: 600;line-height: 42px !important; color: white !important;padding-bottom: 10px !important; padding-top: 10px !important; }
+.navbar-nav>li>a {font-family: Rounded_Elegance ; font-size: 16px !important; font-weight: 600;line-height: 42px !important; color: white !important;padding-bottom: 10px !important; padding-top: 10px !important; }
 
 .navbar-nav>li>a:hover { color: #cccccc !important; }
 
