@@ -4,19 +4,27 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>{% block title %}Welcome!{% endblock %}</title>
-
+    <style>
+        @font-face {
+            font-family: MyriadPro-Regular;
+            src: url({{ asset('assets/fonts/Myriad-pro-reg.ttf') }});
+        }
+        @font-face {
+            font-family: Cabo-Rounded;
+            src: url({{ asset('assets/fonts/Cabo-Rounded-Regular.otf') }});
+        }
+        @font-face {
+            font-family: Rounded_Elegance;
+            src: url({{ asset('assets/fonts/Rounded_Elegance.ttf') }});
+        }
+    </style>
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     <link rel="stylesheet" href="{{ asset('assets/main.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/bootstrap/dist/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/font-awesome-4.7.0/css/font-awesome.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/slick/slick.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/slick/slick-theme.css') }}">
-    {# 
-    @font-face {
-        font-family: Myriad-pro-reg;
-        src: url({{ asset('assets/fonts/Myriad-pro-reg.ttf') }});
-    }
-    #}
+
     {% block stylesheets %}{% endblock %}
     {% block styleBloc %}{% endblock %}
 </head>
