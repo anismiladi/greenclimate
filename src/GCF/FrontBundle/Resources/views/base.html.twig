@@ -4,13 +4,18 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>{% block title %}Welcome!{% endblock %}</title>
-    {% block stylesheets %}{% endblock %}
+
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     <link rel="stylesheet" href="{{ asset('assets/main.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/bootstrap/dist/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/font-awesome-4.7.0/css/font-awesome.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/slick/slick.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/slick/slick-theme.css') }}">
+    @font-face {
+        font-family: Myriad-pro-reg;
+        src: url({{ asset('assets/fonts/Myriad-pro-reg.ttf') }});
+    }
+    {% block stylesheets %}{% endblock %}
     {% block styleBloc %}{% endblock %}
 </head>
 
@@ -53,12 +58,12 @@
                     <button class="language_switch_btn"><a class="" href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'fr'})) }}" title="Français">Fr</a></button>
                 </div>
                 <div class="rs_btns_containers" style="direction:rtl">
-                    <a href="{{ facebook }}" title="Facebook"><i class="fa fa-facebook " aria-hidden="true" style="border-radius: 50%"></i></a>
-                    <a href="{{ linkedin }}" title="Linkedin"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-                    <a href="{{ instagram }}" title="Instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                    <a href="{{ twitter }}" title="Twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                    <a href="{{ youtube }}" title="Youtube"><i class="fa fa-youtube-play " aria-hidden="true"></i></a>
-                    <a href="{{ phone_number }}" title="Telephone"><i class="fa fa-phone fa-2x" aria-hidden="true"></i></a>
+                    <a href="{{ facebook }}" title="Facebook" target="_blank"><i class="fa fa-facebook " aria-hidden="true" style="border-radius: 50%"></i></a>
+                    <a href="{{ linkedin }}" title="Linkedin" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                    <a href="{{ instagram }}" title="Instagram" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                    <a href="{{ twitter }}" title="Twitter" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                    <a href="{{ youtube }}" title="Youtube" target="_blank"><i class="fa fa-youtube-play " aria-hidden="true"></i></a>
+                    <a href="{{ phone_number }}" title="Telephone" target="_blank"><i class="fa fa-phone fa-2x" aria-hidden="true"></i></a>
                 </div>
             </div>
 
@@ -213,7 +218,7 @@
                 color: #22AA86;
                 text-decoration: none;
             }
-            .custom_breadcrumb li a:hover ,  {
+            .custom_breadcrumb li a:hover   {
                 text-decoration: none;
                 color: #25caa2;
             }
@@ -357,11 +362,11 @@
                         </div>
                     </div>
                     <div class="item social rs_btns_footer_container">
-                        <a href="{{ youtube }}" title="Youtube"><i class="fa fa-youtube-play"></i></a>
-                        <a href="{{ twitter }}" title="Twitter"><i class="fa fa-twitter"></i></a>
-                        <a href="{{ instagram }}" title="Instagram"><i class="fa fa-instagram"></i></a>
-                        <a href="{{ linkedin }}" title="Linkedin"><i class="fa fa-linkedin"></i></a>
-                        <a href="{{ facebook }}" title="Facebook"><i class="fa fa-facebook"></i></a>
+                        <a href="{{ youtube }}" title="Youtube" target="_blank"><i class="fa fa-youtube-play"></i></a>
+                        <a href="{{ twitter }}" title="Twitter" target="_blank"><i class="fa fa-twitter"></i></a>
+                        <a href="{{ instagram }}" title="Instagram" target="_blank"><i class="fa fa-instagram"></i></a>
+                        <a href="{{ linkedin }}" title="Linkedin" target="_blank"><i class="fa fa-linkedin"></i></a>
+                        <a href="{{ facebook }}" title="Facebook" target="_blank"><i class="fa fa-facebook"></i></a>
                     </div>
 
                 </div>
@@ -372,7 +377,7 @@
                     </div>
                     <nav>
                         <ul class="">
-                            <li style="list-style: none;"><a href="#evenement" style="color:white;text-decoration: none">Evenement</a></li>
+                            <li style="list-style: none;"><a href="{{ path('gcf_front_event_page') }}" style="color:white;text-decoration: none">Evenement</a></li>
                             <li style="list-style: none;"><a href="#bibliotheque" style="color:white;text-decoration: none">Bibliotheque</a></li>
                             <li style="list-style: none;"><a href="#" style="color:white;text-decoration: none">Green Bloggeur</a></li>
                             <li style="list-style: none;"><a href="http://raj-tunisie.org" target="_blank" style="color:white;text-decoration: none">RAJ Tunisie</a></li>
