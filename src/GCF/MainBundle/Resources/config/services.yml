@@ -85,5 +85,5 @@ services:
         class: GCF\MainBundle\Admin\GouvernoratAdmin
         arguments: [~, GCF\MainBundle\Entity\Gouvernorat, ~]
         tags:
-            - { name: sonata.admin, manager_type: orm, group: Autres, label: Gouvernorats }
+            - { name: sonata.admin, manager_type: orm, group: Autres, label: Gouvernorats } 
         public: false
