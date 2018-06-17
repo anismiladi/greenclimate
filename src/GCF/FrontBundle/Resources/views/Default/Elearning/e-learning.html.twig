@@ -1,7 +1,9 @@
 {% extends '@GCFFront/base.html.twig' %}
 
 {% block title %} E-learning {% endblock %}
-{% block body %}
+
+{% block stylesheets %}
+
     <style>
         .navigation_elearning{
             margin-bottom: 40px;
@@ -69,8 +71,10 @@
         }
     </style>
 
+{% endblock %}
 
-    <h1>Page E-learning</h1>
+{% block body %}
+{{ dump(elearningLegisArticles) }}
 
     <div>
         <div class="col-md-12">
@@ -82,22 +86,22 @@
 
         <div id="technique_tab_container">
 
-            {% for i in 0..4 %}
+            {% for elearningTechArticle in elearningTechArticles %}
 
 
                 <div class="col-md-12 col-xs-12"
                      style="background: #f2fffc;border: solid white; padding-top: 10px; padding-bottom:10px ">
                     <div class="row">
                         <div class="col-md-5" style="padding: 0 ">
+
                             <iframe   style="max-width: 100%;max-height: 100%;width: 100%; height:200px;" src="https://www.youtube.com/embed/NBRLeyI9Dfk?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
                         </div>
 
                         <div class="col-md-7">
-                            <h4 class="name">Publication Titre</h4>
-                            <h6 class="name"><strong>Date :</strong> 2009</h6>
-                            <p class="description" style="font-size: 13px;">Aenean tortor est, vulputate quis leo in,
-                                vehicula rhoncus lacus.Aenean tortor est, vulputate quis leo in,
-                                vehicula rhoncus lacus</p>
+                            <h4 class="name">{{ elearningTechArticle.nom }}</h4>
+                            <h6 class="name"><strong>Date :</strong>{{ "now"|date("d-m-Y") }}</h6>
+                            <p class="description" style="font-size: 13px;">{{ elearningTechArticle.description }}</p>
                         </div>
                     </div>
                 </div>

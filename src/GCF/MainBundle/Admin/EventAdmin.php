@@ -20,14 +20,18 @@ class EventAdmin extends AbstractAdmin
             ->add('description', 'textarea', array('attr' => array('class' => 'ckeditor')))
             ->add('lienFB')
             ->add('lienAutre')
-            /*->add('photoCouverture', 'sonata_media_type', array(
-                    'provider' => 'sonata.media.provider.image',
-                    'context'  => 'default'
-                ))
-            ->add('photoAffiche', 'sonata_media_type', array(
-                    'provider' => 'sonata.media.provider.image',
-                    'context'  => 'default'
-                ))*/
+
+//            ->add('photoCouverture', 'sonata_media_type', array(
+//                'required' => false,
+//                'provider' => 'sonata.media.provider.image',
+//                'context'  => 'default'
+//
+//                ))
+//            ->add('photoAffiche', 'sonata_media_type', array(
+//                'required' => false,
+//                'provider' => 'sonata.media.provider.image',
+//                'context'  => 'default'
+//                ))
             ->add('debut')
             ->add('fin')
             ->add('lieu')

@@ -366,4 +366,13 @@ class Projet extends AbstractPersonalTranslatable implements TranslatableInterfa
     {
         return $this->translations->removeElement($translation);
     }
+
+    public function __toString()
+    {
+        // TODO: Implement __toString() method.
+        if($this->getNom())
+            return $this->getNom();
+        else
+            return "";
+    }
 }

@@ -143,7 +143,7 @@
                         <div class="container_timeline_info">
                             <h3>{{ evenement.nom }}</h3>
                             <h4>{{ "now"|date("d-m-Y")  }}</h4>
-                            <p>{{ evenement.description }}</p>
+                            <p>{{ evenement.description|striptags() }}</p>
                             <p>
                             <a href="{{ evenement.lienFB }}" title="Facebook" target="_blank">
                                 <i class="fa fa-facebook " aria-hidden="true" style="border-radius: 50%"></i>

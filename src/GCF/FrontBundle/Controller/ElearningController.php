@@ -22,8 +22,20 @@ class ElearningController extends Controller
         // Simple example
         $breadcrumbs->addItem("E-learning");
 
+        $em = $this->getDoctrine()->getManager();
+
+        $elearningTechArticles = $em->getRepository('GCFMainBundle:Elearning')->findBy(array(
+            'catLearning' => '1' //id de technique
+        ));
+
+        $elearningLegisArticles = $em->getRepository('GCFMainBundle:Elearning')->findBy(array(
+            'catLearning' => '2' //id de legislative
+        ));
+
         return $this->render('@GCFFront/Default/Elearning/e-learning.html.twig',array(
-            'pageTitle' => $pageTitle
+            'pageTitle' => $pageTitle,
+            'elearningTechArticles' => $elearningTechArticles,
+            'elearningLegisArticles' => $elearningLegisArticles
         ));
     }
 }

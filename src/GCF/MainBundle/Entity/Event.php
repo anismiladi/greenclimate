@@ -51,13 +51,45 @@ class Event extends AbstractPersonalTranslatable implements TranslatableInterfac
 
     /**
      * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media", cascade={"persist", "remove"} )
-     * @ORM\Column(name="photoCouverture", nullable=true)
+     * @ORM\Column(name="photo_couverture", nullable=true)
      */
     private $photoCouverture;
 
     /**
+     * @return mixed
+     */
+    public function getPhotoCouverture()
+    {
+        return $this->photoCouverture;
+    }
+
+    /**
+     * @param mixed $photoCouverture
+     */
+    public function setPhotoCouverture($photoCouverture)
+    {
+        $this->photoCouverture = $photoCouverture;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPhotoAffiche()
+    {
+        return $this->photoAffiche;
+    }
+
+    /**
+     * @param mixed $photoAffiche
+     */
+    public function setPhotoAffiche($photoAffiche)
+    {
+        $this->photoAffiche = $photoAffiche;
+    }
+
+    /**
      * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media", cascade={"persist", "remove"} )
-     * @ORM\Column(name="photoAffiche", nullable=true)
+     * @ORM\Column(name="photo_affiche", nullable=true)
      */
     private $photoAffiche;
     
